@@ -2,414 +2,566 @@
 
 ## 1. Tags
 
-- CSS (Cascading Style Sheets) by building a cafe menu. CSS is the language used to style an HTML document. It describes how HTML elements should be displayed on the screen.
-- Every HTML document should have a DOCTYPE declaration and html element. The DOCTYPE tells the browser which version of HTML the document is in. And the html element represents the root element which contains all other elements.
+- As you've seen in the previous projects, webpages should start with a DOCTYPE html declaration, followed by an html element.
+
+- Add a DOCTYPE html declaration at the top of the document, and an html element after that. Give the html element a lang attribute with en as its value.
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<!--all other elements go here-->
 </html>
 ```
 
 ## 2
 
 ```html
-<head> 
-    <title> Cafe Menu </title>
+- Nest a head element within the html element. Just after the head element, add a body element.
+
+<head>
 </head>
+<body>
+</body>
 ```
 
 ## 3
 
-- The title is one of several elements that provide extra information not visible on the web page, but it is useful for search engines or how the page gets displayed.
+- Remember that the title element gives search engines extra information about the page. It also displays the content of that title element in two more ways:
 
-- Inside the head element, nest a meta element with an attribute named charset set to the value utf-8 to tell the browser how to encode characters for the page.
+- in the title bar when the page is open
+- in the browser tab for the page when you hover on it. Even if that tab is not active, once you hover on the tab, the title text is displayed.
+- Within the head element, nest a title element with the text Colored Markers.
 
 ```html
 <head>
-    <title>Cafe Menu</title>
-    <meta charset="utf-8">
-</head>
+    <title> Colored Markers </title>
+  </head>
 ```
 
 ## 4
 
 ```html
-<body>
-</body>
+The charset attribute specifies the character encoding used by the document. utf-8 (Unicode Transformation Format – 8-bit) is a character encoding standard used for electronic communication.
+
+Inside the head element, nest a meta element with the attribute charset set to "utf-8".
+
+<head>
+    <title>Colored Markers</title>
+    <meta charset="utf-8">
+  </head>
 ```
 
 ## 5
 
 ```html
-<body>
-<main>
-</main>
-</body>
+- You can have multiple meta elements on a web page. Each meta element adds information about the page that cannot be expressed by other HTML elements.
+
+Add another meta element within the head. Give it a name attribute set to "viewport" and a content attribute set to "width=device-width, initial-scale=1.0" so your page looks the same on all devices.
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Colored Markers</title>
+  </head>
 ```
 
 ## 6
 
 ```html
+- Now you're ready to start adding content to the page.
+
+- Within the body, nest an h1 element with the text CSS Color Markers.
+
 <body>
-<main>
-    <h1> camper cafe </h1>
-</main>
-</body>
+    <h1> CSS Color Markers </h1>
+  </body>
 ```
 
 ## 7
 
 ```html
-<h1> camper cafe </h1>
-<p> Est. 2020 <p>
+- In this project you'll work with an external CSS file to style the page. We've already created a styles.css file for you. But before you can use it, you'll need to link it to the page.
+
+- Nest a link element within the head element. Give it a rel attribute set to "stylesheet" and an href attribute set to "styles.css".
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colored Markers</title>
+  </head>
+
 ```
 
 ## 8
 
 ```html
-
-<main>
-      <h1>CAMPER CAFE</h1>
-      <p>Est. 2020</p>
-      <section>
-        </section>
-    </main>
+- Create a new CSS rule that targets the h1 element, and set its text-align property to center.
+h1 {
+  text-align: center;
+}
 ```
 
 ## 9
 
 ```html
-<section>
-    <h2> Coffee </h2>
-</section>
+- Now you'll add some elements that you'll eventually style into color markers.
+
+- First, within the body element, add a div element and set its class attribute to container. Make sure the div element is below the h1 element.
+
+<body>
+    <h1>CSS Color Markers</h1>
+    <div class="container"></div>
+  </body>
 ```
 
 ## 10
 
-- added a style element to the head element
+- Next, within the div element, add another div element and give it a class of marker.
 
 ```html
-<style>
-</style>
+<body>
+    <h1>CSS Color Markers</h1>
+    <div class="container">
+      <div class="marker"></div>
+    </div>
+  </body>
 ```
 
 ## 11
 
-- You can add style to an element by specifying it in the style element and setting a property for it like this:
+- It's time to add some color to the marker. Remember that one way to add color to an element is to use a color keyword like black, cyan, or yellow.
+
+- As a reminder, here's how to target the class freecodecamp:
+
+ Example Code
+ .freecodecamp {
+  
+ }
+
+- Create a new CSS rule that targets the class marker, and set its background-color property to red.
 
 ```html
 
-h1 {
- text-align: center;
+.marker {
+  background-color:red;
 }
 
 ```
 
 ## 12
 
--In the previous step, you used a type selector to style the h1 element. Center the content of the h2 and the p elements by adding a new type selector for each one to the existing style element.
+- The background color was applied, but since the marker div element has no content in it, it doesn't have any height by default.
+
+- In your .marker CSS rule, set the height property to 25px and the width property to 200px
 
 ```html
-p {
- text-align: center;
-}
-
-h2 {
- text-align: center;
+.marker {
+  background-color: red;
+  height: 25px;
+  width: 200px;
 }
 ```
 
 ## 13
 
-- You now have three type selectors with the exact same styling. You can add the same group of styles to many elements by creating a list of selectors. Each selector is separated with commas like this:
+- Your marker would look better if it was centered on the page. An easy way to do that is with the margin shorthand property.
 
-p,h1,h2 {
- text-align: center;
+- In the last project, you set the margin area of elements separately with properties like margin-top and margin-left. The margin shorthand property makes it easy to set multiple margin areas at the same time.
+
+- To center your marker on the page, set its margin property to auto. This sets margin-top, margin-right, margin-bottom, and margin-left all to auto.
+
+```html
+.marker {
+  width: 200px;
+  height: 25px;
+  background-color: red;
+  margin: auto;
 }
-
-- Delete the three existing type selectors and replace them with one selector list that centers the text for the h1, h2, and p elements.
+```
 
 ## 14
 
 - This works, but since there will be many more styles, it's best to put all the styles in a separate file and link to it.
 
+```html
+<div class="container">
+      <div class="marker">
+      </div>
+      <div class="marker">
+      </div>
+      <div class="marker">
+      </div>
+    </div>
+```
+
 ## 15
 
-- removed style content to later link the style sheet
+- While you have three separate marker div elements, they look like one big rectangle. You should add some space between them to make it easier to see each element.
+
+- When the shorthand margin property has two values, it sets margin-top and margin-bottom to the first value, and margin-left and margin-right to the second value.
+
+- In your .marker CSS rule, set the margin property to 10px auto.
+
+```html
+.marker {
+  width: 200px;
+  height: 25px;
+  background-color: red;
+  margin: 10px auto;
+}
+```
 
 ## 16
 
-- Inside the head element, add a link element. Give it a rel attribute with the value of "stylesheet" and a href attribute with the value of "styles.css".
+- To give the markers different colors, you will need to add a unique class to each one. Multiple classes can be added to an element by listing them in the class attribute and separating them with a space. For example, the following adds both the animal and dog classes to a div element.
+
+Example Code
 
 ```html
-<link rel="stylesheet" href="styles.css">
+<div class="animal dog">
+```
+
+If you add multiple classes to an HTML element, the styles of the first classes you list may be overridden by later classes.
+
+To begin, add the class one to the first marker div element.
+
+```html
+ <div class="marker one">
+      </div>
+      <div class="marker">
+      </div>
+      <div class="marker">
+      </div>
 ```
 
 ## 17
 
-- For the styling of the page to look similar on mobile as it does on a desktop or laptop, you need to add a meta element with a special content attribute.
-
-- Add the following within the head element:
+- Next, remove the background-color property and its value from the .marker CSS rule.
 
 ```html
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+.marker {
+  width: 200px;
+  height: 25px;
+  margin: 10px auto;
+}
 ```
 
 ## 18
 
-- Add another style to the file that changes the background-color property to brown for the body element.
+- Then, create a new CSS rule that targets the class one and set its background-color property to red.
 
 ```html
-body {
-  background-color: brown;
+.one {
+  background-color:red;
 }
 ```
 
 ## 19
 
+- Add the class two to the second marker div, and add the class three to the third marker div.
+
 ```html
-body {
-  background-color: burlywood;
-}
+<div class="marker one">
+      </div>
+      <div class="marker two">
+      </div>
+      <div class="marker three">
+      </div>
 ```
 
 ## 20
 
-- The div element is used mainly for design layout purposes unlike the other content elements you have used so far. Add a div element inside the body element and then move all the other elements inside the new div.
+- Create a CSS rule that targets the class two and set its background-color property to green.
 
-- Inside the opening div tag, add the id attribute with a value of menu.
+- Also, create a separate CSS rule that targets the class three and set its background-color to blue.
 
 ```html
-<div id="menu">
-</div>
+.two {
+  background-color: green;
+}
+
+.three {
+  background-color: blue;
+}
  ```
 
 ## 21
 
-- You can use the id selector to target a specific element with an id attribute. An id selector is defined by placing the hash symbol # directly in front of the element's id value. For example, if an element has the id of cat then you would target that element like this:
+- There are two main color models: the additive RGB (red, green, blue) model used in electronic devices, and the subtractive CMYK (cyan, magenta, yellow, black) model used in print.
 
-- Example Code
-- #cat {
-  - width: 250px;
-- }
-- Use the #menu selector to give your element a width of 300px.
+- In this project, you'll work with the RGB model. This means that colors begin as black, and change as different levels of red, green, and blue are introduced. An easy way to see this is with the CSS rgb function.
+
+- Create a new CSS rule that targets the class container and set its background-color to black with rgb(0, 0, 0).
 
 ```html
-#menu {
-  width: 300px;
+.container{
+  background-color: rgb(0, 0, 0);
 }
  ```
 
 ## 22
 
 ```html
-/* background-color: burlywood; */
+- A function is a piece of code that can take an input and perform a specific action. The CSS rgb function accepts values, or arguments, for red, green, and blue, and produces a color:
+
+Example Code
+- rgb(red, green, blue);
+- Each red, green, and blue value is a number from 0 to 255. 0 means that there's 0% of that color, and is black. 255 means that there's 100% of that color.
+
+- In the .one CSS rule, replace the color keyword red with the rgb function. For the rgb function, set the value for red to 255, the value for green to 0, and the value for blue to 0.
+
+.one {
+  background-color: rgb(255, 0, 0);
+}
  ```
 
 ## 23
 
 ```html
-#menu {
-  background-color: burlywood;
-  width: 300px;
+- Notice that the background-color for your marker is still red. This is because you set the red value of the rgb function to the max of 255, or 100% red, and set both the green and blue values to 0.
+
+Now use the rgb function to set the other colors.
+
+In the .two CSS rule, use the rgb function to set the background-color to the max value for green, and 0 for the other values. And in the .three CSS rule, use the rgb function to set the background-color to the max value for blue, and 0 for the other values.
+
+.two {
+  background-color: rgb(0, 255, 0);
+}
+
+.three {
+  background-color: rgb(0, 0, 255);
 }
  ```
 
 ## 24
 
-- Now it's easy to see that the text is centered inside the #menu element. Currently, the width of the #menu element is specified in pixels (px).
+- While the red and blue markers look the same, the green one is much lighter than it was before. This is because the green color keyword is actually a darker shade, and is about halfway between black and the maximum value for green.
 
-- Change the width property's value to be 80%, to make it 80% the width of its parent element (body).
+- In the .two CSS rule, set the green value in the rgb function to 127 to lower its intensity.
 
 ```html
-#menu {
-  width: 80%;
-  background-color: burlywood;
+.two {
+  background-color: rgb(0, 127, 0);
 }
  ```
 
 ## 25
 
-- Next, you want to center the #menu horizontally. You can do this by setting its margin-left and margin-right properties to auto. Think of the margin as invisible space around an element. Using these two margin properties, center the #menu element within the body element.
+- Now add a little more vertical space between your markers and the edge of the container element they're in.
+
+- In the .container CSS rule, use the shorthand padding property to add 10px of top and bottom padding, and set the left and right padding to 0. This works similarly to the shorthand margin property you used earlier.
 
 ```html
-#menu {
-  width: 80%;
-  background-color: burlywood;
-  margin-left: auto;
-  margin-right: auto;
+.container {
+  background-color: rgb(0, 0, 0);
+  padding: 10px 0px;
 }
  ```
 
 ## 26
 
-- So far you have been using type and id selectors to style elements. However, it is more common to use a different selector to style your elements.
+- In the additive RGB color model, primary colors are colors that, when combined, create pure white. But for this to happen, each color needs to be at its highest intensity.
 
-A class selector is defined by a name with a dot directly in front of it, like this:
-
-Example Code
-.class-name {
-  styles
-}
-Change the existing #menu selector into a class selector by replacing #menu with a class named .menu.
+- Before you combine colors, set your green marker back to pure green. For the rgb function in the .two CSS rule, set green back to the max value of 255.
 
 ```html
-.menu {
-  width: 80%;
-  background-color: burlywood;
-  margin-left: auto;
-  margin-right: auto;
+.two {
+  background-color: rgb(0, 255, 0);
 }
  ```
 
 ## 27
 
-- To apply the class's styling to the div element, remove the id attribute and add a class attribute to the div element's opening tag. Make sure to set the class value to menu.
+- Now that you have the primary RGB colors, it's time to combine them.
+
+- For the rgb function in the .container rule, set the red, green, and blue values to the max of 255.
 
 ```html
- <div class="menu">
+ .container {
+  background-color: rgb(255, 255, 255);
+  padding: 10px 0;
+}
  ```
 
 ## 28
 
+- Secondary colors are the colors you get when you combine primary colors. You might have noticed some secondary colors in the last step as you changed the red, green, and blue values.
+
+- To create the first secondary color, yellow, update the rgb function in the .one CSS rule to combine pure red and pure green.
+
 ```html
-<!-- added an image in the body element -->
- body {
-  background-image:url(https://cdn.freecodecamp.org/curriculum/css-cafe/beans.jpg);
+.one {
+  background-color: rgb(255, 255, 0);
 }
 ```
 
 ## 29
 
-- Time to start adding some menu items. Add an empty article element under the Coffee heading. It will contain a flavor and price of each coffee you currently offer.
+- To create the next secondary color, cyan, update the rgb function in the .two CSS rule to combine pure green and pure blue.
 
 ```html
-<article></article>
+.two {
+  background-color: rgb(0, 255, 255);
+}
 ```
 
 ## 30
 
-- article elements commonly contain multiple elements that have related information. In this case, it will contain a coffee flavor and a price for that flavor. Nest two p elements inside your article element. The first one's text should be French Vanilla, and the second's text 3.00.
+- To create the final secondary color, magenta, update the rgb function in the .three CSS rule to combine pure blue and pure red.
 
 ```html
-<article>
-            <p> French Vanilla </p>
-            <p> 3.00 </p>
-          </article>
+.three {
+  background-color: rgb(255, 0, 255);
+}
 ```
 
 ## 31
 
+- Now that you're familiar with secondary colors, you'll learn how to create tertiary colors. Tertiary colors are created by combining a primary with a nearby secondary color.
+
+- To create the tertiary color orange, update the rgb function in the .one CSS rule so that red is at the max value, and set green to 127.
+
 ```html
-<!-- added more articles to include more coffee price pairs -->
- <article>
-            <p>French Vanilla</p>
-            <p>3.00</p>
-          </article>
-          <article>
-            <p>Caramel Macchiato</p>
-            <p>3.75</p>
-          </article>
-          <article>
-            <p>Pumpkin Spice</p>
-            <p>3.50</p>
-          </article>
-          <article>
-            <p>Hazelnut</p>
-            <p>4.00</p>
-          </article>
-          <article>
-            <p>Mocha</p>
-            <p>4.50</p>
-          </article>
+.one {
+  background-color: rgb(255, 127, 0);
+}
 ```
 
 ## 32
 
+- Notice that, to create orange, you had to increase the intensity of red and decrease the intensity of the green rgb values. This is because orange is the combination of red and yellow.
+
+- To create the tertiary color spring green, combine cyan with green. Update the rgb function in the .two CSS rule so that green is at the max value, and set blue to 127.
+
 ```html
-<!-- added class element to p tag to edit flavor to the left and price to the right -->
- <p class="flavor">French Vanilla</p>
-            <p>3.00</p> 
+.two {
+  background-color: rgb(0, 255, 127);
+}
 ```
 
 ## 33
 
+- And to create the tertiary color violet, combine magenta with blue. Update the rgb function in the .three CSS rule so that blue is at the max value, and set red to 127.
+
 ```html
-<!-- add class selector .flavor to text align flavor to the left -->
- .flavor {
-  text-align: left;
+.three {
+  background-color: rgb(127, 0, 255);
 }
 ```
 
 ## 34
 
+- There are three more tertiary colors: chartreuse green (green + yellow), azure (blue + cyan), and rose (red + magenta).
+
+- To create chartreuse green, update the rgb function in the .one CSS rule so that red is at 127, and set green to the max value.
+
+- For azure, update the rgb function in the .two CSS rule so that green is at 127 and blue is at the max value.
+
+- And for rose, which is sometimes called bright pink, update the rgb function in the .three CSS rule so that blue is at 127 and red is at the max value.
+
 ```html
-<!-- added class element to p tag with the price to add class selector and have text align to the right -->
- <p class="price">3.00</p>
+.one {
+  background-color: rgb(127, 255, 0);
+}
+
+.two {
+  background-color: rgb(0, 127, 255);
+}
+
+.three {
+  background-color: rgb(255, 0, 127);
+}
 ```
 
 ## 35
 
+- Now that you've gone through all the primary, secondary, and tertiary colors on a color wheel, it'll be easier to understand other color theory concepts and how they impact design.
+
+- First, in the CSS rules .one, .two, and .three, adjust the values in the rgb function so that the background-color of each element is set to pure black. Remember that the rgb function uses the additive color model, where colors start as black and change as the values of red, green, and blue increase.
+
 ```html
-<!-- added .price class selector -->
- .price {
-  text-align:right;
+.one {
+  background-color: rgb(0, 0, 0);
+}
+
+.two {
+  background-color: rgb(0, 0, 0);
+}
+
+.three {
+  background-color: rgb(0, 0, 0);
 }
 ```
 
 ## 36
 
+- A color wheel is a circle where similar colors, or hues, are near each other, and different ones are further apart. For example, pure red is between the hues rose and orange.
+
+- Two colors that are opposite from each other on the color wheel are called complementary colors. If two complementary colors are combined, they produce gray. But when they are placed side-by-side, these colors produce strong visual contrast and appear brighter.
+
+- In the rgb function for the .one CSS rule, set the red value to the max of 255 to produce pure red. In the rgb function for .two CSS rule, set the values for green and blue to the max of 255 to produce cyan.
+
 ```html
-<!-- start to inline both p tags so they are lined up on the same line in the menu as p tags are naturally block level elements -->
- <article class="item">
+.one {
+  background-color: rgb(255, 0, 0);
+}
+
+.two {
+  background-color: rgb(0, 255, 255);
+}
 ```
 
 ## 37
 
+- Notice that the red and cyan colors are very bright right next to each other. This contrast can be distracting if it's overused on a website, and can make text hard to read if it's placed on a complementary-colored background.
+
+- It's better practice to choose one color as the dominant color, and use its complementary color as an accent to bring attention to certain content on the page.
+
+- First, in the h1 rule, use the rgb function to set its background-color to cyan.
+
 ```html
-<!-- The p elements are nested in an article element with the class attribute of item. You can style all the p elements nested anywhere in elements with a class named item like this: -->
- .item p {
-  display: inline-block;
+h1 {
+  background-color: rgb(0, 255, 255);
+  text-align: center;
 }
 ```
 
 ## 38
 
+- Next, in the .one CSS rule, use the rgb function to set the background-color to black. And in the .two CSS rule, use the rgb function to set the background-color to red.
+
 ```html
-<!-- That's closer, but the price didn't stay over on the right. This is because inline-block elements only take up the width of their content. To spread them out, add a width property to the flavor and price class selectors that have a value of 50% each. -->
- .flavor {
-  width: 50%;
-  text-align: left;
+.one {
+  background-color: rgb(0, 0, 0);
 }
 
-.price {
-  width: 50%;
-  text-align: right;
+.two {
+  background-color: rgb(255, 0, 0);
 }
 ```
 
 ## 39
 
-```html
-<!--  Styling the p elements as inline-block and placing them on separate lines in the code creates an extra space to the right of the first p element, causing the second one to shift to the next line. One way to fix this is to make each p element's width a little less than 50%. -->
- .flavor {
-  text-align: left;
-  width: 49%;
-}
+- Notice how your eyes are naturally drawn to the red color in the center? When designing a site, you can use this effect to draw attention to important headings, buttons, or links.
 
-.price {
-  text-align: right;
-  width: 49%;
+- There are several other important color combinations outside of complementary colors, but you'll learn those a bit later.
+
+- For now, use the rgb function in the .two CSS rule to set the background-color to black.
+
+```html
+.two {
+  background-color: rgb(0, 0, 0);
 }
 ```
 
 ## 40
 
+- And in the h1 CSS rule, remove the background-color property and value to go back to the default white color.
+
 ```html
-<!-- put the p elements on the same line in the editor -->
- <p class="flavor">French Vanilla</p><p class="price">3.00</p>
+h1 {
+  text-align: center;
+}
 ```
 
 ## 41
