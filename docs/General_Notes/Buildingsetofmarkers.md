@@ -566,263 +566,301 @@ h1 {
 
 ## 41
 
-```html
-<!-- changed width back to 50% in the class selectors again, now there is no space from the flavor or price on the menu -->
- .flavor {
-  text-align: left;
-  width: 50%;
-}
+- Now it's time to add other details to the markers, starting with the first one.
 
-.price {
-  text-align: right;
-  width: 50%;
-}
+- In the first marker div element, change the class one to red.
+
+```html
+<div class="marker red">
+      </div>
+      <div class="marker two">
+      </div>
+      <div class="marker three">
+      </div>
+
 ```
 
 ## 42
 
+- Update the .one CSS rule to target the new red class.
+
 ```html
-<!-- added the class item to the rest of the articles with a flavor and price -->
- <article class="item">
-            <p>Caramel Macchiato</p>
-            <p>3.75</p>
-          </article>
-          <article class="item">
-            <p>Pumpkin Spice</p>
-            <p>3.50</p>
-          </article>
-          <article class="item">
-            <p>Hazelnut</p>
-            <p>4.00</p>
-          </article>
-          <article class="item">
-            <p>Mocha</p>
-            <p>4.50</p>
-          </article>
+<.red {
+  background-color: rgb(0, 0, 0);
+}
+
+.two {
+  background-color: rgb(0, 0, 0);
+}
+
+.three {
+  background-color: rgb(0, 0, 0);
+}
 ```
 
 ## 43
 
+- And update the rgb function in the .red CSS rule so that the red value is at the max.
+
 ```html
-<!-- put the other p elements on the same line so there is no space when they are on the sides -->
- <article class="item">
-            <p>Caramel Macchiato</p><p>3.75</p>
-          </article>
-          <article class="item">
-            <p>Pumpkin Spice</p><p>3.50</p>
-          </article>
-          <article class="item">
-            <p>Hazelnut</p><p>4.00</p>
-          </article>
-          <article class="item">
-            <p>Mocha</p><p>4.50</p>
-          </article>
+.red {
+  background-color: rgb(255, 0, 0);
+}
+
+.two {
+  background-color: rgb(0, 0, 0);
+}
+
+.three {
+  background-color: rgb(0, 0, 0);
+}
 ```
 
 ## 44
 
+- Next, change the class two to green in the second marker div, and the class three to blue in the third marker div.
+
 ```html
-<!-- added the class elements to each respective flavor and price to add style -->
- <article class="item">
-            <p class="flavor">Caramel Macchiato</p><p class="price">3.75</p>
-          </article>
-          <article class="item">
-            <p class="flavor">Pumpkin Spice</p><p class="price">3.50</p>
-          </article>
-          <article class="item">
-            <p class="flavor">Hazelnut</p><p class="price">4.00</p>
-          </article>
-          <article class="item">
-            <p class="flavor">Mocha</p><p class="price">4.50</p>
-          </article>
+<div class="marker red">
+      </div>
+      <div class="marker green">
+      </div>
+      <div class="marker blue">
+      </div>
 ```
 
 ## 45
 
+- Update the CSS class selector .two so it targets the new green class. And update the .three class selector so it targets the new blue class.
+
 ```html
-<!-- changed flavor width to 75% and price to 25% to wrap nicely -->
-  .flavor {
-  text-align: left;
-  width: 75%;
+.red {
+  background-color: rgb(255, 0, 0);
 }
 
-.price {
-  text-align: right;
-  width: 25%;
+.green {
+  background-color: rgb(0, 255, 0);
 }
+
+.blue {
+  background-color: rgb(0, 0, 255);
+}
+
 ```
 
 ## 46
 
+- A very common way to apply color to an element with CSS is with hexadecimal or hex values. While hex values sound complicated, they're really just another form of RGB values.
+
+- Hex color values start with a # character and take six characters from 0-9 and A-F. The first pair of characters represent red, the second pair represent green, and the third pair represent blue. For example, #4B5320.
+
+- In the .green class selector, set the background-color property to a hex color code with the values 00 for red, FF for green, and 00 blue.
+
 ```html
-<!-- added another section for desserts on the menu -->
-  <section></section>
+.green {
+  background-color: #00FF00;
+}
 ```
 
 ## 47
 
+- You may already be familiar with decimal, or base 10 values, which go from 0 - 9. Hexadecimal, or base 16 values, go from 0 - 9, then A - F:
+
+Example Code
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F
+With hex colors, 00 is 0% of that color, and FF is 100%. So #00FF00 translates to 0% red, 100% green, and 0% blue, and is the same as rgb(0, 255, 0).
+
+- Lower the intensity of green by setting the green value of the hex color to 7F.
+
 ```html
-<!-- added h2 element for desserts -->
-  <section>
-          <h2> Desserts</h2>
-        </section>
+.green {
+  background-color: #007F00;
+}
 ```
 
 ## 48
 
-```html
+- The HSL color model, or hue, saturation, and lightness, is another way to represent colors.
 
-<!-- added empty article to display desserts and prices with class item -->
-  <h2>Desserts</h2>
-  <article class="item"></article
+- The CSS hsl function accepts 3 values: a number from 0 to 360 for hue, a percentage from 0 to 100 for saturation, and a percentage from 0 to 100 for lightness.
+
+- If you imagine a color wheel, the hue red is at 0 degrees, green is at 120 degrees, and blue is at 240 degrees.
+
+- Saturation is the intensity of a color from 0%, or gray, to 100% for pure color. You must add the percent sign % to the saturation and lightness values.
+
+- Lightness is how bright a color appears, from 0%, or complete black, to 100%, complete white, with 50% being neutral.
+
+- In the .blue CSS rule, use the hsl function to change the background-color property to pure blue. Set the hue to 240, the saturation to 100%, and the lightness to 50%.
+
+```html
+.blue {
+  background-color: hsl(240, 100%, 50%);
+}
 
 ```
 
 ## 49
 
+- You've learned a few ways to set flat colors in CSS, but you can also use a color transition, or gradient, on an element.
+
+- A gradient is when one color transitions into another. The CSS linear-gradient function lets you control the direction of the transition along a line, and which colors are used.
+
+- one thing to remember is that the linear-gradient function actually creates an image element, and is usually paired with the background property which can accept an image as a value.
+
+- In the .red CSS rule, change the background-color property to background.
+
 ```html
 
-<!-- added 2 p elements for dessert and price on the same line -->
-  <article class="item">
-            <p>Donut</p><p>1.50</p>
-          </article>
+.red {
+  background: rgb(255, 0, 0);
+}
 
 ```
 
 ## 50
 
+- The linear-gradient function is very flexible -- here is the basic syntax you'll use in this tutorial:
+
+Example Code
+linear-gradient(gradientDirection, color1, color2, ...);
+gradientDirection is the direction of the line used for the transition. color1 and color2 are color arguments, which are the colors that will be used in the transition itself. These can be any type of color, including color keywords, hex, rgb, or hsl.
+
+- Now you'll apply a red-to-green gradient along a 90 degree line to the first marker.
+
+- First, in the .red CSS rule, set the background property to linear-gradient(), and pass it the value 90deg as the gradientDirection.
+
 ```html
 
-<!-- added a class for dessert and price in the respective p element -->
-  <p class="dessert">Donut</p><p class="price">1.50</p>
+.red {
+  background: linear-gradient(90deg);
+}
           
 ```
 
 ## 51
 
+- You'll use the rgb function for the colors of this gradient.
+
+- In the linear-gradient function, use the rgb function to set the first color argument to pure red.
+
 ```html
 
-<!-- added dessert as the additional selector with flavor to apply the same style -->
-  .flavor, .dessert {
-  text-align: left;
-  width: 75%;
+.red {
+  background: linear-gradient(90deg, rgb(255, 0, 0));
 }
           
 ```
 
 ## 52
 
+- You won't see gradient yet because the linear-gradient function needs at least two color arguments to work.
+
+- In the same linear-gradient function, use the rgb function to set the second color argument to pure green.
+
 ```html
 
-<!-- added the rest of the deserts in their respective artcle element and price -->
+.red {
+  background: linear-gradient(90deg, rgb(255, 0, 0), rgb(0, 255, 0));
+}
           
 ```
 
 ## 53
 
+- As you can see, the linear-gradient function produced a smooth red-green gradient. While the linear-gradient function needs a minimum of two color arguments to work, it can accept many color arguments.
+
+- Use the rgb function to add pure blue as the third color argument to the linear-gradient function.
+
 ```html
 
-<!-- You can give your menu some space between the content and the sides with various padding properties.
-
-Give the menu class a padding-left and a padding-right with the same value 20px. --> 
-          
-.menu {
-  width: 80%;
-  background-color: burlywood;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
+.red {
+  background: linear-gradient(90deg, rgb(255, 0, 0), rgb(0, 255, 0), rgb(0, 0, 255));
 }
 
 ```
 
 ## 54
 
+- Color-stops allow you to fine-tune where colors are placed along the gradient line. They are a length unit like px or percentages that follow a color in the linear-gradient function.
+
+- For example, in this red-black gradient, the transition from red to black takes place at the 90% point along the gradient line, so red takes up most of the available space:
+
+Example Code
+linear-gradient(90deg, red 90%, black);
+In the linear-gradient function, add a 75% color stop after the first red color argument. Do not add color stops to the other colors arguments.
+
 ```html
 
-<!-- added padding to top and bottom --> 
-          .menu {
-  width: 80%;
-  background-color: burlywood;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+.red {
+  background: linear-gradient(90deg, rgb(255, 0, 0) 75%, rgb(0, 255, 0), rgb(0, 0, 255));
 }
 ```
 
 ## 55
 
+- Now that you know the basics of how the linear-gradient function and color-stops work, you can use them to make the markers look more realistic.
+
+- In the linear-gradient function, set gradientDirection to 180deg.
+
 ```html
 
-<!-- Since all 4 sides of the menu have the same internal spacing, go ahead and delete the four properties and use a single padding property with the value 20px. -->
-.menu {
-  width: 80%;
-  background-color: burlywood;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 20px;
+.red {
+  background: linear-gradient(180deg, rgb(255, 0, 0) 75%, rgb(0, 255, 0), rgb(0, 0, 255));
 }
 
 ```
 
 ## 56
 
+- Next, set the color-stop for red to 0%, the color-stop for green to 50%, and the color-stop for blue to 100%.
+
 ```html
 
-<!-- The current width of the menu will always take up 80% of the body element's width. On a very wide screen, the coffee and dessert appear far apart from their prices.
-
-Add a max-width property to the menu class with a value of 500px to prevent it from growing too wide. -->
- 
-.menu {
-  width: 80%;
-  background-color: burlywood;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 20px;
-  max-width: 500px;
+.red {
+  background: linear-gradient(180deg, rgb(255, 0, 0) 0%, rgb(0, 255, 0) 50%, rgb(0, 0, 255) 100%);
 }
+
 
 ```
 
 ## 57
 
+- Now that the color-stops are set, you'll apply different shades of red to each color argument in the linear-gradient function. The shades on the top and bottom edges of the marker will be darker, while the one in the middle will be lighter, as if there's a light above it.
+
+- For the first color argument, which is currently pure red, update the rgb function so the value for red is 122, the value for green is 74, and the value for blue is 14.
+
 ```html
 
-<!-- You can change the font-family of text, to make it look different from the default font of your browser. Each browser has some common fonts available to it.
-
-Change all the text in your body, by adding a font-family property with the value sans-serif. This is a fairly common font that is very readable. -->
-
-body {
-  background-image: url(https://cdn.freecodecamp.org/curriculum/css-cafe/beans.jpg);
-  font-family: sans-serif;
+.red {
+  background: linear-gradient(180deg, rgb(122, 74, 14) 0%, rgb(0, 255, 0) 50%, rgb(0, 0, 255) 100%);
 }
 
 ```
 
 ## 58
 
+- Now modify the second color argument in the linear-gradient function, which is currently pure green.
+
+- Update the rgb function so the value for red is 245, the value of green is 62, and the value of blue is 113.
+
 ```html
 
-<!-- Style both the h1 and the h2 elements using a single selector so that these elements' text use Impact font. -->
-h1,h2 {
-font-family: Impact
+.red {
+  background: linear-gradient(180deg, rgb(122, 74, 14) 0%, rgb(245, 62, 113) 50%, rgb(0, 0, 255) 100%);
 }
 
 ```
 
 ## 59
 
+- The red marker is looking much more realistic. Now you'll do the same for the green marker, using a combination of the linear-gradient function and hex colors.
+
+- In the .green CSS rule, change the background-color property to background.
+
 ```html
 
-<!-- You can add a fallback value for the font-family by adding another font name separated by a comma. Fallbacks are used in instances where the initial is not found/available.
-
-Add the fallback font serif after the Impact font. -->
-h1, h2 {
-  font-family: Impact, serif;
+.green {
+  background: #007F00;
 }
  ```
 
@@ -838,52 +876,40 @@ h1, h2 {
 
 ## 61
 
+- For this marker, you'll use hex color codes for your gradient.
+
+- Use the linear-gradient function and set gradientDirection to 180deg. And for the first color argument, use a hex color code with the values 55 for red, 68 for green, and 0D for blue.
+
 ```html
 
-<!-- Now apply the established class to the Est. 2020 text. -->
-
-<h1>CAMPER CAFE</h1>
-        <p class="established">Est. 2020</p>
+.green {
+  background: linear-gradient(180deg, #55680D);
+}
 
  ```
 
 ## 62
 
+- For the second color argument, use a hex color code with the values 71 for red, F5 for green, and 3E for blue.
+
 ```html
 
-- The typography of heading elements (e.g. h1, h2) is set by default values of users' browsers.
-
-- Add two new type selectors (h1 and h2). Use the font-size property for both, but use the value 40px for the h1 and 30px for the h2.
-
-
-h1 {
-  font-size: 40px
+.green {
+  background: linear-gradient(180deg, #55680D, #71F53E);
 }
-
-h2 {
-  font-size: 30px
-}
-
- ```
+```
 
 ## 63
 
-```html
+- That's looking better, but the bottom edge of the green marker needs to be darker to add a little more dimension.
 
-- Add a footer element below the main element, where you can add some additional information.
-
-<footer> </footer>
-
- ```
-
-## 64
+- In the same linear-gradient function, add a hex color code with the values 11 for red, 6C for green, and 31 for blue as the third color argument.
 
 ```html
-- Inside the footer, add a p element. Then, nest an anchor (a) element in the p that links to https://www.freecodecamp.org and has the text Visit our website.
 
-<footer>
-        <p> <a href="https://www.freecodecamp.org"> Visit our website </a> </p>
-      </footer>
+.green {
+  background: linear-gradient(180deg, #55680D, #71F53E, #116C31);
+}
 ```
 
 ## 65
