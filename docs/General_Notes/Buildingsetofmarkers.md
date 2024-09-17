@@ -901,6 +901,21 @@ In the linear-gradient function, add a 75% color stop after the first red color 
 
 ## 63
 
+- Even without the color-stops, you might have noticed that the colors for the green marker transition at the same points as the red marker. The first color is at the start (0%), the second is in the middle (50%), and the last is at the end (100%) of the gradient line.
+
+- The linear-gradient function automatically calculates these values for you, and places colors evenly along the gradient line by default.
+
+- In the .red CSS rule, remove the three color stops from the linear-gradient function to clean up your code a bit.
+
+```html
+
+.red {
+  background: linear-gradient(180deg, rgb(122, 74, 14), rgb(245, 62, 113), rgb(162, 27, 27));
+}
+```
+
+## 64
+
 - That's looking better, but the bottom edge of the green marker needs to be darker to add a little more dimension.
 
 - In the same linear-gradient function, add a hex color code with the values 11 for red, 6C for green, and 31 for blue as the third color argument.
@@ -914,344 +929,488 @@ In the linear-gradient function, add a 75% color stop after the first red color 
 
 ## 65
 
-```html
-- Add a second p element below the one with the link and give it the text 123 Free Code Camp Drive.
+- If no gradientDirection argument is provided to the linear-gradient function, it arranges colors from top to bottom, or along a 180 degree line, by default.
 
-<p>
-          <a href="https://www.freecodecamp.org" target="_blank">Visit our website</a>
-        </p>
-        <p> 123 Free Code Camp Drive</p>
+- Clean up your code a little more by removing the gradientDirection argument from both linear-gradient functions.
+
+```html
+.red {
+  background: linear-gradient( rgb(122, 74, 14), rgb(245, 62, 113), rgb(162, 27, 27));
+}
+
+.green {
+  background: linear-gradient( #55680D, #71F53E, #116C31);
+}
 ```
 
 ## 66
 
-```html
--added hr element to seperate content, it is a line on the page, it is also a void element
+- Now you'll apply a gradient to the blue marker, this time using the hsl function as color arguments.
 
-<hr>
+- In the .blue CSS rule, change the background-color property to background.
+
+```html
+.blue {
+  background: hsl(240, 100%, 50%);
+}
 ```
 
 ## 67
 
+- Use the linear-gradient function, and pass in the hsl function with the values 186 for hue, 76% for saturation, and 16% for lightness as the first color argument.
+
 ```html
-- The default properties of an hr element will make it appear as a thin light grey line. You can change the height of the line by specifying a value for the height property.
-
-- Change the height of the hr element to be 3px.
-
-hr {
-  height: 3px;
+.blue {
+  background: linear-gradient(hsl(186, 76%, 16%));
 }
 ```
 
 ## 68
 
+- As the second color argument, pass in the hsl function with the values 223 for hue, 90% for saturation, and 60% for lightness.
+
 ```html
 
-- changed hr background to match color of beans
-
-hr {
-  height: 3px;
-  background-color: brown;
+.blue {
+  background: linear-gradient(hsl(186, 76%, 16%), hsl(223, 90%, 60%));
 }
 ```
 
 ## 69
 
+- And as the third color argument, pass in the hsl function with the values 240 for hue, 56% for saturation, and 42% for lightness.
+
 ```html
 
-- Notice the grey color along the edges of the line. Those edges are known as borders. Each side of an element can have a different color or they can all be the same.
-
-- Make all the edges of the hr element the same color as the background of it using the border-color property.
-
-hr {
-  height: 3px;
-  background-color: brown;
-  border-color: brown;
+.blue {
+  background: linear-gradient(hsl(186, 76%, 16%), hsl(223, 90%, 60%), hsl(240, 56%, 42%));
 }
 ```
 
 ## 70
 
+- Now that the markers have the correct colors, it's time to build the marker sleeves. Start with the red marker.
+
+- Inside the red marker div element, create a new div element and give it a class of sleeve.
+
 ```html
 
-- changed height of hr element to 2px
-
-hr {
-  height: 2px;
-  background-color: brown;
-  border-color: brown;
-}
+<div class="marker red">
+        <div class="sleeve">
+          </div>
+      </div>
 ```
 
 ## 71
 
+- Create a new CSS rule that targets the class sleeve. Set the width property to 110px, and the height property to 25px.
+
 ```html
 
-- added another hr element below main and above the footer to seperate it
-
-<hr>>
+.sleeve {
+  width: 110px;
+  height: 25px;
+}
 ```
 
 ## 72
 
+- To make the marker look more realistic, give the sleeve a transparent white color.
+
+- First, set the sleeve element's background-color to white.
+
 ```html
 
-- To create a little more room around the menu, add 20px of space on the inside of the body element by using the padding property.
-
-body {
-  background-image: url(https://cdn.freecodecamp.org/curriculum/css-cafe/beans.jpg);
-  font-family: sans-serif;
-  padding: 20px;
+.sleeve {
+  width: 110px;
+  height: 25px;
+  background-color: white;
 }
 ```
 
 ## 73
 
+- Opacity describes how opaque, or non-transparent, something is. For example, a solid wall is opaque, and no light can pass through. But a drinking glass is much more transparent, and you can see through the glass to the other side.
+
+- With the CSS opacity property, you can control how opaque or transparent an element is. With the value 0, or 0%, the element will be completely transparent, and at 1.0, or 100%, the element will be completely opaque like it is by default.
+
+- In the .sleeve CSS rule, set the opacity property to 0.5.
+
 ```html
 
-- Focusing on the menu items and prices, there is a fairly large gap between each line.
-
- - Use the existing selector that targets all the p elements nested in elements with the class named item and set their top and bottom margin to be 5px.
-
-.item p {
-  display: inline-block;
-  margin-top: 5px;
-  margin-bottom: 5px;
-
+.sleeve {
+  width: 110px;
+  height: 25px;
+  background-color: white;
+  opacity: 0.5;
 }
 ```
 
 ## 74
 
+- Another way to set the opacity for an element is with the alpha channel. Similar to the opacity property, the alpha channel controls how transparent or opaque a color is.
+
+- You've already set sleeve's opacity with a named color and the opacity property, but you can add an alpha channel to the other CSS color properties.
+
+- Inside the .sleeve rule, remove the opacity property and value.
+
 ```html
 
-- made font size of items and price 18px
-
-.item p {
-  display: inline-block;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  font-size: 18px;
+.sleeve {
+  width: 110px;
+  height: 25px;
+  background-color: white;
 }
 ```
 
 ## 75
 
+- You're already familiar with using the rgb function to set colors. To add an alpha channel to an rgb color, use the rgba function instead.
+
+- The rgba function works just like the rgb function, but takes one more number from 0 to 1.0 for the alpha channel:
+
+Example Code
+rgba(redValue, greenValue, blueValue, alphaValue);
+
+- You can also use an alpha channel with hsl and hex colors. You will see how to do that soon.
+
+- In the .sleeve rule, use the rgba function to set the background-color property to pure white with 50% opacity.
+
 ```html
 
-- Changing the margin-bottom to 5px looks great. However, now the space between the Cinnamon Roll menu item and the second hr element does not match the space between the top hr element and the Coffee heading.
-
- - Add some more space by creating a class named bottom-line using 25px for the margin-top property.
-
-.bottom-line {
-  margin-top: 25px;
+.sleeve {
+  width: 110px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 50%);
 }
 ```
 
 ## 76
 
+- Your sleeve is looking good, but it would look even better if it was positioned more toward the right side of the marker. One way to do that is to add another element before the sleeve to push it to the right.
+
+- Add a new div with the class cap before the sleeve div element.
+
 ```html
 
-- Now add the bottom-line class to the second hr element so the styling is applied.
-
-<hr class="bottom-line">
+<div class="marker red">
+        <div class="cap">
+        </div>
+        <div class="sleeve"></div>
+      </div>
 ```
 
 ## 77
 
+- Create a new CSS rule to target the class cap. In the new rule, set the width property to 60px, and the height to 25px.
+
 ```html
 
-- added comment to organize styles.css to seperate where we are styling the footer
-
-/* FOOTER */
+.cap {
+  width: 60px;
+  height: 25px;
+}
 
 ```
 
 ## 78
 
+- It looks like your sleeve disappeared, but don't worry -- it's still there. What happened is that your new cap div is taking up the entire width of the marker, and is pushing the sleeve down to the next line.
+
+- This is because the default display property for div elements is block. So when two block elements are next to each other, they stack like actual blocks. For example, your marker elements are all stacked on top of each other.
+
+- To position two div elements on the same line, set their display properties to inline-block.
+
+- Create a new rule to target both the cap and sleeve classes, and set display to inline-block.
+
 ```html
 
-- Moving down to the footer element, make all the text have a value of 14px for the font size.
-
-footer {
-  font-size: 14px;
+.cap, .sleeve {
+ display: inline-block;
 }
 ```
 
 ## 79
 
+- In the last project, you learned a little bit about borders and the border-color property.
+
+- All HTML elements have borders, though they're usually set to none by default. With CSS, you can control all aspects of an element's border, and set the border on all sides, or just one side at a time. For a border to be visible, you need to set its width and style.
+
+- In the .sleeve CSS rule, add the border-left-width property with the value 10px.
+
 ```html
 
-- The default color of a link that has not yet been clicked on is typically blue. The default color of a link that has already been visited from a page is typically purple.
-
-- To make the footer links the same color regardless if a link has been visited, use a type selector for the anchor element (a) and use the value black for the color property.
-
-a {
-  color: black;
+.sleeve {
+  width: 110px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-left-width: 10px;
 }
 ```
 
 ## 80
 
+- Borders have several styles to choose from. You can make your border a solid line, but you can also use a dashed or dotted line if you prefer. Solid border lines are probably the most common.
+
+- In the .sleeve CSS rule, add the border-left-style property with the value solid.
+
 ```html
 
-- You change properties of a link when the link has actually been visited by using a pseudo-selector that looks like a:visited { propertyName: propertyValue; }.
-
-- Change the color of the footer Visit our website link to be grey when a user has visited the link.
-
-a:visited { 
-  color: grey; 
-  }
+.sleeve {
+  width: 110px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-left-width: 10px;
+  border-left-style: solid;
+}
 ```
 
 ## 81
 
+- Your border should be visible now. If no color is set, black is used by default.
+
+- But to make your code more readable, it's better to set the border color explicitly.
+
+- In the .sleeve CSS rule, add the border-left-color property with the value black.
+
 ```html
 
-- You change properties of a link when the mouse hovers over them by using a pseudo-selector that looks like a:hover { propertyName: propertyValue; }.
-
-- Change the color of the footer Visit our website link to be brown when a user hovers over it.
-
-a:hover { 
-  color: brown; 
-  }
+.sleeve {
+  width: 110px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-left-width: 10px;
+  border-left-style: solid;
+  border-left-color: black;
+}
 ```
 
 ## 82
 
+- The border-left shorthand property lets you to set the left border's width, style, and color at the same time.
+
+Here is the syntax:
+
+Example Code
+border-left: width style color;
+
+- In the .sleeve CSS rule, replace the border-left-width, border-left-style, and border-left-color properties with the border-left shorthand property. The values for the width, style, and color of the left border should be the same.
+
 ```html
 
-- You change properties of a link when the link is actually being clicked by using a pseudo-selector that looks like a:active { propertyName: propertyValue; }.
-
-- Change the color of the footer Visit our website link to be white when clicked on.
-
-a:active { 
-  color: white; 
-  }
+.sleeve {
+  width: 110px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-left: 10px solid black;
+}
 ```
 
 ## 83
 
+- Your marker is looking good. But to make it look even more realistic, you can change the border style to double solid borders.
+
+- For the border-left shorthand property, change the border style value from solid to double.
+
 ```html
 
-- To keep with the same color theme you have already been using (black and brown), change the color for when the link is visited to black and use brown for when the link is actually clicked.
-
-a:visited {
-  color: black;
-}
-
-a:hover {
-  color: brown;
-}
-
-a:active {
-  color: brown;
+.sleeve {
+  width: 110px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-left: 10px double black;
 }
 ```
 
 ## 84
 
+- The black color of your border looks pretty harsh against the more transparent sleeve. You can use an alpha channel to lower the opacity of the black border.
+
+- For the border-left shorthand property, use the rgba function to set the color value to pure black with 75% opacity.
+
 ```html
 
-- The menu text CAMPER CAFE has a different space from the top than the address's space at the bottom of the menu. This is due to the browser having some default top margin for the h1 element.
-
-- Change the top margin of the h1 element to 0 to remove all the top margin.
-
-h1 {
-  font-size: 40px;
-  margin-top: 0;
+.sleeve {
+  width: 110px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-left: 10px double rgba(0, 0, 0, 75%);
 }
 ```
 
 ## 85
 
+- Awesome. Your red marker is looking good. Now all you need to do is add the caps and sleeves to your other markers.
+
+- Add a cap and sleeve to both the green and blue markers. You can just copy the div elements from the red marker and paste them into the other two markers.
+
 ```html
 
-- To remove some of the vertical space between the h1 element and the text Est. 2020, change the bottom margin of the h1 to 15px.
-
-h1 {
-  font-size: 40px;
-  margin-top: 0;
-  margin-bottom: 15px;
-}
+<div class="marker red">
+        <div class="cap"></div>
+        <div class="sleeve"></div>
+      </div>
+      <div class="marker green">
+        <div class="cap"></div>
+        <div class="sleeve"></div>
+      </div>
+      <div class="marker blue">
+        <div class="cap"></div>
+        <div class="sleeve"></div>
+      </div>
 ```
 
 ## 86
 
+- The last thing you'll do is add a slight shadow to each marker to make them look even more realistic.
+
+- The box-shadow property lets you apply one or more shadows around an element. Here is basic syntax:
+
+Example Code
+box-shadow: offsetX offsetY color;
+Here's how the offsetX and offsetY values work:
+
+both offsetX and offsetY accept number values in px and other CSS units
+a positive offsetX value moves the shadow right and a negative value moves it left
+a positive offsetY value moves the shadow down and a negative value moves it up
+if you want a value of zero (0) for any or both offsetX and offsetY, you don't need to add a unit. Every browser understands that zero means no change.
+The height and width of the shadow is determined by the height and width of the element it's applied to. You can also use an optional spreadRadius value to spread out the reach of the shadow. More on that later.
+
+Start by adding a simple shadow to the red marker.
+
+- In the .red CSS rule, add the box-shadow property with the values 5px for offsetX, 5px for offsetY, and red for color.
+
 ```html
 
-- Now the top spacing looks good. The space below the address at the bottom of the menu is a little bigger than the space at the top of the menu and the h1 element.
-
-- To decrease the default margin space below the address p element, create a class selector named address and use the value 5px for the margin-bottom property.
-
-.address {
-  margin-bottom: 5px;
+.red {
+  background: linear-gradient(rgb(122, 74, 14), rgb(245, 62, 113), rgb(162, 27, 27));
+  box-shadow: 5px 5px red;
 }
 ```
 
 ## 87
 
+- As you can see, you added a simple red shadow around your marker that's 5 pixels to the right, and 5 pixels down.
+
+- But what if you wanted to position your shadow on the opposite side? You can do that by using negative values for offsetX and offsetY.
+
+- Update the values for the box-shadow property, and set offsetX to -5px, and offsetY to -5px.
+
 ```html
 
-- Now apply the address class to the p element containing the street address 123 Free Code Camp Drive
-
-<footer>
-        <p>
-          <a href="https://www.freecodecamp.org" target="_blank">Visit our website</a>
-        </p>
-        <p class="address">123 Free Code Camp Drive</p>
-      </footer>
+.red {
+  background: linear-gradient(rgb(122, 74, 14), rgb(245, 62, 113), rgb(162, 27, 27));
+  box-shadow: -5px -5px red;
+}
 ```
 
 ## 88
 
+- Notice that the edges of the shadow are sharp. This is because there is an optional blurRadius value for the box-shadow property:
+
+Example Code
+box-shadow: offsetX offsetY blurRadius color;
+If a blurRadius value isn't included, it defaults to 0 and produces sharp edges. The higher the value of blurRadius, the greater the blurring effect is.
+
+- In the .green CSS rule, add the box-shadow property with the values 5px for offsetX, 5px for offsetY, 5px for blurRadius, and green for color.
+
 ```html
 
-- The menu looks good, but other than the coffee beans background image, it is mainly just text.
-
-- Under the Coffee heading, add an image using the url https://cdn.freecodecamp.org/curriculum/css-cafe/coffee.jpg. Give the image an alt value of coffee icon.
-
-<h2>Coffee</h2>
-          <img src="https://cdn.freecodecamp.org/curriculum/css-cafe/coffee.jpg" alt="coffee icon">
+.green {
+  background: linear-gradient(#55680D, #71F53E, #116C31);
+  box-shadow: 5px 5px 5px green;
+}
 ```
 
 ## 89
 
+- But what if you wanted to expand the shadow out further? You can do that with the optional spreadRadius value:
+
+Example Code
+box-shadow: offsetX offsetY blurRadius spreadRadius color;
+Like blurRadius, spreadRadius defaults to 0 if it isn't included.
+
+Practice by adding a 5 pixel shadow directly around the blue marker.
+
+- In the .blue CSS rule, add the box-shadow property with the values 0 for offsetX, 0 for offsetY, 0 for blurRadius, 5px for spreadRadius, and blue for color.
+
 ```html
 
-- The image you added is not centered horizontally like the Coffee heading above it. img elements are "like" inline elements.
-
-- To make the image behave like heading elements (which are block-level), create an img type selector and use the value block for the display property and use the applicable margin-left and margin-right values to center it horizontally.
-
-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+.blue {
+  background: linear-gradient(hsl(186, 76%, 16%), hsl(223, 90%, 60%), hsl(240, 56%, 42%));
+  box-shadow: 0 0 0 5px blue;
 }
 ```
 
 ## 90
 
+- Now that you're familiar with the box-shadow property you can finalize the shadows, starting with the one for the red marker.
+
+- In the .red CSS rule, update the values for the box-shadow property so offsetX is 0,offsetY is 0, blurRadius is 20px, spreadRadius is 0, and color is red. Remember that you don't need to add units to a zero value.
+
 ```html
 
-- Add one last image under the Desserts heading using the url https://cdn.freecodecamp.org/curriculum/css-cafe/pie.jpg. Give the image an alt value of pie icon.
-
-<h2>Desserts</h2>
-          <img src="https://cdn.freecodecamp.org/curriculum/css-cafe/pie.jpg" alt="pie icon">
+.red {
+  background: linear-gradient(rgb(122, 74, 14), rgb(245, 62, 113), rgb(162, 27, 27));
+  box-shadow: 0 0 20px 0 red;
+}
 ```
 
 ## 91
 
+- Next, update the color value of the red marker's box-shadow property.
+
+- Replace the named color with the rgba function. Use the values 83 for red, 14 for green, 14 for blue and 0.8 for the alpha channel.
+
 ```html
 
-- It would be nice if the vertical space between the h2 elements and their associated icons was smaller. The h2 elements have default top and bottom margin space, so you could change the bottom margin of the h2 elements to say 0 or another number.
+.red {
+  background: linear-gradient(rgb(122, 74, 14), rgb(245, 62, 113), rgb(162, 27, 27));
+  box-shadow: 0 0 20px 0 rgba(83, 14, 14, 0.8);
+}
+```
 
-- There is an easier way, simply add a negative top margin to the img elements to pull them up from their current positions. Negative values are created using a - in front of the value. To complete this project, go ahead and use a negative top margin of 25px in the img type selector.
+## 92
 
-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: -25px
+- The shadows for your green and blue markers will have the same position, blur, and spread. The only difference will be the colors.
+
+- In the .green and .blue CSS rules, update the values for the box-shadow properties so offsetX is 0,offsetY is 0, blurRadius is 20px, and spreadRadius is 0. Leave the colors as green and blue for now.
+
+```html
+
+green {
+  background: linear-gradient(#55680D, #71F53E, #116C31);
+  box-shadow: 0 0 20px 0 green;
+}
+
+.blue {
+  background: linear-gradient(hsl(186, 76%, 16%), hsl(223, 90%, 60%), hsl(240, 56%, 42%));
+  box-shadow: 0 0 20px 0 blue;
+}
+```
+
+## 93
+
+- For the green marker's box-shadow property, replace the named color with a hex color code. Use the values 3B for red, 7E for green, 20 for blue, and CC for the alpha channel.
+
+```html
+
+.green {
+  background: linear-gradient(#55680D, #71F53E, #116C31);
+  box-shadow: 0 0 20px 0 #3B7E20CC;
+}
+```
+
+## 94
+
+- Finally, for the blue marker's box-shadow property, replace the named color with the hsla function. Use the values 223 for hue, 59% for saturation, 31% for lightness, and 0.8 for the alpha channel.
+
+- And with that, your set of colored markers is complete! Well done.
+
+```html
+
+.blue {
+  background: linear-gradient(hsl(186, 76%, 16%), hsl(223, 90%, 60%), hsl(240, 56%, 42%));
+  box-shadow: 0 0 20px 0 hsla(223, 59%, 31%, 0.8);
 }
 ```
