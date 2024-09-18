@@ -2,822 +2,941 @@
 
 ## 1. Tags
 
-- As you've seen in the previous projects, webpages should start with a DOCTYPE html declaration, followed by an html element.
-
-- Add a DOCTYPE html declaration at the top of the document, and an html element after that. Give the html element a lang attribute with en as its value.
+- Welcome to the Registration Form project! Start by adding the !DOCTYPE html declaration at the top of the document so the browser knows what type of document it's reading.
 
 ```html
 <!DOCTYPE html>
-<html lang="en">
-</html>
 ```
 
 ## 2
 
-```html
-- Nest a head element within the html element. Just after the head element, add a body element.
+- Below the DOCTYPE, add an html element with a lang attribute set to en, so that you have a place to start putting some code.
 
-<head>
-</head>
-<body>
-</body>
+```html
+<!DOCTYPE html>
+<html lang="en">
+  </html>
 ```
 
 ## 3
 
-- Remember that the title element gives search engines extra information about the page. It also displays the content of that title element in two more ways:
-
-- in the title bar when the page is open
-- in the browser tab for the page when you hover on it. Even if that tab is not active, once you hover on the tab, the title text is displayed.
-- Within the head element, nest a title element with the text Colored Markers.
+- Next, add opening and closing head and body tags within the html element.
 
 ```html
-<head>
-    <title> Colored Markers </title>
-  </head>
+<!DOCTYPE html>
+<html lang="en">
+<head></head>
+<body>
+  </body>
+</html>
 ```
 
 ## 4
 
-```html
-The charset attribute specifies the character encoding used by the document. utf-8 (Unicode Transformation Format – 8-bit) is a character encoding standard used for electronic communication.
+- Add a title and meta element inside the head element. Give your project a title of Registration Form, and add the charset attribute with a value of utf-8 to your meta element.
 
-Inside the head element, nest a meta element with the attribute charset set to "utf-8".
+```html
 
 <head>
-    <title>Colored Markers</title>
+    <title>Registration Form</title>
     <meta charset="utf-8">
   </head>
 ```
 
 ## 5
 
+- Nest a link element within the head element. Give it a rel attribute with a value of stylesheet and an href attribute with a value of styles.css.
+
 ```html
-- You can have multiple meta elements on a web page. Each meta element adds information about the page that cannot be expressed by other HTML elements.
-
-Add another meta element within the head. Give it a name attribute set to "viewport" and a content attribute set to "width=device-width, initial-scale=1.0" so your page looks the same on all devices.
-
 <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <meta charset="utf-8">
-    <title>Colored Markers</title>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
 ```
 
 ## 6
 
+- Within the body, provide a heading context for the content, by adding an h1 with the text Registration Form.
+
 ```html
-- Now you're ready to start adding content to the page.
-
-- Within the body, nest an h1 element with the text CSS Color Markers.
-
 <body>
-    <h1> CSS Color Markers </h1>
+<h1>Registration Form</h1>
   </body>
 ```
 
 ## 7
 
+- Below the heading, use the following text within a paragraph element to encourage users to register:
+
 ```html
-- In this project you'll work with an external CSS file to style the page. We've already created a styles.css file for you. But before you can use it, you'll need to link it to the page.
-
-- Nest a link element within the head element. Give it a rel attribute set to "stylesheet" and an href attribute set to "styles.css".
-
-<head>
-    <link rel="stylesheet" href="styles.css">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colored Markers</title>
-  </head>
+<body>
+    <h1>Registration Form</h1>
+    <p> Please fill out this form with the required information</p>
+  </body>
 
 ```
 
 ## 8
 
+- The vh unit stands for viewport height, and is equal to 1% of the height of the viewport. This makes it relative to the viewport height.
+
+- It is time to spruce the project up with some CSS. Begin by giving the body a width of 100%, and a height of 100vh.
+
 ```html
-- Create a new CSS rule that targets the h1 element, and set its text-align property to center.
-h1 {
-  text-align: center;
+body {
+  width: 100%;
+  height: 100vh;
 }
 ```
 
 ## 9
 
+- Now, get rid of the horizontal scroll-bar, by setting the body default margin added by some browsers to 0.
+
 ```html
-- Now you'll add some elements that you'll eventually style into color markers.
-
-- First, within the body element, add a div element and set its class attribute to container. Make sure the div element is below the h1 element.
-
-<body>
-    <h1>CSS Color Markers</h1>
-    <div class="container"></div>
-  </body>
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+}
 ```
 
 ## 10
 
-- Next, within the div element, add another div element and give it a class of marker.
+- As suggested by the title, you are creating a form. So, after the p element, insert a form with an action attribute targeting https://register-demo.freecodecamp.org.
 
 ```html
 <body>
-    <h1>CSS Color Markers</h1>
-    <div class="container">
-      <div class="marker"></div>
-    </div>
+    <h1>Registration Form</h1>
+    <p>Please fill out this form with the required information</p>
+    <form action="https://register-demo.freecodecamp.org"></form>
   </body>
 ```
 
 ## 11
 
-- It's time to add some color to the marker. Remember that one way to add color to an element is to use a color keyword like black, cyan, or yellow.
-
-- As a reminder, here's how to target the class freecodecamp:
-
- Example Code
- .freecodecamp {
-  
- }
-
-- Create a new CSS rule that targets the class marker, and set its background-color property to red.
+- As suggested by the title, you are creating a form. So, after the p element, insert a form with an action attribute targeting https://register-demo.freecodecamp.org.
 
 ```html
 
-.marker {
-  background-color:red;
-}
+<body>
+    <h1>Registration Form</h1>
+    <p>Please fill out this form with the required information</p>
+    <form action="https://register-demo.freecodecamp.org"></form>
+  </body>
 
 ```
 
 ## 12
 
-- The background color was applied, but since the marker div element has no content in it, it doesn't have any height by default.
+- The method attribute specifies how to send form-data to the URL specified in the action attribute. The form-data can be sent via a GET request as URL parameters (with method="get") or via a POST request as data in the request body (with method="post").
 
-- In your .marker CSS rule, set the height property to 25px and the width property to 200px
+- Set the method attribute to send your form data via a POST request.
 
 ```html
-.marker {
-  background-color: red;
-  height: 25px;
-  width: 200px;
-}
+<form action='https://register-demo.freecodecamp.org' method="POST"></form>
 ```
 
 ## 13
 
-- Your marker would look better if it was centered on the page. An easy way to do that is with the margin shorthand property.
-
-- In the last project, you set the margin area of elements separately with properties like margin-top and margin-left. The margin shorthand property makes it easy to set multiple margin areas at the same time.
-
-- To center your marker on the page, set its margin property to auto. This sets margin-top, margin-right, margin-bottom, and margin-left all to auto.
+- As the form will have three distinct sections, add three fieldset elements within the form element.
 
 ```html
-.marker {
-  width: 200px;
-  height: 25px;
-  background-color: red;
-  margin: auto;
-}
+<body>
+    <h1>Registration Form</h1>
+    <p>Please fill out this form with the required information</p>
+    <form method="post" action='https://register-demo.freecodecamp.org'>
+    <fieldset> </fieldset>
+    <fieldset> </fieldset>
+    <fieldset> </fieldset>
+    </form>
+  </body>
 ```
 
 ## 14
 
-- This works, but since there will be many more styles, it's best to put all the styles in a separate file and link to it.
+- The first fieldset will hold name, email, and password fields. Start by adding four label elements to the first fieldset
 
 ```html
-<div class="container">
-      <div class="marker">
-      </div>
-      <div class="marker">
-      </div>
-      <div class="marker">
-      </div>
-    </div>
+<form method="post" action='https://register-demo.freecodecamp.org'>
+      <fieldset>
+        <label></label>
+        <label></label>
+        <label></label>
+        <label></label>
+      </fieldset>
+      <fieldset></fieldset>
+      <fieldset></fieldset>
+    </form>
 ```
 
 ## 15
 
-- While you have three separate marker div elements, they look like one big rectangle. You should add some space between them to make it easier to see each element.
+- Add the following text to the label elements:
 
-- When the shorthand margin property has two values, it sets margin-top and margin-bottom to the first value, and margin-left and margin-right to the second value.
-
-- In your .marker CSS rule, set the margin property to 10px auto.
+Enter Your First Name:
+Enter Your Last Name:
+Enter Your Email:
+Create a New Password:
 
 ```html
-.marker {
-  width: 200px;
-  height: 25px;
-  background-color: red;
-  margin: 10px auto;
-}
+<fieldset>
+        <label> Enter Your First Name:</label>
+        <label>Enter Your Last Name:</label>
+        <label>Enter Your Email:</label>
+        <label>Create a New Password:</label>
+      </fieldset>
 ```
 
 ## 16
 
-- To give the markers different colors, you will need to add a unique class to each one. Multiple classes can be added to an element by listing them in the class attribute and separating them with a space. For example, the following adds both the animal and dog classes to a div element.
+- The rem unit stands for root em, and is relative to the font size of the html element.
 
-Example Code
-
-```html
-<div class="animal dog">
-```
-
-If you add multiple classes to an HTML element, the styles of the first classes you list may be overridden by later classes.
-
-To begin, add the class one to the first marker div element.
+As label elements are inline by default, they are all displayed side by side on the same line, making their text hard to read. To make them appear on separate lines, add display: block to the label element, and add a margin of 0.5rem 0, to separate them from each other.
 
 ```html
- <div class="marker one">
-      </div>
-      <div class="marker">
-      </div>
-      <div class="marker">
-      </div>
+ label {
+  display: block;
+  margin: 0.5rem 0
+}
 ```
 
 ## 17
 
-- Next, remove the background-color property and its value from the .marker CSS rule.
+- Nest an input element within each label. Be sure to add each input after the label text, and include a space after the colon.
 
 ```html
-.marker {
-  width: 200px;
-  height: 25px;
-  margin: 10px auto;
-}
+<fieldset>
+        <label>Enter Your First Name: <input></input></label>
+        <label>Enter Your Last Name: <input></input></label>
+        <label>Enter Your Email: <input></input></label>
+        <label>Create a New Password: <input></input></label>
+      </fieldset>
 ```
 
 ## 18
 
-- Then, create a new CSS rule that targets the class one and set its background-color property to red.
+- Following accessibility best practices, link the input elements and the label elements together using the for attribute.
+
+- Use first-name, last-name, email, and new-password as values for the respective id attributes.
 
 ```html
-.one {
-  background-color:red;
-}
+ <fieldset>
+        <label for="first-name">Enter Your First Name: <input id="first-name"></input></label>
+        <label for="last-name">Enter Your Last Name: <input id="last-name"></input></label>
+        <label for="email">Enter Your Email: <input id="email"></input></label>
+        <label for="new-password">Create a New Password: <input id="new-password"></input></label>
+      </fieldset>
 ```
 
 ## 19
 
-- Add the class two to the second marker div, and add the class three to the third marker div.
+- Specifying the type attribute of a form element is important for the browser to know what kind of data it should expect. If the type is not specified, the browser will default to text.
+
+- Give the first two input elements a type attribute of text, the third a type attribute of email, and the fourth a type attribute of password.
+
+- The email type only allows emails with a @ and a . in the domain. The password type obscures the input, and warns if the site does not use HTTPS.
 
 ```html
-<div class="marker one">
-      </div>
-      <div class="marker two">
-      </div>
-      <div class="marker three">
-      </div>
+<fieldset>
+        <label for="first-name">Enter Your First Name: <input id="first-name" type="text" /></label>
+        <label for="last-name">Enter Your Last Name: <input id="last-name" type="text" /></label>
+        <label for="email">Enter Your Email: <input id="email" type="email" /></label>
+        <label for="new-password">Create a New Password: <input id="new-password" type="password" /></label>
+      </fieldset>
 ```
 
 ## 20
 
-- Create a CSS rule that targets the class two and set its background-color property to green.
+- The first input element with a type of submit is automatically set to submit its nearest parent form element.
 
-- Also, create a separate CSS rule that targets the class three and set its background-color to blue.
+- To handle the form submission, after the last fieldset element add an input element with the type attribute set to submit and the value attribute set to Submit.
 
 ```html
-.two {
-  background-color: green;
-}
-
-.three {
-  background-color: blue;
-}
+<fieldset>
+        <label for="first-name">Enter Your First Name: <input id="first-name" type="text" /></label>
+        <label for="last-name">Enter Your Last Name: <input id="last-name" type="text" /></label>
+        <label for="email">Enter Your Email: <input id="email" type="email" /></label>
+        <label for="new-password">Create a New Password: <input id="new-password" type="password" /></label>
+      </fieldset>
+      <fieldset></fieldset>
+      <fieldset></fieldset>
+      <input type="submit" value="Submit"> </input>
  ```
 
 ## 21
 
-- There are two main color models: the additive RGB (red, green, blue) model used in electronic devices, and the subtractive CMYK (cyan, magenta, yellow, black) model used in print.
+- At this point, you should be able to submit the form. However, you might notice not much happens.
 
-- In this project, you'll work with the RGB model. This means that colors begin as black, and change as different levels of red, green, and blue are introduced. An easy way to see this is with the CSS rgb function.
+- To make the form more interactive, add the required attribute to the input elements in the first fieldset.
 
-- Create a new CSS rule that targets the class container and set its background-color to black with rgb(0, 0, 0).
+- Now, if you try to submit the form without filling in the required fields, you will see an error message.
 
 ```html
-.container{
-  background-color: rgb(0, 0, 0);
-}
+<fieldset>
+        <label for="first-name">Enter Your First Name: <input id="first-name" type="text" required="" /></label>
+        <label for="last-name">Enter Your Last Name: <input id="last-name" type="text" required="" /></label>
+        <label for="email">Enter Your Email: <input id="email" type="email" required="" /></label>
+        <label for="new-password">Create a New Password: <input id="new-password" type="password" required="" /></label>
+      </fieldset>
+      <fieldset></fieldset>
+      <fieldset></fieldset>
+      <input type="submit" value="Submit" />
  ```
 
 ## 22
 
+- Certain type attribute values come with built-in form validation. For example, type="email" requires that the value be a valid email address.
+
+- Add custom validation to the password input element, by adding a minlength attribute with a value of 8. Doing so prevents inputs of less than 8 characters being submitted.
+
 ```html
-- A function is a piece of code that can take an input and perform a specific action. The CSS rgb function accepts values, or arguments, for red, green, and blue, and produces a color:
-
-Example Code
-- rgb(red, green, blue);
-- Each red, green, and blue value is a number from 0 to 255. 0 means that there's 0% of that color, and is black. 255 means that there's 100% of that color.
-
-- In the .one CSS rule, replace the color keyword red with the rgb function. For the rgb function, set the value for red to 255, the value for green to 0, and the value for blue to 0.
-
-.one {
-  background-color: rgb(255, 0, 0);
-}
+<fieldset>
+        <label for="first-name">Enter Your First Name: <input id="first-name" type="text" required /></label>
+        <label for="last-name">Enter Your Last Name: <input id="last-name" type="text" required /></label>
+        <label for="email">Enter Your Email: <input id="email" type="email" required /></label>
+        <label for="new-password">Create a New Password: <input id="new-password" type="password" required minlength="8" /></label>
+      </fieldset>
  ```
 
 ## 23
 
+- With type="password" you can use the pattern attribute to define a regular expression that the password must match to be considered valid.
+
+- Add a pattern attribute to the password input element to require the input match: [a-z0-5]{8,}
+
+- The above is a regular expression which matches eight or more lowercase letters or the digits 0 to 5. Then, remove the minlength attribute, and try it out.
+
 ```html
-- Notice that the background-color for your marker is still red. This is because you set the red value of the rgb function to the max of 255, or 100% red, and set both the green and blue values to 0.
-
-Now use the rgb function to set the other colors.
-
-In the .two CSS rule, use the rgb function to set the background-color to the max value for green, and 0 for the other values. And in the .three CSS rule, use the rgb function to set the background-color to the max value for blue, and 0 for the other values.
-
-.two {
-  background-color: rgb(0, 255, 0);
-}
-
-.three {
-  background-color: rgb(0, 0, 255);
-}
+<fieldset>
+        <label for="first-name">Enter Your First Name: <input id="first-name" type="text" required /></label>
+        <label for="last-name">Enter Your Last Name: <input id="last-name" type="text" required /></label>
+        <label for="email">Enter Your Email: <input id="email" type="email" required /></label>
+        <label for="new-password">Create a New Password: <input id="new-password" type="password"  pattern="[a-z0-5]{8,}" required  /></label>
+      </fieldset>
  ```
 
 ## 24
 
-- While the red and blue markers look the same, the green one is much lighter than it was before. This is because the green color keyword is actually a darker shade, and is about halfway between black and the maximum value for green.
+- Let us go to the next part of the registration form. This section will ask for the type of account the user is opening.
 
-- In the .two CSS rule, set the green value in the rgb function to 127 to lower its intensity.
+- Start by adding two label elements to the second fieldset.
 
 ```html
-.two {
-  background-color: rgb(0, 127, 0);
-}
+<fieldset>
+        <label></label>
+        <label></label>
+      </fieldset>
  ```
 
 ## 25
 
-- Now add a little more vertical space between your markers and the edge of the container element they're in.
+- Users will be allowed to choose either a Personal or Business.
 
-- In the .container CSS rule, use the shorthand padding property to add 10px of top and bottom padding, and set the left and right padding to 0. This works similarly to the shorthand margin property you used earlier.
+- To do this, within each of the first two label elements, add one input element with type="radio".
 
 ```html
-.container {
-  background-color: rgb(0, 0, 0);
-  padding: 10px 0px;
-}
+<fieldset>
+        <label> <input type="radio" /></label>
+        <label> <input type="radio" /></label>
+      </fieldset>
  ```
 
 ## 26
 
-- In the additive RGB color model, primary colors are colors that, when combined, create pure white. But for this to happen, each color needs to be at its highest intensity.
+- Within each corresponding label element, and immediately after the input element, add a space and add the following text:
 
-- Before you combine colors, set your green marker back to pure green. For the rgb function in the .two CSS rule, set green back to the max value of 255.
+Example Code
+Personal
+Business
 
 ```html
-.two {
-  background-color: rgb(0, 255, 0);
-}
+<label><input type="radio" /> Personal</label>
+        <label><input type="radio" /> Business</label>
  ```
 
 ## 27
 
-- Now that you have the primary RGB colors, it's time to combine them.
+- You only want one radio input to be selectable at a time. However, the form does not know the radio inputs are related.
 
-- For the rgb function in the .container rule, set the red, green, and blue values to the max of 255.
+- To relate the radio inputs, give them the same name attribute with a value of account-type. Now, it is not possible to select both radio inputs at the same time.
 
 ```html
- .container {
-  background-color: rgb(255, 255, 255);
-  padding: 10px 0;
-}
+  <fieldset>
+        <label><input type="radio" name="account-type" /> Personal</label>
+        <label><input type="radio" name="account-type" /> Business</label>
+      </fieldset>
  ```
 
 ## 28
 
-- Secondary colors are the colors you get when you combine primary colors. You might have noticed some secondary colors in the last step as you changed the red, green, and blue values.
+- Currently users can submit the form without checking the radio inputs. Although you previously used the required attribute to indicate that an input is required, it won't work in this case because adding required to both inputs will convey the wrong information to users.
 
-- To create the first secondary color, yellow, update the rgb function in the .one CSS rule to combine pure red and pure green.
+- To solve this, you can provide context of what is needed by adding a legend element with text Account type (required) before the label elements within the second fieldset. Then add the checked attribute to the Personal input to ensure the form is submitted with the required data in it.
 
 ```html
-.one {
-  background-color: rgb(255, 255, 0);
-}
+<fieldset>
+        <legend>Account type (required)</legend>
+        <label><input type="radio" name="account-type" checked /> Personal</label>
+        <label><input type="radio" name="account-type" /> Business</label>
+      </fieldset>
 ```
 
 ## 29
 
-- To create the next secondary color, cyan, update the rgb function in the .two CSS rule to combine pure green and pure blue.
+- Follow accessibility best practices by linking the input elements and the label elements in the second fieldset.
+
+- Use personal-account, and business-account as values for the respective id attributes.
 
 ```html
-.two {
-  background-color: rgb(0, 255, 255);
-}
+<fieldset>
+        <legend>Account type (required)</legend>
+        <label for="personal-account"><input type="radio" name="account-type" id="personal-account" checked /> Personal</label>
+        <label for="business-account"><input type="radio" name="account-type" id="business-account" /> Business</label>
+      </fieldset>
 ```
 
 ## 30
 
-- To create the final secondary color, magenta, update the rgb function in the .three CSS rule to combine pure blue and pure red.
+- You need to confirm that the user has read the terms and conditions.
+
+- Add a label element. Inside the newly created label element add an input element and set the type attribute to checkbox. Make this input element required so users can not sign up without agreeing to the terms and conditions.
+
+- Add an id and for attribute with the value terms-and-conditions to the elements for accessibility.
 
 ```html
-.three {
-  background-color: rgb(255, 0, 255);
-}
+<label for="terms-and-conditions">
+  <input type="checkbox" required id="terms-and-conditions" />
+  </label>
 ```
 
 ## 31
 
-- Now that you're familiar with secondary colors, you'll learn how to create tertiary colors. Tertiary colors are created by combining a primary with a nearby secondary color.
+- Add the text I accept the terms and conditions immediately after the input element in the newly added label. Then link the text terms and conditions to the following location:
 
-- To create the tertiary color orange, update the rgb function in the .one CSS rule so that red is at the max value, and set green to 127.
+Example Code
+https://www.freecodecamp.org/news/terms-of-service/
 
 ```html
-.one {
-  background-color: rgb(255, 127, 0);
-}
+<label for="terms-and-conditions"><input id="terms-and-conditions" type="checkbox" required />I accept the <a href="https://www.freecodecamp.org/news/terms-of-service/">terms and conditions</a></label>
 ```
 
 ## 32
 
-- Notice that, to create orange, you had to increase the intensity of red and decrease the intensity of the green rgb values. This is because orange is the combination of red and yellow.
+- Moving on to the final fieldset. What if you wanted to allow a user to upload a profile picture?
 
-- To create the tertiary color spring green, combine cyan with green. Update the rgb function in the .two CSS rule so that green is at the max value, and set blue to 127.
+- Well, the input type file allows just that. Add a label with the text Upload a profile picture: , and nest an input accepting a file upload.
 
 ```html
-.two {
-  background-color: rgb(0, 255, 127);
-}
+<fieldset>
+        <label> <input type="file" />Upload a profile picture: </label>
+      </fieldset>
 ```
 
 ## 33
 
-- And to create the tertiary color violet, combine magenta with blue. Update the rgb function in the .three CSS rule so that blue is at the max value, and set red to 127.
+- Add another label after the first, with the text Input your age (years): . Then, nest an input with the type of number.
+
+- Next, add a min attribute to the input with a value of 13 because users under the age of 13 should not register. Also, users probably will not be over the age of 120; add a max attribute with a value of 120.
+
+- Now, if someone tries to submit the form with values outside of the range, a warning will appear, and the form will not submit. Give it a try.
 
 ```html
-.three {
-  background-color: rgb(127, 0, 255);
-}
+<fieldset>
+        <label>Upload a profile picture: <input type="file" /></label>
+        <label> Input your age (years): <input type="number" min="13" max="120" /></label>
+        
+      </fieldset>
 ```
 
 ## 34
 
-- There are three more tertiary colors: chartreuse green (green + yellow), azure (blue + cyan), and rose (red + magenta).
+- Adding a dropdown to the form is easy with the select element. The select element is a container for a group of option elements, and the option element acts as a label for each dropdown option. Both elements require closing tags.
 
-- To create chartreuse green, update the rgb function in the .one CSS rule so that red is at 127, and set green to the max value.
-
-- For azure, update the rgb function in the .two CSS rule so that green is at 127 and blue is at the max value.
-
-- And for rose, which is sometimes called bright pink, update the rgb function in the .three CSS rule so that blue is at 127 and red is at the max value.
+- Start by adding a select element below the two label elements. Then nest 5 option elements within the select element.
 
 ```html
-.one {
-  background-color: rgb(127, 255, 0);
-}
-
-.two {
-  background-color: rgb(0, 127, 255);
-}
-
-.three {
-  background-color: rgb(255, 0, 127);
-}
+ <fieldset>
+        <label>Upload a profile picture: <input type="file" /></label>
+        <label>Input your age (years): <input type="number" min="13" max="120" /></label>
+        <select>
+          <option> </option>
+          <option> </option>
+          <option> </option>
+          <option> </option>
+          <option> </option>
+          </select>
+      </fieldset>
 ```
 
 ## 35
 
-- Now that you've gone through all the primary, secondary, and tertiary colors on a color wheel, it'll be easier to understand other color theory concepts and how they impact design.
-
-- First, in the CSS rules .one, .two, and .three, adjust the values in the rgb function so that the background-color of each element is set to pure black. Remember that the rgb function uses the additive color model, where colors start as black and change as the values of red, green, and blue increase.
+- Nest the select element (with its option elements) within a label element with the text How did you hear about us?. The text should come before the select element.
 
 ```html
-.one {
-  background-color: rgb(0, 0, 0);
-}
-
-.two {
-  background-color: rgb(0, 0, 0);
-}
-
-.three {
-  background-color: rgb(0, 0, 0);
-}
+<fieldset>
+        <label>Upload a profile picture: <input type="file" /></label>
+        <label>Input your age (years): <input type="number" min="13" max="120" /></label>
+        <label>How did you hear about us?<select></label>
+          <option></option>
+          <option></option>
+          <option></option>
+          <option></option>
+          <option></option>
+        </select>
+      </fieldset>
 ```
 
 ## 36
 
-- A color wheel is a circle where similar colors, or hues, are near each other, and different ones are further apart. For example, pure red is between the hues rose and orange.
+- The dropdown options are currently empty. To give them content, add the following text to each subsequent option element:
 
-- Two colors that are opposite from each other on the color wheel are called complementary colors. If two complementary colors are combined, they produce gray. But when they are placed side-by-side, these colors produce strong visual contrast and appear brighter.
-
-- In the rgb function for the .one CSS rule, set the red value to the max of 255 to produce pure red. In the rgb function for .two CSS rule, set the values for green and blue to the max of 255 to produce cyan.
+Example Code
+(select one)
+freeCodeCamp News
+freeCodeCamp YouTube Channel
+freeCodeCamp Forum
+Other
 
 ```html
-.one {
-  background-color: rgb(255, 0, 0);
-}
-
-.two {
-  background-color: rgb(0, 255, 255);
-}
+<fieldset>
+        <label>Upload a profile picture: <input type="file" /></label>
+        <label>Input your age (years): <input type="number" min="13" max="120" /></label>
+        <label>How did you hear about us?
+          <select>
+            <option>(select one)</option>
+            <option>freeCodeCamp News</option>
+            <option>freeCodeCamp YouTube Channel</option>
+            <option>freeCodeCamp Forum</option>
+            <option>Other</option>
+          </select>
+        </label>
+      </fieldset>
 ```
 
 ## 37
 
-- Notice that the red and cyan colors are very bright right next to each other. This contrast can be distracting if it's overused on a website, and can make text hard to read if it's placed on a complementary-colored background.
+- Submitting the form with an option selected would not send a useful value to the server. As such, each option needs to be given a value attribute. Without which, the text content of the option will be submitted to the server.
 
-- It's better practice to choose one color as the dominant color, and use its complementary color as an accent to bring attention to certain content on the page.
-
-- First, in the h1 rule, use the rgb function to set its background-color to cyan.
+- Give the first option a value of "", and the subsequent option elements value attributes from 1 to 4.
 
 ```html
-h1 {
-  background-color: rgb(0, 255, 255);
-  text-align: center;
-}
+<fieldset>
+        <label>Upload a profile picture: <input type="file" /></label>
+        <label>Input your age (years): <input type="number" min="13" max="120" /></label>
+        <label>How did you hear about us?
+          <select>
+            <option value="">(select one)</option>
+            <option value="1">freeCodeCamp News</option>
+            <option value="2">freeCodeCamp YouTube Channel</option>
+            <option value="3">freeCodeCamp Forum</option>
+            <option value="4">Other</option>
+          </select>
+        </label>
+      </fieldset>
 ```
 
 ## 38
 
-- Next, in the .one CSS rule, use the rgb function to set the background-color to black. And in the .two CSS rule, use the rgb function to set the background-color to red.
+- The textarea element acts like an input element of type text, but comes with the added benefit of being able to receive multi-line text, and an initial number of text rows and columns.
+
+- Users will be able to register with a bio. Add a label with the text Provide a bio: at the end of the fieldset. Add a textarea element inside the label element. Note that the textarea requires a closing tag.
 
 ```html
-.one {
-  background-color: rgb(0, 0, 0);
-}
-
-.two {
-  background-color: rgb(255, 0, 0);
-}
+<fieldset>
+        <label>Upload a profile picture: <input type="file" /></label>
+        <label>Input your age (years): <input type="number" min="13" max="120" /></label>
+        <label>How did you hear about us?
+          <select>
+            <option value="">(select one)</option>
+            <option value="1">freeCodeCamp News</option>
+            <option value="2">freeCodeCamp YouTube Channel</option>
+            <option value="3">freeCodeCamp Forum</option>
+            <option value="4">Other</option>
+          </select>
+        </label>
+        <label>Provide a bio:
+          <textarea></textarea></label>
+      </fieldset>
 ```
 
 ## 39
 
-- Notice how your eyes are naturally drawn to the red color in the center? When designing a site, you can use this effect to draw attention to important headings, buttons, or links.
+- Link the applicable form elements and their label elements together.
 
-- There are several other important color combinations outside of complementary colors, but you'll learn those a bit later.
-
-- For now, use the rgb function in the .two CSS rule to set the background-color to black.
+- Use profile-picture, age, referrer, and bio as values for the respective id attributes.
 
 ```html
-.two {
-  background-color: rgb(0, 0, 0);
-}
+<fieldset>
+        <label for="profile-picture">Upload a profile picture: <input type="file" id="profile-picture" /></label>
+        <label for="age">Input your age (years): <input type="number" min="13" max="120" id="age" /></label>
+        <label for="referrer">How did you hear about us?
+          <select id="referrer">
+            <option value="">(select one)</option>
+            <option value="1">freeCodeCamp News</option>
+            <option value="2">freeCodeCamp YouTube Channel</option>
+            <option value="3">freeCodeCamp Forum</option>
+            <option value="4">Other</option>
+          </select>
+        </label>
+        <label for="bio">Provide a bio:
+          <textarea id="bio"></textarea>
+        </label>
+      </fieldset>
 ```
 
 ## 40
 
-- And in the h1 CSS rule, remove the background-color property and value to go back to the default white color.
+- The textarea appears too small. To give it an initial size, you can add the rows and cols attributes.
+
+- Add an initial size of 3 rows and 30 columns.
 
 ```html
-h1 {
-  text-align: center;
-}
+<fieldset>
+        <label for="profile-picture">Upload a profile picture: <input id="profile-picture" type="file" /></label>
+        <label for="age">Input your age (years): <input id="age" type="number" min="13" max="120" /></label>
+        <label for="referrer">How did you hear about us?
+          <select id="referrer">
+            <option value="">(select one)</option>
+            <option value="1">freeCodeCamp News</option>
+            <option value="2">freeCodeCamp YouTube Channel</option>
+            <option value="3">freeCodeCamp Forum</option>
+            <option value="4">Other</option>
+          </select>
+        </label>
+        <label for="bio">Provide a bio:
+          <textarea id="bio" rows="3" cols="30"></textarea>
+        </label>
+      </fieldset>
 ```
 
 ## 41
 
-- Now it's time to add other details to the markers, starting with the first one.
+- To give Campers an idea of what to put in their bio, the placeholder attribute is used. The placeholder accepts a text value, which is displayed until the user starts typing.
 
-- In the first marker div element, change the class one to red.
+- Give the textarea a placeholder of I like coding on the beach....
 
 ```html
-<div class="marker red">
-      </div>
-      <div class="marker two">
-      </div>
-      <div class="marker three">
-      </div>
+<fieldset>
+        <label for="profile-picture">Upload a profile picture: <input id="profile-picture" type="file" /></label>
+        <label for="age">Input your age (years): <input id="age" type="number" min="13" max="120" /></label>
+        <label for="referrer">How did you hear about us?
+          <select id="referrer">
+            <option value="">(select one)</option>
+            <option value="1">freeCodeCamp News</option>
+            <option value="2">freeCodeCamp YouTube Channel</option>
+            <option value="3">freeCodeCamp Forum</option>
+            <option value="4">Other</option>
+          </select>
+        </label>
+        <label for="bio">Provide a bio:
+          <textarea id="bio" rows="3" cols="30" placeholder="I like coding on the beach..."></textarea>
+        </label>
+      </fieldset>
 
 ```
 
 ## 42
 
-- Update the .one CSS rule to target the new red class.
+- With form submissions, it is useful, and good practice, to provide each submittable element with a name attribute. This attribute is used to identify the element in the form submission.
+
+- Except for the two radio inputs (which you have already named), give each submittable element a unique name attribute of your choosing.
 
 ```html
-<.red {
-  background-color: rgb(0, 0, 0);
-}
-
-.two {
-  background-color: rgb(0, 0, 0);
-}
-
-.three {
-  background-color: rgb(0, 0, 0);
-}
+<fieldset>
+        <label for="first-name">Enter Your First Name: <input id="first-name" type="text"  required name="first-name" /></label>
+        <label for="last-name">Enter Your Last Name: <input id="last-name" type="text" required name="last-name" /></label>
+        <label for="email">Enter Your Email: <input id="email" type="email" required name="email" /></label>
+        <label for="new-password">Create a New Password: <input id="new-password" type="password" pattern="[a-z0-5]{8,}" required name="password" /></label>
+      </fieldset>
+      <fieldset>
+        <legend>Account type (required)</legend>
+        <label for="personal-account"><input id="personal-account" type="radio" name="account-type" checked /> Personal</label>
+        <label for="business-account"><input id="business-account" type="radio" name="account-type" /> Business</label>
+      </fieldset>
+      <fieldset>
+        <label for="profile-picture">Upload a profile picture: <input id="profile-picture" type="file" name="profile-picture" /></label>
+        <label for="age">Input your age (years): <input id="age" type="number" min="13" max="120" name="age" /></label>
+        <label for="referrer">How did you hear about us?
+          <select id="referrer" name="referrer">
+            <option value="">(select one)</option>
+            <option value="1">freeCodeCamp News</option>
+            <option value="2">freeCodeCamp YouTube Channel</option>
+            <option value="3">freeCodeCamp Forum</option>
+            <option value="4">Other</option>
+          </select>
+        </label>
+        <label for="bio">Provide a bio:
+          <textarea id ="bio" rows="3" cols="30" placeholder="I like coding on the beach..." name="bio"></textarea>
+        </label>
+      </fieldset>
+      <label for="terms-and-conditions">
+        <input id="terms-and-conditions" type="checkbox" required name="terms" /> I accept the <a href="https://www.freecodecamp.org/news/terms-of-service/">terms and conditions</a>
+      </label>
 ```
 
 ## 43
 
-- And update the rgb function in the .red CSS rule so that the red value is at the max.
+- The HTML for the registration form is finished. Now, you can spruce it up a bit.
+
+- Start by changing the font to Tahoma, and the font size to 16px in the body.
 
 ```html
-.red {
-  background-color: rgb(255, 0, 0);
-}
-
-.two {
-  background-color: rgb(0, 0, 0);
-}
-
-.three {
-  background-color: rgb(0, 0, 0);
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  background-color: #1b1b32;
+  color: #f5f6f7;
+  font-family: Tahoma;
+  font-size: 16px
 }
 ```
 
 ## 44
 
-- Next, change the class two to green in the second marker div, and the class three to blue in the third marker div.
+- Center the h1 and p elements by giving them a margin of 1em auto. Then, align their text in the center as well.
 
 ```html
-<div class="marker red">
-      </div>
-      <div class="marker green">
-      </div>
-      <div class="marker blue">
-      </div>
+h1, p {
+  margin: 1em auto;
+  text-align: center;
+}
 ```
 
 ## 45
 
-- Update the CSS class selector .two so it targets the new green class. And update the .three class selector so it targets the new blue class.
+- Center the form element, by giving it a margin of 0 auto. Then, fix its size to a maximum width of 500px, and a minimum width of 300px. In between that range, allow it to have a width of 60vw.
 
 ```html
-.red {
-  background-color: rgb(255, 0, 0);
-}
-
-.green {
-  background-color: rgb(0, 255, 0);
-}
-
-.blue {
-  background-color: rgb(0, 0, 255);
+form {
+  margin: 0 auto;
+  min-width: 300px;
+  width: 60vw;
+  max-width: 500px;
 }
 
 ```
 
 ## 46
 
-- A very common way to apply color to an element with CSS is with hexadecimal or hex values. While hex values sound complicated, they're really just another form of RGB values.
+- During development, it is useful to see the fieldset default borders. However, they make the content appear too separated.
 
-- Hex color values start with a # character and take six characters from 0-9 and A-F. The first pair of characters represent red, the second pair represent green, and the third pair represent blue. For example, #4B5320.
-
-- In the .green class selector, set the background-color property to a hex color code with the values 00 for red, FF for green, and 00 blue.
+- Remove the border, and add 2rem of padding only to the top and bottom of each fieldset. Be sure to remove the padding from the left and right.
 
 ```html
-.green {
-  background-color: #00FF00;
+fieldset {
+  border: 0;
+  padding-left:0;
+  padding-right:0;
+  padding-top:2rem;
+  padding-bottom:2rem;
 }
 ```
 
 ## 47
 
-- You may already be familiar with decimal, or base 10 values, which go from 0 - 9. Hexadecimal, or base 16 values, go from 0 - 9, then A - F:
-
-Example Code
-0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F
-With hex colors, 00 is 0% of that color, and FF is 100%. So #00FF00 translates to 0% red, 100% green, and 0% blue, and is the same as rgb(0, 255, 0).
-
-- Lower the intensity of green by setting the green value of the hex color to 7F.
+- To give the fieldset elements a bit of separation, select them and give them a border-bottom of 3px solid #3b3b4f.
 
 ```html
-.green {
-  background-color: #007F00;
+fieldset {
+  border: none;
+  padding: 2rem 0;
+  border-bottom: 3px solid #3b3b4f;
 }
 ```
 
 ## 48
 
-- The HSL color model, or hue, saturation, and lightness, is another way to represent colors.
+- The border of the last fieldset element looks a little out of place. You can select the last element of a specific type using the last-of-type CSS pseudo-class, like this:
 
-- The CSS hsl function accepts 3 values: a number from 0 to 360 for hue, a percentage from 0 to 100 for saturation, and a percentage from 0 to 100 for lightness.
-
-- If you imagine a color wheel, the hue red is at 0 degrees, green is at 120 degrees, and blue is at 240 degrees.
-
-- Saturation is the intensity of a color from 0%, or gray, to 100% for pure color. You must add the percent sign % to the saturation and lightness values.
-
-- Lightness is how bright a color appears, from 0%, or complete black, to 100%, complete white, with 50% being neutral.
-
-- In the .blue CSS rule, use the hsl function to change the background-color property to pure blue. Set the hue to 240, the saturation to 100%, and the lightness to 50%.
+Example Code
+p:last-of-type { }
+That will select the last p element. Create a new selector that targets the last fieldset element and set its border-bottom to none.
 
 ```html
-.blue {
-  background-color: hsl(240, 100%, 50%);
-}
+fieldset:last-of-type {
+  border-bottom: none;
+ }
 
 ```
 
 ## 49
 
-- You've learned a few ways to set flat colors in CSS, but you can also use a color transition, or gradient, on an element.
+- It would be nicer to have the label text appear above the form elements.
 
-- A gradient is when one color transitions into another. The CSS linear-gradient function lets you control the direction of the transition along a line, and which colors are used.
+- Select all input, textarea, and select elements, and make them take up the full width of their parent elements.
 
-- one thing to remember is that the linear-gradient function actually creates an image element, and is usually paired with the background property which can accept an image as a value.
-
-- In the .red CSS rule, change the background-color property to background.
+- Also, add 10px of margin to the top of the selected elements. Set the other margins to 0.
 
 ```html
 
-.red {
-  background: rgb(255, 0, 0);
+input, textarea, select {
+  width:100%;
+  margin-bottom: 0;
+  margin-top: 10px;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 ```
 
 ## 50
 
-- The linear-gradient function is very flexible -- here is the basic syntax you'll use in this tutorial:
+- For the second fieldset, you want the input and label text to appear on the same line.
 
-Example Code
-linear-gradient(gradientDirection, color1, color2, ...);
-gradientDirection is the direction of the line used for the transition. color1 and color2 are color arguments, which are the colors that will be used in the transition itself. These can be any type of color, including color keywords, hex, rgb, or hsl.
-
-- Now you'll apply a red-to-green gradient along a 90 degree line to the first marker.
-
-- First, in the .red CSS rule, set the background property to linear-gradient(), and pass it the value 90deg as the gradientDirection.
+- Start, by giving the input elements in the second fieldset a class of inline.
 
 ```html
 
-.red {
-  background: linear-gradient(90deg);
-}
+<fieldset>
+        <legend>Account type (required)</legend>
+        <label for="personal-account"><input id="personal-account" type="radio" name="account-type" class="inline" checked /> Personal</label>
+        <label for="business-account"><input id="business-account" type="radio" name="account-type" class="inline" /> Business</label>
+      </fieldset>
+
           
 ```
 
 ## 51
 
-- You'll use the rgb function for the colors of this gradient.
-
-- In the linear-gradient function, use the rgb function to set the first color argument to pure red.
+- Select only the .inline elements, and give them width of unset. This will remove the earlier rule which set all the input elements to width: 100%.
 
 ```html
 
-.red {
-  background: linear-gradient(90deg, rgb(255, 0, 0));
+.inline {
+  width: unset;
 }
+
           
 ```
 
 ## 52
 
-- You won't see gradient yet because the linear-gradient function needs at least two color arguments to work.
-
-- In the same linear-gradient function, use the rgb function to set the second color argument to pure green.
+- Add some space between the .inline elements and the label text, by giving a right margin of 0.5em. Also, set all the other margin to 0.
 
 ```html
 
-.red {
-  background: linear-gradient(90deg, rgb(255, 0, 0), rgb(0, 255, 0));
+.inline {
+  width: unset;
+  margin-right: 0.5em;
+  margin-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+
 }
           
 ```
 
 ## 53
 
-- As you can see, the linear-gradient function produced a smooth red-green gradient. While the linear-gradient function needs a minimum of two color arguments to work, it can accept many color arguments.
+- If you look close enough, you will notice the .inline elements are too high on the line.
 
-- Use the rgb function to add pure blue as the third color argument to the linear-gradient function.
+- To combat this, set the vertical-align property to middle.
 
 ```html
 
-.red {
-  background: linear-gradient(90deg, rgb(255, 0, 0), rgb(0, 255, 0), rgb(0, 0, 255));
+.inline {
+  width: unset;
+  margin: 0 0.5em 0 0;
+  vertical-align: middle;
 }
 
 ```
 
 ## 54
 
-- Color-stops allow you to fine-tune where colors are placed along the gradient line. They are a length unit like px or percentages that follow a color in the linear-gradient function.
-
-- For example, in this red-black gradient, the transition from red to black takes place at the 90% point along the gradient line, so red takes up most of the available space:
-
-Example Code
-linear-gradient(90deg, red 90%, black);
-In the linear-gradient function, add a 75% color stop after the first red color argument. Do not add color stops to the other colors arguments.
+- To make the input and textarea elements blend in with the background theme, set their background-color to #0a0a23. Then, give them a 1px, solid border with a color of #0a0a23.
 
 ```html
 
-.red {
-  background: linear-gradient(90deg, rgb(255, 0, 0) 75%, rgb(0, 255, 0), rgb(0, 0, 255));
+input, textarea {
+  background-color: #0a0a23;
+  border: 1px solid #0a0a23;
 }
 ```
 
 ## 55
 
-- Now that you know the basics of how the linear-gradient function and color-stops work, you can use them to make the markers look more realistic.
+- Currently, if you type in the input or textarea elements, you will not be able to see the text. Also, their height is too small to be easy to use.
 
-- In the linear-gradient function, set gradientDirection to 180deg.
+- Fix this, by setting the color to #ffffff, and setting their min-height to 2em.
 
 ```html
 
-.red {
-  background: linear-gradient(180deg, rgb(255, 0, 0) 75%, rgb(0, 255, 0), rgb(0, 0, 255));
+input, textarea {
+  background-color: #0a0a23;
+  border: 1px solid #0a0a23;
+  color: #ffffff;
+  min-height: 2em;
 }
 
 ```
 
 ## 56
 
-- Next, set the color-stop for red to 0%, the color-stop for green to 50%, and the color-stop for blue to 100%.
+- You want the select element to remain with a white background, but now it is not getting the same min-height as the input and textarea elements.
+
+- Move the min-height property and value so that all three element types have the same min-height value, and the select element still has a white background.
 
 ```html
 
-.red {
-  background: linear-gradient(180deg, rgb(255, 0, 0) 0%, rgb(0, 255, 0) 50%, rgb(0, 0, 255) 100%);
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  background-color: #1b1b32;
+  color: #f5f6f7;
+  font-family: Tahoma;
+  font-size: 16px;
+}
+
+h1, p {
+  margin: 1em auto;
+  text-align: center;
+}
+
+form {
+  width: 60vw;
+  max-width: 500px;
+  min-width: 300px;
+  margin: 0 auto;
+}
+
+fieldset {
+  border: none;
+  padding: 2rem 0;
+  border-bottom: 3px solid #3b3b4f;
+}
+
+fieldset:last-of-type {
+  border-bottom: none;
+}
+
+label {
+  display: block;
+  margin: 0.5rem 0;
+}
+
+input,
+textarea,
+select {
+  margin: 10px 0 0 0;
+  width: 100%;
+  min-height: 2em;
+}
+
+input, textarea {
+  background-color: #0a0a23;
+  border: 1px solid #0a0a23;
+  color: #ffffff;
+}
+
+.inline {
+  width: unset;
+  margin: 0 0.5em 0 0;
+  vertical-align: middle;
 }
 
 
@@ -825,121 +944,142 @@ In the linear-gradient function, add a 75% color stop after the first red color 
 
 ## 57
 
-- Now that the color-stops are set, you'll apply different shades of red to each color argument in the linear-gradient function. The shades on the top and bottom edges of the marker will be darker, while the one in the middle will be lighter, as if there's a light above it.
+- To style the submit button, you can use an attribute selector, which selects an element based on the given attribute value. Here is an example:
 
-- For the first color argument, which is currently pure red, update the rgb function so the value for red is 122, the value for green is 74, and the value for blue is 14.
+Example Code
+input[name="password"]
+The above selects input elements with a name attribute value of password.
+
+- Now, use the attribute selector to style the submit button with a display of block, and a width of 60%.
 
 ```html
 
-.red {
-  background: linear-gradient(180deg, rgb(122, 74, 14) 0%, rgb(0, 255, 0) 50%, rgb(0, 0, 255) 100%);
+input[type="submit"] {
+  display: block;
+  width: 60%;
 }
 
 ```
 
 ## 58
 
-- Now modify the second color argument in the linear-gradient function, which is currently pure green.
+- With a display of block the submit button sits flush against the left edge of its parent.
 
-- Update the rgb function so the value for red is 245, the value of green is 62, and the value of blue is 113.
+- Use the same technique used to center the form to center the submit button.
 
 ```html
 
-.red {
-  background: linear-gradient(180deg, rgb(122, 74, 14) 0%, rgb(245, 62, 113) 50%, rgb(0, 0, 255) 100%);
+input[type="submit"] {
+  display: block;
+  width: 60%;
+  margin: 0 auto;
 }
 
 ```
 
 ## 59
 
-- The red marker is looking much more realistic. Now you'll do the same for the green marker, using a combination of the linear-gradient function and hex colors.
-
-- In the .green CSS rule, change the background-color property to background.
+- To make the submit button look more in line with the rest of the form, give it the same height as the other fields (2em). Also, increase the font-size to 1.1rem.
 
 ```html
 
-.green {
-  background: #007F00;
+input[type="submit"] {
+  display: block;
+  width: 60%;
+  margin: 0 auto;
+  height: 2em;
+  font-size: 1.1rem;
 }
  ```
 
 ## 60
 
+- To make the submit button appear more distinct, give it a background-color of #3b3b4f, and a border-color of white.
+
 ```html
 
-<!-- Make the Est. 2020 text italicized by creating an established class selector and giving it the font-style property with the value italic. -->
-.established{
-  font-style:italic;
+input[type="submit"] {
+  display: block;
+  width: 60%;
+  margin: 0 auto;
+  height: 2em;
+  font-size: 1.1rem;
+  background-color:#3b3b4f;
+  border-color: white;
 }
  ```
 
 ## 61
 
-- For this marker, you'll use hex color codes for your gradient.
+- Lastly, for the submit button, you want to separate it from the fieldset above, and adjust its width to never be below 300px.
 
-- Use the linear-gradient function and set gradientDirection to 180deg. And for the first color argument, use a hex color code with the values 55 for red, 68 for green, and 0D for blue.
+- Change the margin property to include 1em on the top and bottom, while leaving the right and left margins set to auto. Then set the width as described above.
 
 ```html
 
-.green {
-  background: linear-gradient(180deg, #55680D);
+input[type="submit"] {
+  display: block;
+  width: 60%;
+  margin: 0 auto;
+  height: 2em;
+  font-size: 1.1rem;
+  background-color: #3b3b4f;
+  border-color: white;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  min-width: 300px;
 }
 
  ```
 
 ## 62
 
-- For the second color argument, use a hex color code with the values 71 for red, F5 for green, and 3E for blue.
+- Most browsers inject their own default CSS properties and values for different elements. If you look closely, you might be able to notice the file input is smaller than the other text input elements. By default, a padding of 1px 2px is given to input elements you can type in.
+
+- Using another attribute selector, style the input with a type of file to be the same padding as the other input elements.
 
 ```html
 
-.green {
-  background: linear-gradient(180deg, #55680D, #71F53E);
+input[type="file"] {
+  padding: 1px 2px;
 }
 ```
 
 ## 63
 
-- Even without the color-stops, you might have noticed that the colors for the green marker transition at the same points as the red marker. The first color is at the start (0%), the second is in the middle (50%), and the last is at the end (100%) of the gradient line.
-
-- The linear-gradient function automatically calculates these values for you, and places colors evenly along the gradient line by default.
-
-- In the .red CSS rule, remove the three color stops from the linear-gradient function to clean up your code a bit.
+- Speaking of padding, the submit button is sitting at the bottom of the form element. Add 2em of padding only to the bottom of the form.
 
 ```html
 
-.red {
-  background: linear-gradient(180deg, rgb(122, 74, 14), rgb(245, 62, 113), rgb(162, 27, 27));
+form {
+  width: 60vw;
+  max-width: 500px;
+  min-width: 300px;
+  margin: 0 auto;
+  padding: 2em;
 }
 ```
 
 ## 64
 
-- That's looking better, but the bottom edge of the green marker needs to be darker to add a little more dimension.
-
-- In the same linear-gradient function, add a hex color code with the values 11 for red, 6C for green, and 31 for blue as the third color argument.
+- Make the input for the terms and conditions inline by adding the appropriate class in the HTML.
 
 ```html
 
-.green {
-  background: linear-gradient(180deg, #55680D, #71F53E, #116C31);
-}
+<label for="terms-and-conditions">
+        <input id="terms-and-conditions" type="checkbox" required name="terms-and-conditions" class="inline" /> I accept the <a href="https://www.freecodecamp.org/news/terms-of-service/">terms and conditions</a>
+      </label>
 ```
 
 ## 65
 
-- If no gradientDirection argument is provided to the linear-gradient function, it arranges colors from top to bottom, or along a 180 degree line, by default.
+- Lastly change the text color of the terms and conditions link element to #dfdfe2 by adding a new selector in the CSS.
 
-- Clean up your code a little more by removing the gradientDirection argument from both linear-gradient functions.
+- Well done! You have completed the final part of the Registration Form practice project.
 
 ```html
-.red {
-  background: linear-gradient( rgb(122, 74, 14), rgb(245, 62, 113), rgb(162, 27, 27));
-}
-
-.green {
-  background: linear-gradient( #55680D, #71F53E, #116C31);
+a {
+  color: #dfdfe2;
 }
 ```
 
@@ -952,465 +1092,5 @@ In the linear-gradient function, add a 75% color stop after the first red color 
 ```html
 .blue {
   background: hsl(240, 100%, 50%);
-}
-```
-
-## 67
-
-- Use the linear-gradient function, and pass in the hsl function with the values 186 for hue, 76% for saturation, and 16% for lightness as the first color argument.
-
-```html
-.blue {
-  background: linear-gradient(hsl(186, 76%, 16%));
-}
-```
-
-## 68
-
-- As the second color argument, pass in the hsl function with the values 223 for hue, 90% for saturation, and 60% for lightness.
-
-```html
-
-.blue {
-  background: linear-gradient(hsl(186, 76%, 16%), hsl(223, 90%, 60%));
-}
-```
-
-## 69
-
-- And as the third color argument, pass in the hsl function with the values 240 for hue, 56% for saturation, and 42% for lightness.
-
-```html
-
-.blue {
-  background: linear-gradient(hsl(186, 76%, 16%), hsl(223, 90%, 60%), hsl(240, 56%, 42%));
-}
-```
-
-## 70
-
-- Now that the markers have the correct colors, it's time to build the marker sleeves. Start with the red marker.
-
-- Inside the red marker div element, create a new div element and give it a class of sleeve.
-
-```html
-
-<div class="marker red">
-        <div class="sleeve">
-          </div>
-      </div>
-```
-
-## 71
-
-- Create a new CSS rule that targets the class sleeve. Set the width property to 110px, and the height property to 25px.
-
-```html
-
-.sleeve {
-  width: 110px;
-  height: 25px;
-}
-```
-
-## 72
-
-- To make the marker look more realistic, give the sleeve a transparent white color.
-
-- First, set the sleeve element's background-color to white.
-
-```html
-
-.sleeve {
-  width: 110px;
-  height: 25px;
-  background-color: white;
-}
-```
-
-## 73
-
-- Opacity describes how opaque, or non-transparent, something is. For example, a solid wall is opaque, and no light can pass through. But a drinking glass is much more transparent, and you can see through the glass to the other side.
-
-- With the CSS opacity property, you can control how opaque or transparent an element is. With the value 0, or 0%, the element will be completely transparent, and at 1.0, or 100%, the element will be completely opaque like it is by default.
-
-- In the .sleeve CSS rule, set the opacity property to 0.5.
-
-```html
-
-.sleeve {
-  width: 110px;
-  height: 25px;
-  background-color: white;
-  opacity: 0.5;
-}
-```
-
-## 74
-
-- Another way to set the opacity for an element is with the alpha channel. Similar to the opacity property, the alpha channel controls how transparent or opaque a color is.
-
-- You've already set sleeve's opacity with a named color and the opacity property, but you can add an alpha channel to the other CSS color properties.
-
-- Inside the .sleeve rule, remove the opacity property and value.
-
-```html
-
-.sleeve {
-  width: 110px;
-  height: 25px;
-  background-color: white;
-}
-```
-
-## 75
-
-- You're already familiar with using the rgb function to set colors. To add an alpha channel to an rgb color, use the rgba function instead.
-
-- The rgba function works just like the rgb function, but takes one more number from 0 to 1.0 for the alpha channel:
-
-Example Code
-rgba(redValue, greenValue, blueValue, alphaValue);
-
-- You can also use an alpha channel with hsl and hex colors. You will see how to do that soon.
-
-- In the .sleeve rule, use the rgba function to set the background-color property to pure white with 50% opacity.
-
-```html
-
-.sleeve {
-  width: 110px;
-  height: 25px;
-  background-color: rgba(255, 255, 255, 50%);
-}
-```
-
-## 76
-
-- Your sleeve is looking good, but it would look even better if it was positioned more toward the right side of the marker. One way to do that is to add another element before the sleeve to push it to the right.
-
-- Add a new div with the class cap before the sleeve div element.
-
-```html
-
-<div class="marker red">
-        <div class="cap">
-        </div>
-        <div class="sleeve"></div>
-      </div>
-```
-
-## 77
-
-- Create a new CSS rule to target the class cap. In the new rule, set the width property to 60px, and the height to 25px.
-
-```html
-
-.cap {
-  width: 60px;
-  height: 25px;
-}
-
-```
-
-## 78
-
-- It looks like your sleeve disappeared, but don't worry -- it's still there. What happened is that your new cap div is taking up the entire width of the marker, and is pushing the sleeve down to the next line.
-
-- This is because the default display property for div elements is block. So when two block elements are next to each other, they stack like actual blocks. For example, your marker elements are all stacked on top of each other.
-
-- To position two div elements on the same line, set their display properties to inline-block.
-
-- Create a new rule to target both the cap and sleeve classes, and set display to inline-block.
-
-```html
-
-.cap, .sleeve {
- display: inline-block;
-}
-```
-
-## 79
-
-- In the last project, you learned a little bit about borders and the border-color property.
-
-- All HTML elements have borders, though they're usually set to none by default. With CSS, you can control all aspects of an element's border, and set the border on all sides, or just one side at a time. For a border to be visible, you need to set its width and style.
-
-- In the .sleeve CSS rule, add the border-left-width property with the value 10px.
-
-```html
-
-.sleeve {
-  width: 110px;
-  height: 25px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-left-width: 10px;
-}
-```
-
-## 80
-
-- Borders have several styles to choose from. You can make your border a solid line, but you can also use a dashed or dotted line if you prefer. Solid border lines are probably the most common.
-
-- In the .sleeve CSS rule, add the border-left-style property with the value solid.
-
-```html
-
-.sleeve {
-  width: 110px;
-  height: 25px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-left-width: 10px;
-  border-left-style: solid;
-}
-```
-
-## 81
-
-- Your border should be visible now. If no color is set, black is used by default.
-
-- But to make your code more readable, it's better to set the border color explicitly.
-
-- In the .sleeve CSS rule, add the border-left-color property with the value black.
-
-```html
-
-.sleeve {
-  width: 110px;
-  height: 25px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-left-width: 10px;
-  border-left-style: solid;
-  border-left-color: black;
-}
-```
-
-## 82
-
-- The border-left shorthand property lets you to set the left border's width, style, and color at the same time.
-
-Here is the syntax:
-
-Example Code
-border-left: width style color;
-
-- In the .sleeve CSS rule, replace the border-left-width, border-left-style, and border-left-color properties with the border-left shorthand property. The values for the width, style, and color of the left border should be the same.
-
-```html
-
-.sleeve {
-  width: 110px;
-  height: 25px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-left: 10px solid black;
-}
-```
-
-## 83
-
-- Your marker is looking good. But to make it look even more realistic, you can change the border style to double solid borders.
-
-- For the border-left shorthand property, change the border style value from solid to double.
-
-```html
-
-.sleeve {
-  width: 110px;
-  height: 25px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-left: 10px double black;
-}
-```
-
-## 84
-
-- The black color of your border looks pretty harsh against the more transparent sleeve. You can use an alpha channel to lower the opacity of the black border.
-
-- For the border-left shorthand property, use the rgba function to set the color value to pure black with 75% opacity.
-
-```html
-
-.sleeve {
-  width: 110px;
-  height: 25px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-left: 10px double rgba(0, 0, 0, 75%);
-}
-```
-
-## 85
-
-- Awesome. Your red marker is looking good. Now all you need to do is add the caps and sleeves to your other markers.
-
-- Add a cap and sleeve to both the green and blue markers. You can just copy the div elements from the red marker and paste them into the other two markers.
-
-```html
-
-<div class="marker red">
-        <div class="cap"></div>
-        <div class="sleeve"></div>
-      </div>
-      <div class="marker green">
-        <div class="cap"></div>
-        <div class="sleeve"></div>
-      </div>
-      <div class="marker blue">
-        <div class="cap"></div>
-        <div class="sleeve"></div>
-      </div>
-```
-
-## 86
-
-- The last thing you'll do is add a slight shadow to each marker to make them look even more realistic.
-
-- The box-shadow property lets you apply one or more shadows around an element. Here is basic syntax:
-
-Example Code
-box-shadow: offsetX offsetY color;
-Here's how the offsetX and offsetY values work:
-
-both offsetX and offsetY accept number values in px and other CSS units
-a positive offsetX value moves the shadow right and a negative value moves it left
-a positive offsetY value moves the shadow down and a negative value moves it up
-if you want a value of zero (0) for any or both offsetX and offsetY, you don't need to add a unit. Every browser understands that zero means no change.
-The height and width of the shadow is determined by the height and width of the element it's applied to. You can also use an optional spreadRadius value to spread out the reach of the shadow. More on that later.
-
-Start by adding a simple shadow to the red marker.
-
-- In the .red CSS rule, add the box-shadow property with the values 5px for offsetX, 5px for offsetY, and red for color.
-
-```html
-
-.red {
-  background: linear-gradient(rgb(122, 74, 14), rgb(245, 62, 113), rgb(162, 27, 27));
-  box-shadow: 5px 5px red;
-}
-```
-
-## 87
-
-- As you can see, you added a simple red shadow around your marker that's 5 pixels to the right, and 5 pixels down.
-
-- But what if you wanted to position your shadow on the opposite side? You can do that by using negative values for offsetX and offsetY.
-
-- Update the values for the box-shadow property, and set offsetX to -5px, and offsetY to -5px.
-
-```html
-
-.red {
-  background: linear-gradient(rgb(122, 74, 14), rgb(245, 62, 113), rgb(162, 27, 27));
-  box-shadow: -5px -5px red;
-}
-```
-
-## 88
-
-- Notice that the edges of the shadow are sharp. This is because there is an optional blurRadius value for the box-shadow property:
-
-Example Code
-box-shadow: offsetX offsetY blurRadius color;
-If a blurRadius value isn't included, it defaults to 0 and produces sharp edges. The higher the value of blurRadius, the greater the blurring effect is.
-
-- In the .green CSS rule, add the box-shadow property with the values 5px for offsetX, 5px for offsetY, 5px for blurRadius, and green for color.
-
-```html
-
-.green {
-  background: linear-gradient(#55680D, #71F53E, #116C31);
-  box-shadow: 5px 5px 5px green;
-}
-```
-
-## 89
-
-- But what if you wanted to expand the shadow out further? You can do that with the optional spreadRadius value:
-
-Example Code
-box-shadow: offsetX offsetY blurRadius spreadRadius color;
-Like blurRadius, spreadRadius defaults to 0 if it isn't included.
-
-Practice by adding a 5 pixel shadow directly around the blue marker.
-
-- In the .blue CSS rule, add the box-shadow property with the values 0 for offsetX, 0 for offsetY, 0 for blurRadius, 5px for spreadRadius, and blue for color.
-
-```html
-
-.blue {
-  background: linear-gradient(hsl(186, 76%, 16%), hsl(223, 90%, 60%), hsl(240, 56%, 42%));
-  box-shadow: 0 0 0 5px blue;
-}
-```
-
-## 90
-
-- Now that you're familiar with the box-shadow property you can finalize the shadows, starting with the one for the red marker.
-
-- In the .red CSS rule, update the values for the box-shadow property so offsetX is 0,offsetY is 0, blurRadius is 20px, spreadRadius is 0, and color is red. Remember that you don't need to add units to a zero value.
-
-```html
-
-.red {
-  background: linear-gradient(rgb(122, 74, 14), rgb(245, 62, 113), rgb(162, 27, 27));
-  box-shadow: 0 0 20px 0 red;
-}
-```
-
-## 91
-
-- Next, update the color value of the red marker's box-shadow property.
-
-- Replace the named color with the rgba function. Use the values 83 for red, 14 for green, 14 for blue and 0.8 for the alpha channel.
-
-```html
-
-.red {
-  background: linear-gradient(rgb(122, 74, 14), rgb(245, 62, 113), rgb(162, 27, 27));
-  box-shadow: 0 0 20px 0 rgba(83, 14, 14, 0.8);
-}
-```
-
-## 92
-
-- The shadows for your green and blue markers will have the same position, blur, and spread. The only difference will be the colors.
-
-- In the .green and .blue CSS rules, update the values for the box-shadow properties so offsetX is 0,offsetY is 0, blurRadius is 20px, and spreadRadius is 0. Leave the colors as green and blue for now.
-
-```html
-
-green {
-  background: linear-gradient(#55680D, #71F53E, #116C31);
-  box-shadow: 0 0 20px 0 green;
-}
-
-.blue {
-  background: linear-gradient(hsl(186, 76%, 16%), hsl(223, 90%, 60%), hsl(240, 56%, 42%));
-  box-shadow: 0 0 20px 0 blue;
-}
-```
-
-## 93
-
-- For the green marker's box-shadow property, replace the named color with a hex color code. Use the values 3B for red, 7E for green, 20 for blue, and CC for the alpha channel.
-
-```html
-
-.green {
-  background: linear-gradient(#55680D, #71F53E, #116C31);
-  box-shadow: 0 0 20px 0 #3B7E20CC;
-}
-```
-
-## 94
-
-- Finally, for the blue marker's box-shadow property, replace the named color with the hsla function. Use the values 223 for hue, 59% for saturation, 31% for lightness, and 0.8 for the alpha channel.
-
-- And with that, your set of colored markers is complete! Well done.
-
-```html
-
-.blue {
-  background: linear-gradient(hsl(186, 76%, 16%), hsl(223, 90%, 60%), hsl(240, 56%, 42%));
-  box-shadow: 0 0 20px 0 hsla(223, 59%, 31%, 0.8);
 }
 ```
