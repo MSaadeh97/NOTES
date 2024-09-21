@@ -562,7 +562,7 @@ Change the existing #menu selector into a class selector by replacing #menu with
 
 ```html
 
-<!-- added a new fieldset element under the first one to add a new form -->
+<!-- added the rest of the deserts in their respective artcle element and price -->
           
 ```
 
@@ -570,23 +570,50 @@ Change the existing #menu selector into a class selector by replacing #menu with
 
 ```html
 
-<!-- added a legend in the field set with text --> 
+<!-- You can give your menu some space between the content and the sides with various padding properties.
+
+Give the menu class a padding-left and a padding-right with the same value 20px. --> 
           
+.menu {
+  width: 80%;
+  background-color: burlywood;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 ```
 
 ## 54
 
 ```html
 
-<!-- Forms commonly use checkboxes for questions that may have more than one answer. The input element with a type attribute set to checkbox creates a checkbox. --> 
-          <input type="checkbox"> Loving
+<!-- added padding to top and bottom --> 
+          .menu {
+  width: 80%;
+  background-color: burlywood;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 ```
 
 ## 55
 
 ```html
 
-<!-- added id attribute loving -->
+<!-- Since all 4 sides of the menu have the same internal spacing, go ahead and delete the four properties and use a single padding property with the value 20px. -->
+.menu {
+  width: 80%;
+  background-color: burlywood;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
 
 ```
 
@@ -594,18 +621,18 @@ Change the existing #menu selector into a class selector by replacing #menu with
 
 ```html
 
-<!-- There's another way to associate an input element's text with the element itself. You can nest the text within a label element and add a for attribute with the same value as the input element's id attribute.
+<!-- The current width of the menu will always take up 80% of the body element's width. On a very wide screen, the coffee and dessert appear far apart from their prices.
 
-Given an input element as below:
-
-Example Code
-<input id="breakfast" type="radio" name="meal" value="breakfast">
-An example of a label element that is associated to this input element is:
-
-Example Code
-<label for="breakfast">Breakfast</label> -->
+Add a max-width property to the menu class with a value of 500px to prevent it from growing too wide. -->
  
-<input id="loving" type="checkbox"> <label for="loving">Loving</label>
+.menu {
+  width: 80%;
+  background-color: burlywood;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  max-width: 500px;
+}
 
 ```
 
@@ -613,7 +640,14 @@ Example Code
 
 ```html
 
-<!-- added attribute name to input tag with value personality -->
+<!-- You can change the font-family of text, to make it look different from the default font of your browser. Each browser has some common fonts available to it.
+
+Change all the text in your body, by adding a font-family property with the value sans-serif. This is a fairly common font that is very readable. -->
+
+body {
+  background-image: url(https://cdn.freecodecamp.org/curriculum/css-cafe/beans.jpg);
+  font-family: sans-serif;
+}
 
 ```
 
@@ -621,7 +655,10 @@ Example Code
 
 ```html
 
-<!-- added another input tag for a new checkbox for lazy, with the same name value personality but different id and for attribute values -->
+<!-- Style both the h1 and the h2 elements using a single selector so that these elements' text use Impact font. -->
+h1,h2 {
+font-family: Impact
+}
 
 ```
 
@@ -629,25 +666,32 @@ Example Code
 
 ```html
 
-<!-- added another checkboc for energetic -->
+<!-- You can add a fallback value for the font-family by adding another font name separated by a comma. Fallbacks are used in instances where the initial is not found/available.
 
+Add the fallback font serif after the Impact font. -->
+h1, h2 {
+  font-family: Impact, serif;
+}
  ```
 
 ## 60
 
 ```html
 
-<!-- added value attribute to each checkbox input element with its respective id value -->
-
+<!-- Make the Est. 2020 text italicized by creating an established class selector and giving it the font-style property with the value italic. -->
+.established{
+  font-style:italic;
+}
  ```
 
 ## 61
 
 ```html
 
-<!-- added checked attribute after input tag to check radio and checkbox by default, only the first options -->
+<!-- Now apply the established class to the Est. 2020 text. -->
 
-<input checked id="loving" type="checkbox" name="personality" value="loving"> <label for="loving">Loving</label>
+<h1>CAMPER CAFE</h1>
+        <p class="established">Est. 2020</p>
 
  ```
 
@@ -655,7 +699,18 @@ Example Code
 
 ```html
 
-<footer></footer>
+- The typography of heading elements (e.g. h1, h2) is set by default values of users' browsers.
+
+- Add two new type selectors (h1 and h2). Use the font-size property for both, but use the value 40px for the h1 and 30px for the h2.
+
+
+h1 {
+  font-size: 40px
+}
+
+h2 {
+  font-size: 30px
+}
 
  ```
 
@@ -663,64 +718,362 @@ Example Code
 
 ```html
 
-<footer>
-      <p> No Copyright - freeCodeCamp.org </p>
-    </footer>
+- Add a footer element below the main element, where you can add some additional information.
+
+<footer> </footer>
 
  ```
 
 ## 64
 
+```html
+- Inside the footer, add a p element. Then, nest an anchor (a) element in the p that links to https://www.freecodecamp.org and has the text Visit our website.
+
+<footer>
+        <p> <a href="https://www.freecodecamp.org"> Visit our website </a> </p>
+      </footer>
+```
+
 ## 65
+
+```html
+- Add a second p element below the one with the link and give it the text 123 Free Code Camp Drive.
+
+<p>
+          <a href="https://www.freecodecamp.org" target="_blank">Visit our website</a>
+        </p>
+        <p> 123 Free Code Camp Drive</p>
+```
 
 ## 66
 
+```html
+-added hr element to seperate content, it is a line on the page, it is also a void element
+
+<hr>
+```
+
 ## 67
+
+```html
+- The default properties of an hr element will make it appear as a thin light grey line. You can change the height of the line by specifying a value for the height property.
+
+- Change the height of the hr element to be 3px.
+
+hr {
+  height: 3px;
+}
+```
 
 ## 68
 
+```html
+
+- changed hr background to match color of beans
+
+hr {
+  height: 3px;
+  background-color: brown;
+}
+```
+
 ## 69
+
+```html
+
+- Notice the grey color along the edges of the line. Those edges are known as borders. Each side of an element can have a different color or they can all be the same.
+
+- Make all the edges of the hr element the same color as the background of it using the border-color property.
+
+hr {
+  height: 3px;
+  background-color: brown;
+  border-color: brown;
+}
+```
 
 ## 70
 
+```html
+
+- changed height of hr element to 2px
+
+hr {
+  height: 2px;
+  background-color: brown;
+  border-color: brown;
+}
+```
+
 ## 71
+
+```html
+
+- added another hr element below main and above the footer to seperate it
+
+<hr>>
+```
 
 ## 72
 
+```html
+
+- To create a little more room around the menu, add 20px of space on the inside of the body element by using the padding property.
+
+body {
+  background-image: url(https://cdn.freecodecamp.org/curriculum/css-cafe/beans.jpg);
+  font-family: sans-serif;
+  padding: 20px;
+}
+```
+
 ## 73
+
+```html
+
+- Focusing on the menu items and prices, there is a fairly large gap between each line.
+
+ - Use the existing selector that targets all the p elements nested in elements with the class named item and set their top and bottom margin to be 5px.
+
+.item p {
+  display: inline-block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+}
+```
 
 ## 74
 
+```html
+
+- made font size of items and price 18px
+
+.item p {
+  display: inline-block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+```
+
 ## 75
+
+```html
+
+- Changing the margin-bottom to 5px looks great. However, now the space between the Cinnamon Roll menu item and the second hr element does not match the space between the top hr element and the Coffee heading.
+
+ - Add some more space by creating a class named bottom-line using 25px for the margin-top property.
+
+.bottom-line {
+  margin-top: 25px;
+}
+```
 
 ## 76
 
+```html
+
+- Now add the bottom-line class to the second hr element so the styling is applied.
+
+<hr class="bottom-line">
+```
+
 ## 77
+
+```html
+
+- added comment to organize styles.css to seperate where we are styling the footer
+
+/* FOOTER */
+
+```
 
 ## 78
 
+```html
+
+- Moving down to the footer element, make all the text have a value of 14px for the font size.
+
+footer {
+  font-size: 14px;
+}
+```
+
 ## 79
+
+```html
+
+- The default color of a link that has not yet been clicked on is typically blue. The default color of a link that has already been visited from a page is typically purple.
+
+- To make the footer links the same color regardless if a link has been visited, use a type selector for the anchor element (a) and use the value black for the color property.
+
+a {
+  color: black;
+}
+```
 
 ## 80
 
+```html
+
+- You change properties of a link when the link has actually been visited by using a pseudo-selector that looks like a:visited { propertyName: propertyValue; }.
+
+- Change the color of the footer Visit our website link to be grey when a user has visited the link.
+
+a:visited { 
+  color: grey; 
+  }
+```
+
 ## 81
+
+```html
+
+- You change properties of a link when the mouse hovers over them by using a pseudo-selector that looks like a:hover { propertyName: propertyValue; }.
+
+- Change the color of the footer Visit our website link to be brown when a user hovers over it.
+
+a:hover { 
+  color: brown; 
+  }
+```
 
 ## 82
 
+```html
+
+- You change properties of a link when the link is actually being clicked by using a pseudo-selector that looks like a:active { propertyName: propertyValue; }.
+
+- Change the color of the footer Visit our website link to be white when clicked on.
+
+a:active { 
+  color: white; 
+  }
+```
+
 ## 83
+
+```html
+
+- To keep with the same color theme you have already been using (black and brown), change the color for when the link is visited to black and use brown for when the link is actually clicked.
+
+a:visited {
+  color: black;
+}
+
+a:hover {
+  color: brown;
+}
+
+a:active {
+  color: brown;
+}
+```
 
 ## 84
 
+```html
+
+- The menu text CAMPER CAFE has a different space from the top than the address's space at the bottom of the menu. This is due to the browser having some default top margin for the h1 element.
+
+- Change the top margin of the h1 element to 0 to remove all the top margin.
+
+h1 {
+  font-size: 40px;
+  margin-top: 0;
+}
+```
+
 ## 85
+
+```html
+
+- To remove some of the vertical space between the h1 element and the text Est. 2020, change the bottom margin of the h1 to 15px.
+
+h1 {
+  font-size: 40px;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+```
 
 ## 86
 
+```html
+
+- Now the top spacing looks good. The space below the address at the bottom of the menu is a little bigger than the space at the top of the menu and the h1 element.
+
+- To decrease the default margin space below the address p element, create a class selector named address and use the value 5px for the margin-bottom property.
+
+.address {
+  margin-bottom: 5px;
+}
+```
+
 ## 87
+
+```html
+
+- Now apply the address class to the p element containing the street address 123 Free Code Camp Drive
+
+<footer>
+        <p>
+          <a href="https://www.freecodecamp.org" target="_blank">Visit our website</a>
+        </p>
+        <p class="address">123 Free Code Camp Drive</p>
+      </footer>
+```
 
 ## 88
 
+```html
+
+- The menu looks good, but other than the coffee beans background image, it is mainly just text.
+
+- Under the Coffee heading, add an image using the url https://cdn.freecodecamp.org/curriculum/css-cafe/coffee.jpg. Give the image an alt value of coffee icon.
+
+<h2>Coffee</h2>
+          <img src="https://cdn.freecodecamp.org/curriculum/css-cafe/coffee.jpg" alt="coffee icon">
+```
+
 ## 89
+
+```html
+
+- The image you added is not centered horizontally like the Coffee heading above it. img elements are "like" inline elements.
+
+- To make the image behave like heading elements (which are block-level), create an img type selector and use the value block for the display property and use the applicable margin-left and margin-right values to center it horizontally.
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+```
 
 ## 90
 
+```html
+
+- Add one last image under the Desserts heading using the url https://cdn.freecodecamp.org/curriculum/css-cafe/pie.jpg. Give the image an alt value of pie icon.
+
+<h2>Desserts</h2>
+          <img src="https://cdn.freecodecamp.org/curriculum/css-cafe/pie.jpg" alt="pie icon">
+```
+
 ## 91
+
+```html
+
+- It would be nice if the vertical space between the h2 elements and their associated icons was smaller. The h2 elements have default top and bottom margin space, so you could change the bottom margin of the h2 elements to say 0 or another number.
+
+- There is an easier way, simply add a negative top margin to the img elements to pull them up from their current positions. Negative values are created using a - in front of the value. To complete this project, go ahead and use a negative top margin of 25px in the img type selector.
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -25px
+}
+```
