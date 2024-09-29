@@ -642,541 +642,398 @@ daily-value p {
 
 ## 50
 
+- The :not pseudo-selector can be used to select all elements that do not match the given CSS rule.
+
+Example Code
+div:not(#example) {
+  color: red;
+}
+The above selects all div elements without an id of example.
+
+Modify your .daily-value p selector to exclude the .no-divider elements.
+
 ```html
 
-<!-- added a class for dessert and price in the respective p element -->
-  <p class="dessert">Donut</p><p class="price">1.50</p>
+.daily-value p:not(.no-divider) {
+  border-bottom: 1px solid #888989;
+}
           
 ```
 
 ## 51
 
+- Now you will have to add separate dividers below your .no-divider elements.
+
+- Your first .no-divider element has a .divider after it. Create another .divider after your second .no-divider element.
+
 ```html
 
-<!-- added dessert as the additional selector with flavor to apply the same style -->
-  .flavor, .dessert {
-  text-align: left;
-  width: 75%;
-}
+<div class="daily-value small-text">
+      <p class="bold right no-divider">% Daily Value *</p>
+      <div class="divider"></div>
+      <p><span><span class="bold">Total Fat</span> 8g</span> <span class="bold">10%</span></p>
+      <p class="indent no-divider">Saturated Fat 1g <span class="bold">5%</span></p>
+      <div class="divider"></div>
+    </div>   
           
 ```
 
 ## 52
 
+- After your last .divider, create another p element with the text Trans Fat 0g. Italicize the word Trans by wrapping it in an i element. Give the new p element the class attribute set to indent no-divider. Wrap Trans Fat 0g in a span element for alignment.
+
 ```html
 
-<!-- added the rest of the deserts in their respective artcle element and price -->
+<div class="daily-value small-text">
+      <p class="bold right no-divider">% Daily Value *</p>
+      <div class="divider"></div>
+      <p><span><span class="bold">Total Fat</span> 8g</span> <span class="bold">10%</span></p>
+      <p class="indent no-divider">Saturated Fat 1g <span class="bold">5%</span></p>
+      <div class="divider"></div>
+      <p class="indent no-divider"><span><i>Trans</i> Fat 0g</span></p>
+    </div>   
           
 ```
 
 ## 53
 
+- Create another .divider after your last p element.
+
 ```html
 
-<!-- You can give your menu some space between the content and the sides with various padding properties.
-
-Give the menu class a padding-left and a padding-right with the same value 20px. --> 
-          
-.menu {
-  width: 80%;
-  background-color: burlywood;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
+<div class="daily-value small-text">
+      <p class="bold right no-divider">% Daily Value *</p>
+      <div class="divider"></div>
+      <p><span><span class="bold">Total Fat</span> 8g</span> <span class="bold">10%</span></p>
+      <p class="indent no-divider">Saturated Fat 1g <span class="bold">5%</span></p>
+      <div class="divider"></div>
+      <p class="indent no-divider"><span><i>Trans</i> Fat 0g</span></p>
+      <div class="divider"></div>
+    </div>    
 
 ```
 
 ## 54
 
+- After your last .divider, create a new p element with the text Cholesterol 0mg 0%. Then, wrap the text Cholesterol in a span element, 0% in another, and give each of them a class of bold.
+
+- Finally, nest the span element containing the text Cholesterol along with the text 0mg, in an additional span element for alignment.
+
 ```html
 
-<!-- added padding to top and bottom --> 
-          .menu {
-  width: 80%;
-  background-color: burlywood;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
+<div class="daily-value small-text">
+      <p class="bold right no-divider">% Daily Value *</p>
+      <div class="divider"></div>
+      <p><span><span class="bold">Total Fat</span> 8g</span> <span class="bold">10%</span></p>
+      <p class="indent no-divider">Saturated Fat 1g <span class="bold">5%</span></p>
+      <div class="divider"></div>
+      <p class="indent no-divider"><span><i>Trans</i> Fat 0g</span></p>
+      <div class="divider"></div>
+      <p><span><span class="bold">Cholesterol</span> 0mg</span> <span class="bold">0%</span></p>
+    </div>   
 ```
 
 ## 55
 
+- Below your last p element, create another p element with the text Sodium 160mg 7%. Put Sodium and 7% each in their own span with a class of a bold like you did with the others.
+
+- Then, add an additional span element around Sodium 160mg for alignment again.
+
 ```html
 
-<!-- Since all 4 sides of the menu have the same internal spacing, go ahead and delete the four properties and use a single padding property with the value 20px. -->
-.menu {
-  width: 80%;
-  background-color: burlywood;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 20px;
-}
+<div class="daily-value small-text">
+      <p class="bold right no-divider">% Daily Value *</p>
+      <div class="divider"></div>
+      <p><span><span class="bold">Total Fat</span> 8g</span> <span class="bold">10%</span></p>
+      <p class="indent no-divider">Saturated Fat 1g <span class="bold">5%</span></p>
+      <div class="divider"></div>
+      <p class="indent no-divider"><span><i>Trans</i> Fat 0g</span></p>
+      <div class="divider"></div>
+      <p><span><span class="bold">Cholesterol</span> 0mg</span> <span class="bold">0%</span></p>
+      <p><span><span class="bold">Sodium</span> 160mg</span> <span class="bold">7%</span></p>
+    </div>    
 
 ```
 
 ## 56
 
+- Below your last p element, add another p element with the text Total Carbohydrate 37g 13%. Like before, use span elements to make the text Total Carbohydrate and 13% bold. Then, wrap the nutrient and amount in a span for alignment again.
+
 ```html
 
-<!-- The current width of the menu will always take up 80% of the body element's width. On a very wide screen, the coffee and dessert appear far apart from their prices.
-
-Add a max-width property to the menu class with a value of 500px to prevent it from growing too wide. -->
- 
-.menu {
-  width: 80%;
-  background-color: burlywood;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 20px;
-  max-width: 500px;
-}
+<div class="daily-value small-text">
+      <p class="bold right no-divider">% Daily Value *</p>
+      <div class="divider"></div>
+      <p><span><span class="bold">Total Fat</span> 8g</span> <span class="bold">10%</span></p>
+      <p class="indent no-divider">Saturated Fat 1g <span class="bold">5%</span></p>
+      <div class="divider"></div>
+      <p class="indent no-divider"><span><i>Trans</i> Fat 0g</span></p>
+      <div class="divider"></div>
+      <p><span><span class="bold">Cholesterol</span> 0mg</span> <span class="bold">0%</span></p>
+      <p><span><span class="bold">Sodium</span> 160mg</span> <span class="bold">7%</span></p>
+      <p><span><span class="bold">Total Carbohydrate</span> 37g</span> <span class="bold">13%</span></p>
+    </div>    
 
 ```
 
 ## 57
 
+- Below your last p element, add another p element with the text Dietary Fiber 4g. Give the p element the class necessary to indent it and remove the dividing border. Then create a divider below that p element.
+
 ```html
 
-<!-- You can change the font-family of text, to make it look different from the default font of your browser. Each browser has some common fonts available to it.
-
-Change all the text in your body, by adding a font-family property with the value sans-serif. This is a fairly common font that is very readable. -->
-
-body {
-  background-image: url(https://cdn.freecodecamp.org/curriculum/css-cafe/beans.jpg);
-  font-family: sans-serif;
-}
+<div class="daily-value small-text">
+      <p class="bold right no-divider">% Daily Value *</p>
+      <div class="divider"></div>
+      <p><span><span class="bold">Total Fat</span> 8g</span> <span class="bold">10%</span></p>
+      <p class="indent no-divider">Saturated Fat 1g <span class="bold">5%</span></p>
+      <div class="divider"></div>
+      <p class="indent no-divider"><span><i>Trans</i> Fat 0g</span></p>
+      <div class="divider"></div>
+      <p><span><span class="bold">Cholesterol</span> 0mg</span> <span class="bold">0%</span></p>
+      <p><span><span class="bold">Sodium</span> 160mg</span> <span class="bold">7%</span></p>
+      <p><span><span class="bold">Total Carbohydrate</span> 37g</span> <span class="bold">13%</span></p>
+      <p class="indent no-divider">Dietary Fiber 4g</p>
+      <div class="divider"></div>
+    </div>    
 
 ```
 
 ## 58
 
+- Create another p element after your last .divider, and give it the text Total Sugars 12g. Assign that p element the class values necessary to indent it and remove the bottom border. Then create another .divider below your new p element.
+
 ```html
 
-<!-- Style both the h1 and the h2 elements using a single selector so that these elements' text use Impact font. -->
-h1,h2 {
-font-family: Impact
-}
+<div class="daily-value small-text">
+      <p class="bold right no-divider">% Daily Value *</p>
+      <div class="divider"></div>
+      <p><span><span class="bold">Total Fat</span> 8g</span> <span class="bold">10%</span></p>
+      <p class="indent no-divider">Saturated Fat 1g <span class="bold">5%</span></p>
+      <div class="divider"></div>
+      <p class="indent no-divider"><span><i>Trans</i> Fat 0g</span></p>
+      <div class="divider"></div>
+      <p><span><span class="bold">Cholesterol</span> 0mg</span> <span class="bold">0%</span></p>
+      <p><span><span class="bold">Sodium</span> 160mg</span> <span class="bold">7%</span></p>
+      <p><span><span class="bold">Total Carbohydrate</span> 37g</span> <span class="bold">13%</span></p>
+      <p class="indent no-divider">Dietary Fiber 4g</p>
+      <div class="divider"></div>
+      <p class="indent no-divider">Total Sugars 12g</p>
+       <div class="divider"></div>
+    </div>    
 
 ```
 
 ## 59
 
+- The advantage to creating these dividers is that you can apply specific classes to style them individually. Add double-indent to the class for your last .divider.
+
 ```html
 
-<!-- You can add a fallback value for the font-family by adding another font name separated by a comma. Fallbacks are used in instances where the initial is not found/available.
-
-Add the fallback font serif after the Impact font. -->
-h1, h2 {
-  font-family: Impact, serif;
-}
+<div class="divider double-indent"></div>
  ```
 
 ## 60
 
+- Create a .double-indent selector and give it a left margin of 2em.
+
 ```html
 
-<!-- Make the Est. 2020 text italicized by creating an established class selector and giving it the font-style property with the value italic. -->
-.established{
-  font-style:italic;
+.double-indent {
+  margin-left: 2em;
 }
  ```
 
 ## 61
 
+- Below your .double-indent element, add a new p element with the text Includes 10g Added Sugars 20%. Your new p element should also be double indented, and have no bottom border. Use a span to make the 20% bold and right aligned.
+
+- Then create another divider after that p element.
+
 ```html
 
-<!-- Now apply the established class to the Est. 2020 text. -->
-
-<h1>CAMPER CAFE</h1>
-        <p class="established">Est. 2020</p>
+<div class="daily-value small-text">
+      <p class="bold right no-divider">% Daily Value *</p>
+      <div class="divider"></div>
+      <p><span><span class="bold">Total Fat</span> 8g</span> <span class="bold">10%</span></p>
+      <p class="indent no-divider">Saturated Fat 1g <span class="bold">5%</span></p>
+      <div class="divider"></div>
+      <p class="indent no-divider"><span><i>Trans</i> Fat 0g</span></p>
+      <div class="divider"></div>
+      <p><span><span class="bold">Cholesterol</span> 0mg</span> <span class="bold">0%</span></p>
+      <p><span><span class="bold">Sodium</span> 160mg</span> <span class="bold">7%</span></p>
+      <p><span><span class="bold">Total Carbohydrate</span> 37g</span> <span class="bold">13%</span></p>
+      <p class="indent no-divider">Dietary Fiber 4g</p>
+      <div class="divider"></div>
+      <p class="indent no-divider">Total Sugars 12g</p>
+      <div class="divider double-indent"></div>
+      <p class="double-indent no-divider">Includes 10g Added Sugars <span class="bold right">20%</span></p>
+      <div class="divider double-indent"></div>
+    </div>
 
  ```
 
 ## 62
 
+- After your last divider, create another p element with the text Protein 3g. Use the necessary classes to remove the bottom border, and a span to make the Protein bold. Then wrap the text Protein 3g including the new span element, in a new span element.
+
+- Following this element, create a large divider.
+
 ```html
 
-- The typography of heading elements (e.g. h1, h2) is set by default values of users' browsers.
-
-- Add two new type selectors (h1 and h2). Use the font-size property for both, but use the value 40px for the h1 and 30px for the h2.
-
-
-h1 {
-  font-size: 40px
-}
-
-h2 {
-  font-size: 30px
-}
+<div class="daily-value small-text">
+      <p class="bold right no-divider">% Daily Value *</p>
+      <div class="divider"></div>
+      <p><span><span class="bold">Total Fat</span> 8g</span> <span class="bold">10%</span></p>
+      <p class="indent no-divider">Saturated Fat 1g <span class="bold">5%</span></p>
+      <div class="divider"></div>
+      <p class="indent no-divider"><span><i>Trans</i> Fat 0g</span></p>
+      <div class="divider"></div>
+      <p><span><span class="bold">Cholesterol</span> 0mg</span> <span class="bold">0%</span></p>
+      <p><span><span class="bold">Sodium</span> 160mg</span> <span class="bold">7%</span></p>
+      <p><span><span class="bold">Total Carbohydrate</span> 37g</span> <span class="bold">13%</span></p>
+      <p class="indent no-divider">Dietary Fiber 4g</p>
+      <div class="divider"></div>
+      <p class="indent no-divider">Total Sugars 12g</p>
+      <div class="divider double-indent"></div>
+      <p class="double-indent no-divider">Includes 10g Added Sugars <span class="bold">20%</span></p>
+      <div class="divider"></div>
+      <p class="no-divider"><span><span class="bold">Protein</span> 3g</span></p>
+      <div class="divider large"></div>
+    </div>
 
  ```
 
 ## 63
 
+- Create another p element below your large divider. Give the p element the text Vitamin D 2mcg 10%.
+
+- The p element contains only text, you can wrap the percentage in a span element so that it is considered a separate entity from the rest of the text, and it's moved to the right.
+
 ```html
 
-- Add a footer element below the main element, where you can add some additional information.
-
-<footer> </footer>
+<div class="daily-value small-text">
+      <p class="bold right no-divider">% Daily Value *</p>
+      <div class="divider"></div>
+      <p><span><span class="bold">Total Fat</span> 8g</span> <span class="bold">10%</span></p>
+      <p class="indent no-divider">Saturated Fat 1g <span class="bold">5%</span></p>
+      <div class="divider"></div>
+      <p class="indent no-divider"><span><i>Trans</i> Fat 0g</span></p>
+      <div class="divider"></div>
+      <p><span><span class="bold">Cholesterol</span> 0mg</span> <span class="bold">0%</span></p>
+      <p><span><span class="bold">Sodium</span> 160mg</span> <span class="bold">7%</span></p>
+      <p><span><span class="bold">Total Carbohydrate</span> 37g</span> <span class="bold">13%</span></p>
+      <p class="indent no-divider">Dietary Fiber 4g</p>
+      <div class="divider"></div>
+      <p class="indent no-divider">Total Sugars 12g</p>
+      <div class="divider double-indent"></div>
+      <p class="double-indent no-divider">Includes 10g Added Sugars <span class="bold">20%</span></p>
+      <div class="divider"></div>
+      <p class="no-divider"><span><span class="bold">Protein</span> 3g</span></p>
+      <div class="divider large"></div>
+      <p>Vitamin D 2mcg <span>10%</span></p>
+    </div>
 
  ```
 
 ## 64
 
-```html
-- Inside the footer, add a p element. Then, nest an anchor (a) element in the p that links to https://www.freecodecamp.org and has the text Visit our website.
+- Create another p element, give it the text Calcium 260mg 20%. Align 20% to the right. Below that, create a p element with the text Iron 8mg 45%, aligning the 45% to the right.
 
-<footer>
-        <p> <a href="https://www.freecodecamp.org"> Visit our website </a> </p>
-      </footer>
+```html
+<div class="daily-value small-text">
+      <p class="bold right no-divider">% Daily Value *</p>
+      <div class="divider"></div>
+      <p><span><span class="bold">Total Fat</span> 8g</span> <span class="bold">10%</span></p>
+      <p class="indent no-divider">Saturated Fat 1g <span class="bold">5%</span></p>
+      <div class="divider"></div>
+      <p class="indent no-divider"><span><i>Trans</i> Fat 0g</span></p>
+      <div class="divider"></div>
+      <p><span><span class="bold">Cholesterol</span> 0mg</span> <span class="bold">0%</span></p>
+      <p><span><span class="bold">Sodium</span> 160mg</span> <span class="bold">7%</span></p>
+      <p><span><span class="bold">Total Carbohydrate</span> 37g</span> <span class="bold">13%</span></p>
+      <p class="indent no-divider">Dietary Fiber 4g</p>
+      <div class="divider"></div>
+      <p class="indent no-divider">Total Sugars 12g</p>
+      <div class="divider double-indent"></div>
+      <p class="double-indent no-divider">Includes 10g Added Sugars <span class="bold">20%</span></p>
+      <div class="divider"></div>
+      <p class="no-divider"><span><span class="bold">Protein</span> 3g</span></p>
+      <div class="divider large"></div>
+      <p>Vitamin D 2mcg <span>10%</span></p>
+      <p>Calcium 260mg <span class="right">20%</span></p>
+      <p>Iron 8mg <span class="right">45%</span></p>
+    </div>
 ```
 
 ## 65
 
-```html
-- Add a second p element below the one with the link and give it the text 123 Free Code Camp Drive.
+- Create the final p element for your .daily-value section. Give it the text Potassium 235mg 6%. Align the 6% text to the right, and remove the bottom border of the p element.
 
-<p>
-          <a href="https://www.freecodecamp.org" target="_blank">Visit our website</a>
-        </p>
-        <p> 123 Free Code Camp Drive</p>
+```html
+<div class="daily-value small-text">
+      <p class="bold right no-divider">% Daily Value *</p>
+      <div class="divider"></div>
+      <p><span><span class="bold">Total Fat</span> 8g</span> <span class="bold">10%</span></p>
+      <p class="indent no-divider">Saturated Fat 1g <span class="bold">5%</span></p>
+      <div class="divider"></div>
+      <p class="indent no-divider"><span><i>Trans</i> Fat 0g</span></p>
+      <div class="divider"></div>
+      <p><span><span class="bold">Cholesterol</span> 0mg</span> <span class="bold">0%</span></p>
+      <p><span><span class="bold">Sodium</span> 160mg</span> <span class="bold">7%</span></p>
+      <p><span><span class="bold">Total Carbohydrate</span> 37g</span> <span class="bold">13%</span></p>
+      <p class="indent no-divider">Dietary Fiber 4g</p>
+      <div class="divider"></div>
+      <p class="indent no-divider">Total Sugars 12g</p>
+      <div class="divider double-indent"></div>
+      <p class="double-indent no-divider">Includes 10g Added Sugars <span class="bold">20%</span></p>
+      <div class="divider"></div>
+      <p class="no-divider"><span><span class="bold">Protein</span> 3g</span></p>
+      <div class="divider large"></div>
+      <p>Vitamin D 2mcg <span>10%</span></p>
+      <p>Calcium 260mg <span>20%</span></p>
+      <p>Iron 8mg <span>45%</span></p>
+      <p class="no-divider">Potassium 235mg <span>6%</span></p>
+    </div>
 ```
 
 ## 66
 
-```html
--added hr element to seperate content, it is a line on the page, it is also a void element
+- Add a medium divider after your .daily-value element. Below that new divider, create a p element with the class attribute set to note.
 
-<hr>
+Give the p element the following text:
+
+Example Code
+<!-- * The % Daily Value (DV) tells you how much a nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice. -->
+
+```html
+<div class="divider medium"></div>
+<p class="note">* The % Daily Value (DV) tells you how much a nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice.</p>
 ```
 
 ## 67
 
+- Create a .note selector, and set the size of the font to 0.6rem. Also set the top and bottom margins to 5px, removing the left and right margins.
+
 ```html
-- The default properties of an hr element will make it appear as a thin light grey line. You can change the height of the line by specifying a value for the height property.
-
-- Change the height of the hr element to be 3px.
-
-hr {
-  height: 3px;
+.note {
+  font-size: 0.6rem;
+  margin: 5px 0;
 }
 ```
 
 ## 68
 
-```html
+- Give the .note selector a left and right padding of 8px, removing the top and bottom padding. Also set the text-indent property to -8px.
 
-- changed hr background to match color of beans
-
-hr {
-  height: 3px;
-  background-color: brown;
-}
-```
-
-## 69
+- With these last changes, your nutrition label is complete!
 
 ```html
 
-- Notice the grey color along the edges of the line. Those edges are known as borders. Each side of an element can have a different color or they can all be the same.
-
-- Make all the edges of the hr element the same color as the background of it using the border-color property.
-
-hr {
-  height: 3px;
-  background-color: brown;
-  border-color: brown;
-}
-```
-
-## 70
-
-```html
-
-- changed height of hr element to 2px
-
-hr {
-  height: 2px;
-  background-color: brown;
-  border-color: brown;
-}
-```
-
-## 71
-
-```html
-
-- added another hr element below main and above the footer to seperate it
-
-<hr>>
-```
-
-## 72
-
-```html
-
-- To create a little more room around the menu, add 20px of space on the inside of the body element by using the padding property.
-
-body {
-  background-image: url(https://cdn.freecodecamp.org/curriculum/css-cafe/beans.jpg);
-  font-family: sans-serif;
-  padding: 20px;
-}
-```
-
-## 73
-
-```html
-
-- Focusing on the menu items and prices, there is a fairly large gap between each line.
-
- - Use the existing selector that targets all the p elements nested in elements with the class named item and set their top and bottom margin to be 5px.
-
-.item p {
-  display: inline-block;
-  margin-top: 5px;
-  margin-bottom: 5px;
-
-}
-```
-
-## 74
-
-```html
-
-- made font size of items and price 18px
-
-.item p {
-  display: inline-block;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  font-size: 18px;
-}
-```
-
-## 75
-
-```html
-
-- Changing the margin-bottom to 5px looks great. However, now the space between the Cinnamon Roll menu item and the second hr element does not match the space between the top hr element and the Coffee heading.
-
- - Add some more space by creating a class named bottom-line using 25px for the margin-top property.
-
-.bottom-line {
-  margin-top: 25px;
-}
-```
-
-## 76
-
-```html
-
-- Now add the bottom-line class to the second hr element so the styling is applied.
-
-<hr class="bottom-line">
-```
-
-## 77
-
-```html
-
-- added comment to organize styles.css to seperate where we are styling the footer
-
-/* FOOTER */
-
-```
-
-## 78
-
-```html
-
-- Moving down to the footer element, make all the text have a value of 14px for the font size.
-
-footer {
-  font-size: 14px;
-}
-```
-
-## 79
-
-```html
-
-- The default color of a link that has not yet been clicked on is typically blue. The default color of a link that has already been visited from a page is typically purple.
-
-- To make the footer links the same color regardless if a link has been visited, use a type selector for the anchor element (a) and use the value black for the color property.
-
-a {
-  color: black;
-}
-```
-
-## 80
-
-```html
-
-- You change properties of a link when the link has actually been visited by using a pseudo-selector that looks like a:visited { propertyName: propertyValue; }.
-
-- Change the color of the footer Visit our website link to be grey when a user has visited the link.
-
-a:visited { 
-  color: grey; 
-  }
-```
-
-## 81
-
-```html
-
-- You change properties of a link when the mouse hovers over them by using a pseudo-selector that looks like a:hover { propertyName: propertyValue; }.
-
-- Change the color of the footer Visit our website link to be brown when a user hovers over it.
-
-a:hover { 
-  color: brown; 
-  }
-```
-
-## 82
-
-```html
-
-- You change properties of a link when the link is actually being clicked by using a pseudo-selector that looks like a:active { propertyName: propertyValue; }.
-
-- Change the color of the footer Visit our website link to be white when clicked on.
-
-a:active { 
-  color: white; 
-  }
-```
-
-## 83
-
-```html
-
-- To keep with the same color theme you have already been using (black and brown), change the color for when the link is visited to black and use brown for when the link is actually clicked.
-
-a:visited {
-  color: black;
-}
-
-a:hover {
-  color: brown;
-}
-
-a:active {
-  color: brown;
-}
-```
-
-## 84
-
-```html
-
-- The menu text CAMPER CAFE has a different space from the top than the address's space at the bottom of the menu. This is due to the browser having some default top margin for the h1 element.
-
-- Change the top margin of the h1 element to 0 to remove all the top margin.
-
-h1 {
-  font-size: 40px;
-  margin-top: 0;
-}
-```
-
-## 85
-
-```html
-
-- To remove some of the vertical space between the h1 element and the text Est. 2020, change the bottom margin of the h1 to 15px.
-
-h1 {
-  font-size: 40px;
-  margin-top: 0;
-  margin-bottom: 15px;
-}
-```
-
-## 86
-
-```html
-
-- Now the top spacing looks good. The space below the address at the bottom of the menu is a little bigger than the space at the top of the menu and the h1 element.
-
-- To decrease the default margin space below the address p element, create a class selector named address and use the value 5px for the margin-bottom property.
-
-.address {
-  margin-bottom: 5px;
-}
-```
-
-## 87
-
-```html
-
-- Now apply the address class to the p element containing the street address 123 Free Code Camp Drive
-
-<footer>
-        <p>
-          <a href="https://www.freecodecamp.org" target="_blank">Visit our website</a>
-        </p>
-        <p class="address">123 Free Code Camp Drive</p>
-      </footer>
-```
-
-## 88
-
-```html
-
-- The menu looks good, but other than the coffee beans background image, it is mainly just text.
-
-- Under the Coffee heading, add an image using the url https://cdn.freecodecamp.org/curriculum/css-cafe/coffee.jpg. Give the image an alt value of coffee icon.
-
-<h2>Coffee</h2>
-          <img src="https://cdn.freecodecamp.org/curriculum/css-cafe/coffee.jpg" alt="coffee icon">
-```
-
-## 89
-
-```html
-
-- The image you added is not centered horizontally like the Coffee heading above it. img elements are "like" inline elements.
-
-- To make the image behave like heading elements (which are block-level), create an img type selector and use the value block for the display property and use the applicable margin-left and margin-right values to center it horizontally.
-
-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-```
-
-## 90
-
-```html
-
-- Add one last image under the Desserts heading using the url https://cdn.freecodecamp.org/curriculum/css-cafe/pie.jpg. Give the image an alt value of pie icon.
-
-<h2>Desserts</h2>
-          <img src="https://cdn.freecodecamp.org/curriculum/css-cafe/pie.jpg" alt="pie icon">
-```
-
-## 91
-
-```html
-
-- It would be nice if the vertical space between the h2 elements and their associated icons was smaller. The h2 elements have default top and bottom margin space, so you could change the bottom margin of the h2 elements to say 0 or another number.
-
-- There is an easier way, simply add a negative top margin to the img elements to pull them up from their current positions. Negative values are created using a - in front of the value. To complete this project, go ahead and use a negative top margin of 25px in the img type selector.
-
-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: -25px
+.note {
+  font-size: 0.6rem;
+  margin: 5px 0;
+  padding: 0 8px;
+  text-indent: -8px;
 }
 ```
