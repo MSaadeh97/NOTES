@@ -89,7 +89,7 @@
 
 - Create a body selector and give it a font-family set to Open Sans with a fallback of sans-serif.
 
-- Remember that fonts with spaces in the name must be wrapped in quotes for CSS. 
+- Remember that fonts with spaces in the name must be wrapped in quotes for CSS.
 
 ```html
 body {
@@ -497,7 +497,7 @@ header h1 {
 
 - Typography is often more art than science. You may have to tweak things like alignment until it looks correct.
 
-- Give your .calories-info span selector a margin set to -7px -2px. This will shift your 230 text into place. 
+- Give your .calories-info span selector a margin set to -7px -2px. This will shift your 230 text into place.
 
 ```html
 .calories-info span {
