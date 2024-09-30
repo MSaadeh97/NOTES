@@ -104,7 +104,7 @@ body {
 
 ## 10
 
-- As suggested by the title, you are creating a form. So, after the p element, insert a form with an action attribute targeting https://register-demo.freecodecamp.org.
+<!--  As suggested by the title, you are creating a form. So, after the p element, insert a form with an action attribute targeting https://register-demo.freecodecamp.org. -->
 
 ```html
 <body>
@@ -116,7 +116,7 @@ body {
 
 ## 11
 
-- As suggested by the title, you are creating a form. So, after the p element, insert a form with an action attribute targeting https://register-demo.freecodecamp.org.
+<!--  As suggested by the title, you are creating a form. So, after the p element, insert a form with an action attribute targeting https://register-demo.freecodecamp.org. -->
 
 ```html
 
@@ -416,7 +416,7 @@ Business
 - Add the text I accept the terms and conditions immediately after the input element in the newly added label. Then link the text terms and conditions to the following location:
 
 Example Code
-https://www.freecodecamp.org/news/terms-of-service/
+<!--  https://www.freecodecamp.org/news/terms-of-service/ -->
 
 ```html
 <label for="terms-and-conditions"><input id="terms-and-conditions" type="checkbox" required />I accept the <a href="https://www.freecodecamp.org/news/terms-of-service/">terms and conditions</a></label>
