@@ -68,8 +68,8 @@ h3 {
   background-color: #d3d3d3;
 }
 
-img {
-  display: block;
+#img-div {
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
@@ -78,6 +78,11 @@ img {
   max-width: 100%;
   margin: 0 auto;
   padding: 20px 10px;
+   text-align: center;
+}
+
+img {
+  max-width: 100%;
 }
 
 p {
