@@ -273,100 +273,195 @@ body {
 
 ## 21
 
-- At this point, you should be able to submit the form. However, you might notice not much happens.
-
-- To make the form more interactive, add the required attribute to the input elements in the first fieldset.
-
-- Now, if you try to submit the form without filling in the required fields, you will see an error message.
+- The buildings are too spaced out. Squeeze them together by adding two empty div elements to the top of the .background-buildings element, two more at the bottom of it, and one more in between .bb3 and .bb4. These will be added as evenly-spaced elements across the container, effectively moving the buildings closer to the center.
 
 ```html
-<fieldset>
-        <label for="first-name">Enter Your First Name: <input id="first-name" type="text" required="" /></label>
-        <label for="last-name">Enter Your Last Name: <input id="last-name" type="text" required="" /></label>
-        <label for="email">Enter Your Email: <input id="email" type="email" required="" /></label>
-        <label for="new-password">Create a New Password: <input id="new-password" type="password" required="" /></label>
-      </fieldset>
-      <fieldset></fieldset>
-      <fieldset></fieldset>
-      <input type="submit" value="Submit" />
+<div class="background-buildings">
+      <div></div>
+      <div></div>
+      <div class="bb1">
+        <div class="bb1a"></div>
+        <div class="bb1b"></div>
+        <div class="bb1c"></div>
+        <div class="bb1d"></div>
+      </div>
+      <div class="bb2"></div>
+      <div class="bb3"></div>
+      <div></div>
+      <div class="bb4"></div>
+      <div></div>
+      <div></div>
+    </div>
  ```
 
 ## 22
 
-- Certain type attribute values come with built-in form validation. For example, type="email" requires that the value be a valid email address.
-
-- Add custom validation to the password input element, by adding a minlength attribute with a value of 8. Doing so prevents inputs of less than 8 characters being submitted.
+- Create a new variable below your --building-color1 variable. Name your new variable --building-color2 and give it a value of #66cc99. Then set it as the background-color of .bb2.
 
 ```html
-<fieldset>
-        <label for="first-name">Enter Your First Name: <input id="first-name" type="text" required /></label>
-        <label for="last-name">Enter Your Last Name: <input id="last-name" type="text" required /></label>
-        <label for="email">Enter Your Email: <input id="email" type="email" required /></label>
-        <label for="new-password">Create a New Password: <input id="new-password" type="password" required minlength="8" /></label>
-      </fieldset>
+.bb1 {
+  width: 10%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  --building-color1: #aa80ff;
+  --building-color2: #66cc99;
+}
+
+.bb1a {
+  width: 70%;
+  height: 10%;
+  background-color: var(--building-color1);
+}
+
+.bb1b {
+  width: 80%;
+  height: 10%;
+  background-color: var(--building-color1);
+}
+
+.bb1c {
+  width: 90%;
+  height: 10%;
+  background-color: var(--building-color1);
+}
+
+.bb1d {
+  width: 100%;
+  height: 70%;
+  background-color: var(--building-color1);
+}
+
+.bb2 {
+  width: 10%;
+  height: 50%;
+  background-color: var(--building-color2);
+}
  ```
 
 ## 23
 
-- With type="password" you can use the pattern attribute to define a regular expression that the password must match to be considered valid.
-
-- Add a pattern attribute to the password input element to require the input match: [a-z0-5]{8,}
-
-- The above is a regular expression which matches eight or more lowercase letters or the digits 0 to 5. Then, remove the minlength attribute, and try it out.
+- That didn't work. You should add a fallback value to a variable by putting it as the second value of where you use the variable like this: var(--variable-name, fallback-value). The property will use the fallback value when there's a problem with the variable. Add a fallback value of green to the background-color of .bb2.
 
 ```html
-<fieldset>
-        <label for="first-name">Enter Your First Name: <input id="first-name" type="text" required /></label>
-        <label for="last-name">Enter Your Last Name: <input id="last-name" type="text" required /></label>
-        <label for="email">Enter Your Email: <input id="email" type="email" required /></label>
-        <label for="new-password">Create a New Password: <input id="new-password" type="password"  pattern="[a-z0-5]{8,}" required  /></label>
-      </fieldset>
+.bb2 {
+  width: 10%;
+  height: 50%;
+  background-color: var(--building-color2, green);
+}
  ```
 
 ## 24
 
-- Let us go to the next part of the registration form. This section will ask for the type of account the user is opening.
-
-- Start by adding two label elements to the second fieldset.
+- Create a new variable below the other ones named --building-color3 and give it a value of #cc6699. Then use it as the background-color of the .bb3 class and give it a fallback value of pink.
 
 ```html
-<fieldset>
-        <label></label>
-        <label></label>
-      </fieldset>
+.bb1 {
+  width: 10%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  --building-color1: #aa80ff;
+  --building-color2: #66cc99;
+  --building-color3: #cc6699;
+}
+
+.bb1a {
+  width: 70%;
+  height: 10%;
+  background-color: var(--building-color1);
+}
+
+.bb1b {
+  width: 80%;
+  height: 10%;
+  background-color: var(--building-color1);
+}
+
+.bb1c {
+  width: 90%;
+  height: 10%;
+  background-color: var(--building-color1);
+}
+
+.bb1d {
+  width: 100%;
+  height: 70%;
+  background-color: var(--building-color1);
+}
+
+.bb2 {
+  width: 10%;
+  height: 50%;
+  background-color: var(--building-color2, green);
+}
+
+.bb3 {
+  width: 10%;
+  height: 55%;
+  background-color: var(--building-color3, pink)
+}
  ```
 
 ## 25
 
-- Users will be allowed to choose either a Personal or Business.
-
-- To do this, within each of the first two label elements, add one input element with type="radio".
+- That didn't work, because the variables you declared in .bb1 do not cascade to the .bb2 and .bb3 sibling elements. That's just how CSS works. Because of this, variables are often declared in the :root selector. This is the highest level selector in CSS; putting your variables there will make them usable everywhere. Add the :root selector to the top of your stylesheet, and move all your variable declarations there.
 
 ```html
-<fieldset>
-        <label> <input type="radio" /></label>
-        <label> <input type="radio" /></label>
-      </fieldset>
+*:root {
+  border: 1px solid black;
+  box-sizing: border-box;
+  --building-color1: #aa80ff;
+  --building-color2: #66cc99;
+  --building-color3: #cc6699;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+.background-buildings {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-evenly;
+}
+
+.bb1 {
+  width: 10%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
  ```
 
 ## 26
 
-- Within each corresponding label element, and immediately after the input element, add a space and add the following text:
-
-Example Code
-Personal
-Business
+- Now that you've worked the bugs out and the buildings are the right colors, you can remove the fallback values in the two places they were used. Go ahead and do that now.
 
 ```html
-<label><input type="radio" /> Personal</label>
-        <label><input type="radio" /> Business</label>
+.bb2 {
+  width: 10%;
+  height: 50%;
+  background-color: var(--building-color2);
+}
+
+.bb3 {
+  width: 10%;
+  height: 55%;
+  background-color: var(--building-color3);
+}
  ```
 
 ## 27
 
-- You only want one radio input to be selectable at a time. However, the form does not know the radio inputs are related.
-
-- To relate the radio inputs, give them the same name attribute with a value of account-type. Now, it is not possible to select both radio inputs at the same time.
+- The background buildings are starting to look pretty good. Create a new div below the .background-buildings element and give it a class of foreground-buildings. This will be another container for more buildings.
 
 ```html
   <fieldset>
@@ -377,572 +472,601 @@ Business
 
 ## 28
 
-- Currently users can submit the form without checking the radio inputs. Although you previously used the required attribute to indicate that an input is required, it won't work in this case because adding required to both inputs will convey the wrong information to users.
-
-- To solve this, you can provide context of what is needed by adding a legend element with text Account type (required) before the label elements within the second fieldset. Then add the checked attribute to the Personal input to ensure the form is submitted with the required data in it.
+- The background buildings are starting to look pretty good. Create a new div below the .background-buildings element and give it a class of foreground-buildings. This will be another container for more buildings.
 
 ```html
-<fieldset>
-        <legend>Account type (required)</legend>
-        <label><input type="radio" name="account-type" checked /> Personal</label>
-        <label><input type="radio" name="account-type" /> Business</label>
-      </fieldset>
+<div class="foreground-buildings"></div>
+
 ```
 
 ## 29
 
-- Follow accessibility best practices by linking the input elements and the label elements in the second fieldset.
-
-- Use personal-account, and business-account as values for the respective id attributes.
+- You want the .foreground-buildings container to sit directly on top of the .background-buildings element. Give it a width and height of 100%, set the position to absolute, and the top to 0. This will make it the same size as the body and move the start of it to the top left corner.
 
 ```html
-<fieldset>
-        <legend>Account type (required)</legend>
-        <label for="personal-account"><input type="radio" name="account-type" id="personal-account" checked /> Personal</label>
-        <label for="business-account"><input type="radio" name="account-type" id="business-account" /> Business</label>
-      </fieldset>
+.foreground-buildings {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
 ```
 
 ## 30
 
-- You need to confirm that the user has read the terms and conditions.
-
-- Add a label element. Inside the newly created label element add an input element and set the type attribute to checkbox. Make this input element required so users can not sign up without agreeing to the terms and conditions.
-
-- Add an id and for attribute with the value terms-and-conditions to the elements for accessibility.
+- Nest six div elements within .foreground-buildings and give them the classes of fb1 through fb6 in that order. "fb" stands for "foreground building". These will be six more buildings for the foreground.
 
 ```html
-<label for="terms-and-conditions">
-  <input type="checkbox" required id="terms-and-conditions" />
-  </label>
+<div class="foreground-buildings">
+      <div class="fb1"></div>
+      <div class="fb2"></div>
+      <div class="fb3"></div>
+      <div class="fb4"></div>
+      <div class="fb5"></div>
+      <div class="fb6"></div>
+    </div>
 ```
 
 ## 31
 
-- Add the text I accept the terms and conditions immediately after the input element in the newly added label. Then link the text terms and conditions to the following location:
-
-Example Code
-<!--  https://www.freecodecamp.org/news/terms-of-service/ -->
+- Give the six new elements these width and height values: 10% and 60% to .fb1, 10% and 40% to .fb2, 10% and 35% to .fb3, 8% and 45% to .fb4, 10% and 33% to .fb5, and 9% and 38% to .fb6.
 
 ```html
-<label for="terms-and-conditions"><input id="terms-and-conditions" type="checkbox" required />I accept the <a href="https://www.freecodecamp.org/news/terms-of-service/">terms and conditions</a></label>
+.fb1 {
+  width: 10%;
+  height: 60%;
+}
+
+.fb2 {
+  width: 10%;
+  height: 40%;
+}
+.fb3 {
+  width: 10%;
+  height: 35%;
+}
+.fb4 {
+  width: 8%;
+  height: 45%;
+}
+.fb5 {
+  width: 10%;
+  height: 33%;
+}
+.fb6 {
+  width: 9%;
+  height: 38%;
+}
 ```
 
 ## 32
 
-- Moving on to the final fieldset. What if you wanted to allow a user to upload a profile picture?
-
-- Well, the input type file allows just that. Add a label with the text Upload a profile picture: , and nest an input accepting a file upload.
+- Add the same display, align-items, and justify-content properties and values to .foreground-buildings that you used on .background-buildings. Again, this will use Flexbox to evenly space the buildings across the bottom of their container.
 
 ```html
-<fieldset>
-        <label> <input type="file" />Upload a profile picture: </label>
-      </fieldset>
+.foreground-buildings {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-evenly;
+}
 ```
 
 ## 33
 
-- Add another label after the first, with the text Input your age (years): . Then, nest an input with the type of number.
-
-- Next, add a min attribute to the input with a value of 13 because users under the age of 13 should not register. Also, users probably will not be over the age of 120; add a max attribute with a value of 120.
-
-- Now, if someone tries to submit the form with values outside of the range, a warning will appear, and the form will not submit. Give it a try.
+- You should optimize your code. Move the position and top properties and values from .foreground-buildings to .background-buildings. Then select both .background-buildings and .foreground-buildings there, effectively applying those styles to both of the elements. You can use a comma (,) to separate selectors like this: selector1, selector2.
 
 ```html
-<fieldset>
-        <label>Upload a profile picture: <input type="file" /></label>
-        <label> Input your age (years): <input type="number" min="13" max="120" /></label>
-        
-      </fieldset>
+.background-buildings {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-evenly;
+  position: absolute;
+  top: 0;
+}
+
+.bb1 {
+  width: 10%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bb1a {
+  width: 70%;
+  height: 10%;
+  background-color: var(--building-color1);
+}
+
+.bb1b {
+  width: 80%;
+  height: 10%;
+  background-color: var(--building-color1);
+}
+
+.bb1c {
+  width: 90%;
+  height: 10%;
+  background-color: var(--building-color1);
+}
+
+.bb1d {
+  width: 100%;
+  height: 70%;
+  background-color: var(--building-color1);
+}
+
+.bb2 {
+  width: 10%;
+  height: 50%;
+  background-color: var(--building-color2);
+}
+
+.bb3 {
+  width: 10%;
+  height: 55%;
+  background-color: var(--building-color3);
+}
+
+.bb4 {
+  width: 11%;
+  height: 58%;
+  background-color: var(--building-color4);
+}
+
+.foreground-buildings {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-evenly;
+}
+
+.background-buildings, .foreground-buildings {
+  position: absolute;
+  top: 0;
+}
 ```
 
 ## 34
 
-- Adding a dropdown to the form is easy with the select element. The select element is a container for a group of option elements, and the option element acts as a label for each dropdown option. Both elements require closing tags.
-
-- Start by adding a select element below the two label elements. Then nest 5 option elements within the select element.
+- Now that you did that, you can delete the old .foreground-buildings declaration and all of its properties since they aren't needed anymore.
 
 ```html
- <fieldset>
-        <label>Upload a profile picture: <input type="file" /></label>
-        <label>Input your age (years): <input type="number" min="13" max="120" /></label>
-        <select>
-          <option> </option>
-          <option> </option>
-          <option> </option>
-          <option> </option>
-          <option> </option>
-          </select>
-      </fieldset>
+ 
 ```
 
 ## 35
 
-- Nest the select element (with its option elements) within a label element with the text How did you hear about us?. The text should come before the select element.
+- The skyline is coming together. Fill in the background-color property of the foreground buildings. Use your --building-color1 variable to fill in .fb3 and .fb4, --building-color2 for .fb5, --building-color3 for .fb2 and .fb6, and --building-color4 for .fb1.
 
 ```html
-<fieldset>
-        <label>Upload a profile picture: <input type="file" /></label>
-        <label>Input your age (years): <input type="number" min="13" max="120" /></label>
-        <label>How did you hear about us?<select></label>
-          <option></option>
-          <option></option>
-          <option></option>
-          <option></option>
-          <option></option>
-        </select>
-      </fieldset>
+.fb1 {
+  width: 10%;
+  height: 60%;
+  background-color: var(--building-color4);
+}
+
+.fb2 {
+  width: 10%;
+  height: 40%;
+  background-color: var(--building-color3);
+}
+
+.fb3 {
+  width: 10%;
+  height: 35%;
+  background-color: var(--building-color1);
+}
+
+.fb4 {
+  width: 8%;
+  height: 45%;
+  background-color: var(--building-color1);
+}
+
+.fb5 {
+  width: 10%;
+  height: 33%;
+  background-color: var(--building-color2);
+}
+
+.fb6 {
+  width: 9%;
+  height: 38%;
+  background-color: var(--building-color3);
+}
 ```
 
 ## 36
 
-- The dropdown options are currently empty. To give them content, add the following text to each subsequent option element:
-
-Example Code
-(select one)
-freeCodeCamp News
-freeCodeCamp YouTube Channel
-freeCodeCamp Forum
-Other
+- Squeeze the buildings together again by adding two empty div elements within both the top and bottom of the .foreground-buildings element, and one more in between .fb2 and .fb3.
 
 ```html
-<fieldset>
-        <label>Upload a profile picture: <input type="file" /></label>
-        <label>Input your age (years): <input type="number" min="13" max="120" /></label>
-        <label>How did you hear about us?
-          <select>
-            <option>(select one)</option>
-            <option>freeCodeCamp News</option>
-            <option>freeCodeCamp YouTube Channel</option>
-            <option>freeCodeCamp Forum</option>
-            <option>Other</option>
-          </select>
-        </label>
-      </fieldset>
+<div class="foreground-buildings">
+      <div></div>
+      <div></div>
+      <div class="fb1"></div>
+      <div class="fb2"></div>
+      <div></div>
+      <div class="fb3"></div>
+      <div class="fb4"></div>
+      <div class="fb5"></div>
+      <div class="fb6"></div>
+      <div></div>
+      <div></div>
+    </div>
 ```
 
 ## 37
 
-- Submitting the form with an option selected would not send a useful value to the server. As such, each option needs to be given a value attribute. Without which, the text content of the option will be submitted to the server.
-
-- Give the first option a value of "", and the subsequent option elements value attributes from 1 to 4.
+- Move the position of .fb4 relative to where it is now by adding a position of relative and left of 10% to it. Do the same for .fb5 but use right instead of left. This will cover up the remaining white space in between the buildings.
 
 ```html
-<fieldset>
-        <label>Upload a profile picture: <input type="file" /></label>
-        <label>Input your age (years): <input type="number" min="13" max="120" /></label>
-        <label>How did you hear about us?
-          <select>
-            <option value="">(select one)</option>
-            <option value="1">freeCodeCamp News</option>
-            <option value="2">freeCodeCamp YouTube Channel</option>
-            <option value="3">freeCodeCamp Forum</option>
-            <option value="4">Other</option>
-          </select>
-        </label>
-      </fieldset>
+.fb4 {
+  width: 8%;
+  height: 45%;
+  background-color: var(--building-color1);
+  position: relative;
+  left: 10%;
+}
+
+.fb5 {
+  width: 10%;
+  height: 33%;
+  background-color: var(--building-color2);
+  position: relative;
+  right: 10%;
+}
 ```
 
 ## 38
 
-- The textarea element acts like an input element of type text, but comes with the added benefit of being able to receive multi-line text, and an initial number of text rows and columns.
-
-- Users will be able to register with a bio. Add a label with the text Provide a bio: at the end of the fieldset. Add a textarea element inside the label element. Note that the textarea requires a closing tag.
+- Your code is starting to get quite long. Add a comment above the .fb1 class that says FOREGROUND BUILDINGS - "fb" stands for "foreground building" to help people understand your code. Above the .bb1 class add another comment that says BACKGROUND BUILDINGS - "bb" stands for "background building". If you don't remember, comments in CSS look like this:
 
 ```html
-<fieldset>
-        <label>Upload a profile picture: <input type="file" /></label>
-        <label>Input your age (years): <input type="number" min="13" max="120" /></label>
-        <label>How did you hear about us?
-          <select>
-            <option value="">(select one)</option>
-            <option value="1">freeCodeCamp News</option>
-            <option value="2">freeCodeCamp YouTube Channel</option>
-            <option value="3">freeCodeCamp Forum</option>
-            <option value="4">Other</option>
-          </select>
-        </label>
-        <label>Provide a bio:
-          <textarea></textarea></label>
-      </fieldset>
+/* FOREGROUND BUILDINGS - "fb" stands for "foreground building" */
+/* BACKGROUND BUILDINGS - "bb" stands for "background building" */
 ```
 
 ## 39
 
-- Link the applicable form elements and their label elements together.
-
-- Use profile-picture, age, referrer, and bio as values for the respective id attributes.
+- Create a new variable in :root called --window-color1 and give it a value of black. This will be a secondary color for the purple buildings.
 
 ```html
-<fieldset>
-        <label for="profile-picture">Upload a profile picture: <input type="file" id="profile-picture" /></label>
-        <label for="age">Input your age (years): <input type="number" min="13" max="120" id="age" /></label>
-        <label for="referrer">How did you hear about us?
-          <select id="referrer">
-            <option value="">(select one)</option>
-            <option value="1">freeCodeCamp News</option>
-            <option value="2">freeCodeCamp YouTube Channel</option>
-            <option value="3">freeCodeCamp Forum</option>
-            <option value="4">Other</option>
-          </select>
-        </label>
-        <label for="bio">Provide a bio:
-          <textarea id="bio"></textarea>
-        </label>
-      </fieldset>
+:root {
+  --building-color1: #aa80ff;
+  --building-color2: #66cc99;
+  --building-color3: #cc6699;
+  --building-color4: #538cc6;
+  --window-color1: black;
+}
 ```
 
 ## 40
 
-- The textarea appears too small. To give it an initial size, you can add the rows and cols attributes.
+- Gradients in CSS are a way to transition between colors across the distance of an element. They are applied to the background property and the syntax looks like this:
 
-- Add an initial size of 3 rows and 30 columns.
+Example Code
+gradient-type(
+  color1,
+  color2
+);
+In the example, color1 is solid at the top, color2 is solid at the bottom, and in between it transitions evenly from one to the next. In .bb1a, add a background property below the background-color property. Set it as a gradient of type linear-gradient that uses --building-color1 as the first color and --window-color1 as the second.
 
 ```html
-<fieldset>
-        <label for="profile-picture">Upload a profile picture: <input id="profile-picture" type="file" /></label>
-        <label for="age">Input your age (years): <input id="age" type="number" min="13" max="120" /></label>
-        <label for="referrer">How did you hear about us?
-          <select id="referrer">
-            <option value="">(select one)</option>
-            <option value="1">freeCodeCamp News</option>
-            <option value="2">freeCodeCamp YouTube Channel</option>
-            <option value="3">freeCodeCamp Forum</option>
-            <option value="4">Other</option>
-          </select>
-        </label>
-        <label for="bio">Provide a bio:
-          <textarea id="bio" rows="3" cols="30"></textarea>
-        </label>
-      </fieldset>
+.bb1a {
+  width: 70%;
+  height: 10%;
+  background-color: var(--building-color1);
+  background: linear-gradient(var(--building-color1),var(--window-color1));
+}
 ```
 
 ## 41
 
-- To give Campers an idea of what to put in their bio, the placeholder attribute is used. The placeholder accepts a text value, which is displayed until the user starts typing.
-
-- Give the textarea a placeholder of I like coding on the beach....
+- You want to add the same gradient to the next two sections. Instead of doing that, create a new class selector called bb1-window, and move the height and background properties and values from .bb1a to the new class selector.
 
 ```html
-<fieldset>
-        <label for="profile-picture">Upload a profile picture: <input id="profile-picture" type="file" /></label>
-        <label for="age">Input your age (years): <input id="age" type="number" min="13" max="120" /></label>
-        <label for="referrer">How did you hear about us?
-          <select id="referrer">
-            <option value="">(select one)</option>
-            <option value="1">freeCodeCamp News</option>
-            <option value="2">freeCodeCamp YouTube Channel</option>
-            <option value="3">freeCodeCamp Forum</option>
-            <option value="4">Other</option>
-          </select>
-        </label>
-        <label for="bio">Provide a bio:
-          <textarea id="bio" rows="3" cols="30" placeholder="I like coding on the beach..."></textarea>
-        </label>
-      </fieldset>
+.bb1a {
+  width: 70%;
+  background-color: var(--building-color1);
+}
+
+.bb1b {
+  width: 80%;
+  height: 10%;
+  background-color: var(--building-color1);
+}
+
+.bb1c {
+  width: 90%;
+  height: 10%;
+  background-color: var(--building-color1);
+}
+
+.bb1d {
+  width: 100%;
+  height: 70%;
+  background-color: var(--building-color1);
+}
+
+.bb1-window {
+  height: 10%;
+  background-color: var(--building-color1);
+  background: linear-gradient(var(--building-color1),var(--window-color1));
+}
 
 ```
 
 ## 42
 
-- With form submissions, it is useful, and good practice, to provide each submittable element with a name attribute. This attribute is used to identify the element in the form submission.
-
-- Except for the two radio inputs (which you have already named), give each submittable element a unique name attribute of your choosing.
+- Add the new bb1-window class to the .bb1a, .bb1b, and .bb1c elements. This will apply the gradient to them.
 
 ```html
-<fieldset>
-        <label for="first-name">Enter Your First Name: <input id="first-name" type="text"  required name="first-name" /></label>
-        <label for="last-name">Enter Your Last Name: <input id="last-name" type="text" required name="last-name" /></label>
-        <label for="email">Enter Your Email: <input id="email" type="email" required name="email" /></label>
-        <label for="new-password">Create a New Password: <input id="new-password" type="password" pattern="[a-z0-5]{8,}" required name="password" /></label>
-      </fieldset>
-      <fieldset>
-        <legend>Account type (required)</legend>
-        <label for="personal-account"><input id="personal-account" type="radio" name="account-type" checked /> Personal</label>
-        <label for="business-account"><input id="business-account" type="radio" name="account-type" /> Business</label>
-      </fieldset>
-      <fieldset>
-        <label for="profile-picture">Upload a profile picture: <input id="profile-picture" type="file" name="profile-picture" /></label>
-        <label for="age">Input your age (years): <input id="age" type="number" min="13" max="120" name="age" /></label>
-        <label for="referrer">How did you hear about us?
-          <select id="referrer" name="referrer">
-            <option value="">(select one)</option>
-            <option value="1">freeCodeCamp News</option>
-            <option value="2">freeCodeCamp YouTube Channel</option>
-            <option value="3">freeCodeCamp Forum</option>
-            <option value="4">Other</option>
-          </select>
-        </label>
-        <label for="bio">Provide a bio:
-          <textarea id ="bio" rows="3" cols="30" placeholder="I like coding on the beach..." name="bio"></textarea>
-        </label>
-      </fieldset>
-      <label for="terms-and-conditions">
-        <input id="terms-and-conditions" type="checkbox" required name="terms" /> I accept the <a href="https://www.freecodecamp.org/news/terms-of-service/">terms and conditions</a>
-      </label>
+<div class="bb1">
+        <div class="bb1a bb1-window"></div>
+        <div class="bb1b bb1-window"></div>
+        <div class="bb1c bb1-window"></div>
+        <div class="bb1d"></div>
+      </div>
 ```
 
 ## 43
 
-- The HTML for the registration form is finished. Now, you can spruce it up a bit.
-
-- Start by changing the font to Tahoma, and the font size to 16px in the body.
+- You don't need the height or background-color properties in .bb1a, .bb1b or .bb1c anymore, so go ahead and remove them.
 
 ```html
-body {
-  width: 100%;
-  height: 100vh;
-  margin: 0;
-  background-color: #1b1b32;
-  color: #f5f6f7;
-  font-family: Tahoma;
-  font-size: 16px
+.bb1a {
+  width: 70%;
+}
+
+.bb1b {
+  width: 80%;
+}
+
+.bb1c {
+  width: 90%;
 }
 ```
 
 ## 44
 
-- Center the h1 and p elements by giving them a margin of 1em auto. Then, align their text in the center as well.
+- Gradients can use as many colors as you want like this:
+
+Example Code
+gradient-type(
+  color1,
+  color2,
+  color3
+);
+Add a linear-gradient to .bb1d with orange as the first color, --building-color1 as the second, and --window-color1 as the third. Remember to use the gradient on the background property.
 
 ```html
-h1, p {
-  margin: 1em auto;
-  text-align: center;
+.bb1d {
+  width: 100%;
+  height: 70%;
+  background-color: var(--building-color1);
+  background: linear-gradient(orange, var(--building-color1), var(--window-color1) )
 }
 ```
 
 ## 45
 
-- Center the form element, by giving it a margin of 0 auto. Then, fix its size to a maximum width of 500px, and a minimum width of 300px. In between that range, allow it to have a width of 60vw.
+- It's a little hidden behind the foreground buildings, but you can see the three color gradient there. Since you are using that now, remove the background-color property from .bb1d.
 
 ```html
-form {
-  margin: 0 auto;
-  min-width: 300px;
-  width: 60vw;
-  max-width: 500px;
+.bb1d {
+  width: 100%;
+  height: 70%;
+  background: linear-gradient(
+      orange,
+      var(--building-color1),
+      var(--window-color1)
+    );
 }
 
 ```
 
 ## 46
 
-- During development, it is useful to see the fieldset default borders. However, they make the content appear too separated.
+- You can specify where you want a gradient transition to complete by adding it to the color like this:
 
-- Remove the border, and add 2rem of padding only to the top and bottom of each fieldset. Be sure to remove the padding from the left and right.
+Example Code
+gradient-type(
+  color1,
+  color2 20%,
+  color3
+);
+Here, it will transition from color1 to color2 between 0% and 20% of the element and then transition to color3 for the rest. Add 80% to the --building-color1 color of the .bb1d gradient so you can see it in action.
 
 ```html
-fieldset {
-  border: 0;
-  padding-left:0;
-  padding-right:0;
-  padding-top:2rem;
-  padding-bottom:2rem;
+.bb1d {
+  width: 100%;
+  height: 70%;
+  background: linear-gradient(
+      orange,
+      var(--building-color1) 80%,
+      var(--window-color1)
+    );
 }
 ```
 
 ## 47
 
-- To give the fieldset elements a bit of separation, select them and give them a border-bottom of 3px solid #3b3b4f.
+- Remove orange from the .bb1d gradient and change the 80% to 50%. This will make --building-color1 solid for the top half, and then transition to --window-color1 for the bottom half.
 
 ```html
-fieldset {
-  border: none;
-  padding: 2rem 0;
-  border-bottom: 3px solid #3b3b4f;
+.bb1d {
+  width: 100%;
+  height: 70%;
+  background: linear-gradient(
+      
+      var(--building-color1) 50%,
+      var(--window-color1)
+    );
 }
 ```
 
 ## 48
 
-- The border of the last fieldset element looks a little out of place. You can select the last element of a specific type using the last-of-type CSS pseudo-class, like this:
-
-Example Code
-p:last-of-type { }
-That will select the last p element. Create a new selector that targets the last fieldset element and set its border-bottom to none.
+- Nest two new div elements within .bb2, give them the classes of bb2a and bb2b, in that order. These will be two sections for this building.
 
 ```html
-fieldset:last-of-type {
-  border-bottom: none;
- }
+<div class="bb2">
+        <div class="bb2a"></div>
+        <div class="bb2b"></div>
+      </div>
 
 ```
 
 ## 49
 
-- It would be nicer to have the label text appear above the form elements.
-
-- Select all input, textarea, and select elements, and make them take up the full width of their parent elements.
-
-- Also, add 10px of margin to the top of the selected elements. Set the other margins to 0.
+- Give .bb2b a width and height of 100% to make it fill the building container. You will add something on the top a little later.
 
 ```html
 
-input, textarea, select {
-  width:100%;
-  margin-bottom: 0;
-  margin-top: 10px;
-  margin-left: 0;
-  margin-right: 0;
+.bb2b {
+  width: 100%;
+  height: 100%
 }
 
 ```
 
 ## 50
 
-- For the second fieldset, you want the input and label text to appear on the same line.
-
-- Start, by giving the input elements in the second fieldset a class of inline.
+- Create a new variable in :root named window-color2 with a value of #8cd9b3. This will be used as the secondary color for this building.
 
 ```html
 
-<fieldset>
-        <legend>Account type (required)</legend>
-        <label for="personal-account"><input id="personal-account" type="radio" name="account-type" class="inline" checked /> Personal</label>
-        <label for="business-account"><input id="business-account" type="radio" name="account-type" class="inline" /> Business</label>
-      </fieldset>
+:root {
+  --building-color1: #aa80ff;
+  --building-color2: #66cc99;
+  --building-color3: #cc6699;
+  --building-color4: #538cc6;
+  --window-color1: black;
+  --window-color2: #8cd9b3;
+}
 
           
 ```
 
 ## 51
 
-- Select only the .inline elements, and give them width of unset. This will remove the earlier rule which set all the input elements to width: 100%.
+- Gradient transitions often gradually change from one color to another. When a more abrupt change is required, the transition can be made with a hard stop like this:
+
+Example Code
+linear-gradient(
+  var(--first-color) 0%,
+  var(--first-color) 40%,
+  var(--second-color) 40%,
+  var(--second-color) 80%
+);
+Add a linear-gradient to .bb2b that uses --building-color2 from 0% to 6% and --window-color2 from 6% to 9%.
 
 ```html
-
-.inline {
-  width: unset;
+.bb2b {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(var(--building-color2) 0%, var(--building-color2) 6%,
+      var(--window-color2) 6%, var(--window-color2) 9%);
 }
-
           
 ```
 
 ## 52
 
-- Add some space between the .inline elements and the label text, by giving a right margin of 0.5em. Also, set all the other margin to 0.
+- You can see the hard color change at the top of the section. Change the gradient type from linear-gradient to repeating-linear-gradient for this section. This will make the four colors of your gradient repeat until it gets to the bottom of the element; giving you some stripes, and saving you from having to add a bunch of elements to create them.
 
 ```html
 
-.inline {
-  width: unset;
-  margin-right: 0.5em;
-  margin-left: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-
+.bb2b {
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+      var(--building-color2),
+      var(--building-color2) 6%,
+      var(--window-color2) 6%,
+      var(--window-color2) 9%
+    );
 }
           
 ```
 
 ## 53
 
-- If you look close enough, you will notice the .inline elements are too high on the line.
-
-- To combat this, set the vertical-align property to middle.
+- In the next few steps, you are going to use some tricks with CSS borders to turn the .bb2a section into a triangle at the top of the building. First, remove the background-color from .bb2 since you don't need it anymore.
 
 ```html
 
-.inline {
-  width: unset;
-  margin: 0 0.5em 0 0;
-  vertical-align: middle;
+.bb2 {
+  width: 10%;
+  height: 50%;
 }
 
 ```
 
 ## 54
 
-- To make the input and textarea elements blend in with the background theme, set their background-color to #0a0a23. Then, give them a 1px, solid border with a color of #0a0a23.
+- Create and add the following properties to .bb2a:
+
+Example Code
+margin: auto;
+width: 5vw;
+height: 5vw;
+border-top: 1vw solid #000;
+border-bottom: 1vw solid #000;
+border-left: 1vw solid #999;
+border-right: 1vw solid #999;
+After you add these, you can see how a thick border on an element gives you some angles where two sides meet. You are going to use that bottom border as the top of the building.
 
 ```html
 
-input, textarea {
-  background-color: #0a0a23;
-  border: 1px solid #0a0a23;
+.bb2a {
+  margin: auto;
+width: 5vw;
+height: 5vw;
+border-top: 1vw solid #000;
+border-bottom: 1vw solid #000;
+border-left: 1vw solid #999;
+border-right: 1vw solid #999;
 }
 ```
 
 ## 55
 
-- Currently, if you type in the input or textarea elements, you will not be able to see the text. Also, their height is too small to be easy to use.
-
-- Fix this, by setting the color to #ffffff, and setting their min-height to 2em.
+- Next, remove the width and height from .bb2a, and change the border-left and border-right to use 5vw instead of 1vw. The element will now have zero size and the borders will come together in the middle.
 
 ```html
 
-input, textarea {
-  background-color: #0a0a23;
-  border: 1px solid #0a0a23;
-  color: #ffffff;
-  min-height: 2em;
+.bb2a {
+  margin: auto;
+  border-top: 1vw solid #000;
+  border-bottom: 1vw solid #000;
+  border-left: 5vw solid #999;
+  border-right: 5vw solid #999;
 }
 
 ```
 
 ## 56
 
-- You want the select element to remain with a white background, but now it is not getting the same min-height as the input and textarea elements.
-
-- Move the min-height property and value so that all three element types have the same min-height value, and the select element still has a white background.
+- Next, change the two #999 of .bb2a to transparent. This will make the left and right borders invisible.
 
 ```html
 
-body {
-  width: 100%;
-  height: 100vh;
-  margin: 0;
-  background-color: #1b1b32;
-  color: #f5f6f7;
-  font-family: Tahoma;
-  font-size: 16px;
-}
-
-h1, p {
-  margin: 1em auto;
-  text-align: center;
-}
-
-form {
-  width: 60vw;
-  max-width: 500px;
-  min-width: 300px;
-  margin: 0 auto;
-}
-
-fieldset {
-  border: none;
-  padding: 2rem 0;
-  border-bottom: 3px solid #3b3b4f;
-}
-
-fieldset:last-of-type {
-  border-bottom: none;
-}
-
-label {
-  display: block;
-  margin: 0.5rem 0;
-}
-
-input,
-textarea,
-select {
-  margin: 10px 0 0 0;
-  width: 100%;
-  min-height: 2em;
-}
-
-input, textarea {
-  background-color: #0a0a23;
-  border: 1px solid #0a0a23;
-  color: #ffffff;
-}
-
-.inline {
-  width: unset;
-  margin: 0 0.5em 0 0;
-  vertical-align: middle;
+.bb2a {
+  margin: auto;
+  border-top: 1vw solid #000;
+  border-bottom: 1vw solid #000;
+  border-left: 5vw solid transparent;
+  border-right: 5vw solid transparent;
 }
 
 
@@ -950,153 +1074,897 @@ input, textarea {
 
 ## 57
 
-- To style the submit button, you can use an attribute selector, which selects an element based on the given attribute value. Here is an example:
-
-Example Code
-input[name="password"]
-The above selects input elements with a name attribute value of password.
-
-- Now, use the attribute selector to style the submit button with a display of block, and a width of 60%.
+- Remove the margin and border-top properties and values from .bb2a to turn it into a triangle for the top of the building.
 
 ```html
 
-input[type="submit"] {
-  display: block;
-  width: 60%;
+.bb2a {
+  border-bottom: 1vw solid #000;
+  border-left: 5vw solid transparent;
+  border-right: 5vw solid transparent;
 }
 
 ```
 
 ## 58
 
-- With a display of block the submit button sits flush against the left edge of its parent.
-
-- Use the same technique used to center the form to center the submit button.
+- Finally, on the border-bottom property of .bb2a, change the 1vw to 5vh and change the #000 color to your --building-color2 variable. There you go, now it looks good! At any time throughout this project, you can comment out or remove the border property you added to everything at the beginning to see what the buildings will look like when that gets removed at the end.
 
 ```html
 
-input[type="submit"] {
-  display: block;
-  width: 60%;
-  margin: 0 auto;
+.bb2a {
+  border-bottom: 5vh solid var(--building-color2);
+  border-left: 5vw solid transparent;
+  border-right: 5vw solid transparent;
 }
 
 ```
 
 ## 59
 
-- To make the submit button look more in line with the rest of the form, give it the same height as the other fields (2em). Also, increase the font-size to 1.1rem.
+- On to the next building! Create a new variable called --window-color3 in :root and give it a value of #d98cb3. This will be the secondary color for the pink buildings.
 
 ```html
 
-input[type="submit"] {
-  display: block;
-  width: 60%;
-  margin: 0 auto;
-  height: 2em;
-  font-size: 1.1rem;
+:root {
+  --building-color1: #aa80ff;
+  --building-color2: #66cc99;
+  --building-color3: #cc6699;
+  --building-color4: #538cc6;
+  --window-color1: black;
+  --window-color2: #8cd9b3;
+  --window-color3: #d98cb3;
 }
  ```
 
 ## 60
 
-- To make the submit button appear more distinct, give it a background-color of #3b3b4f, and a border-color of white.
+- So far, all the gradients you created have gone from top to bottom, that's the default direction. You can specify another direction by adding it before your colors like this:
+
+Example Code
+gradient-type(
+  direction,
+  color1,
+  color2
+);
+Fill in .bb3 with a repeating-linear-gradient. Use 90deg for the direction, your building-color3 for the first two colors, and window-color3 at 15% for the third. When you don't specify a distance for a color, it will use the values that makes sense. In this case, the first two colors will default to 0% and 7.5% because it starts at 0%, and 7.5% is half of the 15%.
 
 ```html
 
-input[type="submit"] {
-  display: block;
-  width: 60%;
-  margin: 0 auto;
-  height: 2em;
-  font-size: 1.1rem;
-  background-color:#3b3b4f;
-  border-color: white;
+.bb3 {
+  width: 10%;
+  height: 55%;
+  background-color: var(--building-color3);
+  background: repeating-linear-gradient(90deg, var(--building-color3), var(--building-color3),  var(--window-color3) 15%);
 }
  ```
 
 ## 61
 
-- Lastly, for the submit button, you want to separate it from the fieldset above, and adjust its width to never be below 300px.
-
-- Change the margin property to include 1em on the top and bottom, while leaving the right and left margins set to auto. Then set the width as described above.
+- Remove the background-color property and value from .bb3 since you are using the gradient as the background now.
 
 ```html
 
-input[type="submit"] {
-  display: block;
-  width: 60%;
-  margin: 0 auto;
-  height: 2em;
-  font-size: 1.1rem;
-  background-color: #3b3b4f;
-  border-color: white;
-  margin-top: 1em;
-  margin-bottom: 1em;
-  min-width: 300px;
+.bb3 {
+  width: 10%;
+  height: 55%;
+  background: repeating-linear-gradient(
+      90deg,
+      var(--building-color3),
+      var(--building-color3),
+      var(--window-color3) 15%
+    );
 }
 
  ```
 
 ## 62
 
-- Most browsers inject their own default CSS properties and values for different elements. If you look closely, you might be able to notice the file input is smaller than the other text input elements. By default, a padding of 1px 2px is given to input elements you can type in.
-
-- Using another attribute selector, style the input with a type of file to be the same padding as the other input elements.
+- The next building will have three sections. Nest three div elements within .bb4. Give them the classes of bb4a, bb4b and bb4c in that order.
 
 ```html
 
-input[type="file"] {
-  padding: 1px 2px;
-}
+<div class="bb4">
+        <div class="bb4a"></div>
+        <div class="bb4b"></div>
+        <div class="bb4c"></div>
+      </div>
 ```
 
 ## 63
 
-- Speaking of padding, the submit button is sitting at the bottom of the form element. Add 2em of padding only to the bottom of the form.
+- Give the new div elements these width and height values: 3% and 10% to .bb4a, 80% and 5% to .bb4b, and 100% and 85% to .bb4c.
 
 ```html
 
-form {
-  width: 60vw;
-  max-width: 500px;
-  min-width: 300px;
-  margin: 0 auto;
-  padding: 2em;
+.bb4a {
+  width: 3%;
+  height: 10%;
+}
+
+.bb4b {
+  width: 80%;
+  height: 5%;
+}
+
+.bb4c {
+  width: 100%;
+  height: 85%;
 }
 ```
 
 ## 64
 
-- Make the input for the terms and conditions inline by adding the appropriate class in the HTML.
+- Remove the background-color property and value from .bb4, and add it to the three new sections .bb4a, .bb4b, and .bb4c, so only the sections are filled.
 
 ```html
 
-<label for="terms-and-conditions">
-        <input id="terms-and-conditions" type="checkbox" required name="terms-and-conditions" class="inline" /> I accept the <a href="https://www.freecodecamp.org/news/terms-of-service/">terms and conditions</a>
-      </label>
+.bb4 {
+  width: 11%;
+  height: 58%;
+}
+
+.bb4a {
+  width: 3%;
+  height: 10%;
+  background-color: var(--building-color4);
+}
+
+.bb4b {
+  width: 80%;
+  height: 5%;
+  background-color: var(--building-color4);
+}
+  
+.bb4c {
+  width: 100%;
+  height: 85%;
+  background-color: var(--building-color4);
+}
 ```
 
 ## 65
 
-- Lastly change the text color of the terms and conditions link element to #dfdfe2 by adding a new selector in the CSS.
-
-- Well done! You have completed the final part of the Registration Form practice project.
+- You want .bb4 to share the properties of .bb1 that center the sections. Instead of duplicating that code, create a new class above the background building comment called building-wrap. Leave it empty for now; this class will be used in a few places to save you some coding.
 
 ```html
-a {
-  color: #dfdfe2;
+.building-wrap {
+
 }
 ```
 
 ## 66
 
-- Now you'll apply a gradient to the blue marker, this time using the hsl function as color arguments.
-
-- In the .blue CSS rule, change the background-color property to background.
+- Move the display, flex-direction, and align-items properties and values from .bb1 to the new building-wrap class.
 
 ```html
-.blue {
-  background: hsl(240, 100%, 50%);
+.building-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* BACKGROUND BUILDINGS - "bb" stands for "background building" */
+.bb1 {
+  width: 10%;
+  height: 70%;
+}
+```
+
+## 67
+
+- Add the new building-wrap class to the .bb1 and .bb4 elements. This will apply the centering properties to the buildings that need it.
+
+```html
+<div class="bb1 building-wrap">
+        <div class="bb1a bb1-window"></div>
+        <div class="bb1b bb1-window"></div>
+        <div class="bb1c bb1-window"></div>
+        <div class="bb1d"></div>
+      </div>
+      <div class="bb2">
+        <div class="bb2a"></div>
+        <div class="bb2b"></div>
+      </div>
+      <div class="bb3"></div>
+      <div></div>
+      <div class="bb4 building-wrap">
+        
+```
+
+## 68
+
+- Create a new variable called --window-color4 in :root and give it a value of #8cb3d9. This will be the secondary color for the last background building.
+
+```html
+
+:root {
+  --building-color1: #aa80ff;
+  --building-color2: #66cc99;
+  --building-color3: #cc6699;
+  --building-color4: #538cc6;
+  --window-color1: black;
+  --window-color2: #8cd9b3;
+  --window-color3: #d98cb3;
+  --window-color4: #8cb3d9;
+}
+```
+
+## 69
+
+- Nest four new div elements within .bb4c, give them all the class of bb4-window. These will be windows for this building.
+
+```html
+
+<div class="bb4c">
+          <div class="bb4-window"></div>
+          <div class="bb4-window"></div>
+          <div class="bb4-window"></div>
+          <div class="bb4-window"></div>
+        </div>
+```
+
+## 70
+
+- Give the bb4-window class a width of 18%, a height of 90%, and add your --window-color4 variable as the background-color.
+
+```html
+
+.bb4-window {
+  width: 18%;
+  height: 90%;
+  background-color: var(--window-color4);
+}
+```
+
+## 71
+
+- The windows are stacked on top of each other at the left of the section, behind the purple building. Add a new class below .building-wrap called window-wrap. Make .window-wrap a flexbox container, and use the align-items and justify-content properties to center its child elements vertically and evenly space them in their parent, respectively.
+
+```html
+.window-wrap {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+```
+
+## 72
+
+- Add the new window-wrap class to the .bb4c element.
+
+```html
+
+<div class="bb4c window-wrap">
+          <div class="bb4-window"></div>
+          <div class="bb4-window"></div>
+          <div class="bb4-window"></div>
+          <div class="bb4-window"></div>
+        </div>
+```
+
+## 73
+
+- Looks good! On to the foreground buildings! Turn the .fb1 building into three sections by nesting three new div elements within it. Give them the classes of fb1a, fb1b and fb1c, in that order.
+
+```html
+
+<div class="fb1">
+        <div class="fb1a"></div>
+        <div class="fb1b"></div>
+        <div class="fb1c"></div>
+      </div>
+
+```
+
+## 74
+
+- Give .fb1b a width of 60% and height of 10%, and .fb1c a width of 100% and height of 80%.
+
+```html
+
+.fb1b {
+  width: 60%;
+  height: 10%;
+}
+
+.fb1c {
+  width: 100%;
+  height: 80%;
+}
+```
+
+## 75
+
+- Add the building-wrap class to the .fb1 element to center the sections.
+
+```html
+<div class="fb1 building-wrap">
+        <div class="fb1a"></div>
+        <div class="fb1b"></div>
+        <div class="fb1c"></div>
+      </div>
+```
+
+## 76
+
+- Move the background-color property and value from .fb1 to .fb1b.
+
+```html
+
+.fb1 {
+  width: 10%;
+  height: 60%;
+}
+
+.fb1b {
+  width: 60%;
+  height: 10%;
+  background-color: var(--building-color4);
+}
+```
+
+## 77
+
+- Don't worry about the space at the bottom, everything will get moved down later when you add some height to the element at the top of the building.
+
+- Add a repeating-linear-gradient to .fb1c with a 90deg angle, your --building-color4 from 0% to 10% and transparent from 10% to 15%.
+
+```html
+.fb1c {
+  width: 100%;
+  height: 80%;
+  background: repeating-linear-gradient(90deg, var(--building-color4) 0%, var(--building-color4) 10%, transparent 10%, transparent 15%);
+}
+```
+
+## 78
+
+- You can add multiple gradients to an element by separating them with a comma (,) like this:
+
+Example Code
+gradient1(
+  colors
+),
+gradient2(
+  colors
+);
+Add a repeating-linear-gradient to .fb1c below the one that's there; use your --building-color4 from 0% to 10% and --window-color4 from 10% and 90%. This will fill in behind the gradient you added last.
+
+```html
+
+.fb1c {
+  width: 100%;
+  height: 80%;
+  background: repeating-linear-gradient(
+      90deg,
+      var(--building-color4),
+      var(--building-color4) 10%,
+      transparent 10%,
+      transparent 15%
+    ),
+    repeating-linear-gradient(
+      var(--building-color4) 0%,
+      var(--building-color4) 10%,
+      var(--window-color4) 10%,
+      var(--window-color4) 90%);
+}
+```
+
+## 79
+
+- You're going to use some more border tricks for the top section. Add a border-bottom with a value of 7vh solid var(--building-color4) to .fb1a. This will put a 7vh height border on the bottom. But since the element has zero size, it only shows up as a 2px wide line from the 1px border that is on all the elements.
+
+```html
+
+.fb1a {
+  border-bottom: 7vh solid var(--building-color4);
+}
+```
+
+## 80
+
+- When you increase the size of the left and right borders, the border on the bottom will expand to be the width of the combined left and right border widths. Add 2vw solid transparent as the value of the border-left and border-right properties of .fb1a. They will be invisible, but it will make the border on the bottom 4vw wide.
+
+```html
+
+.fb1a {
+  border-bottom: 7vh solid var(--building-color4);
+  border-left: 2vw solid transparent;
+  border-right: 2vw solid transparent;
+}
+```
+
+## 81
+
+- On to the next building! Nest two div elements within .fb2 and give them classes of fb2a and fb2b, in that order.
+
+```html
+
+<div class="fb2">
+        <div class="fb2a"></div>
+        <div class="fb2b"></div>
+      </div>
+```
+
+## 82
+
+- Give .fb2a a width of 100% and .fb2b a width of 100% and height of 75%.
+
+```html
+
+.fb2a {
+  width: 100%;
+  height: 75%;
+}
+
+.fb2b {
+  width: 100%;
+  height: 75%;
+}
+```
+
+## 83
+
+- Nest three div elements within .fb2b and give them a class of fb2-window. These will be windows for this section of the building.
+
+```html
+
+<div class="fb2b">
+          <div class="fb2-window"></div>
+           <div class="fb2-window"></div>
+            <div class="fb2-window"></div>
+        </div>
+
+```
+
+## 84
+
+- Add your window-wrap class to .fb2b to position the new window elements.
+
+```html
+<div class="fb2b window-wrap">
+          <div class="fb2-window"></div>
+          <div class="fb2-window"></div>
+          <div class="fb2-window"></div>
+        </div>
+```
+
+## 85
+
+- Give the .fb2-window elements a width of 22%, height of 100%, and a background-color of your --window-color3 variable.
+
+```html
+
+.fb2-window {
+  width: 22%;
+  height: 100%;
+  background-color: var(--window-color3);
+}
+```
+
+## 86
+
+- Move the background-color property and value from .fb2 to .fb2b to just color the section and not the container.
+
+```html
+
+.fb2 {
+  width: 10%;
+  height: 40%;
+}
+
+.fb2a {
+  width: 100%;
+}
+
+.fb2b {
+  width: 100%;
+  height: 75%;
+  background-color: var(--building-color3);
+}
+```
+
+## 87
+
+- For .fb2a, add a border-bottom of 10vh solid var(--building-color3), and a border-left and border-right of 1vw solid transparent. This time the border trick will create a trapezoid shape.
+
+```html
+
+.fb2a {
+  width: 100%;
+  border-bottom: 10vh solid var(--building-color3);
+  border-left:1vw solid transparent;
+  border-right:1vw solid transparent;
+}
+```
+
+## 88
+
+- For the next building, nest four div elements within .fb3 with classes of fb3a, fb3b, fb3a again, and fb3b again, in that order. This building will have four sections, and the top two will be almost the same as the bottom two.
+
+```html
+
+<div class="fb3">
+        <div class="fb3a"></div>
+        <div class="fb3b"></div>
+        <div class="fb3a"></div>
+        <div class="fb3b"></div>
+      </div>
+```
+
+## 89
+
+- Give the .fb3a element a width of 80% and height of 15%. Then give the .fb3b element a width of 100% and height of 35%.
+
+```html
+
+.fb3a {
+  width: 80%;
+  height: 15%;
+}
+
+.fb3b {
+  width: 100%;
+  height: 35%;
+}
+```
+
+## 90
+
+- Remove the background-color property and value from .fb3, and add them to .fb3a and .fb3b.
+
+```html
+
+.fb3 {
+  width: 10%;
+  height: 35%;
+}
+
+.fb3a {
+  width: 80%;
+  height: 15%;
+  background-color: var(--building-color1);
+}
+  
+.fb3b {
+  width: 100%;
+  height: 35%;
+  background-color: var(--building-color1);
+}
+```
+
+## 91
+
+- Add your building-wrap class to the .fb3 element to center the sections.
+
+```html
+
+<div class="fb3 building-wrap">
+        <div class="fb3a"></div>
+        <div class="fb3b"></div>
+        <div class="fb3a"></div>
+        <div class="fb3b"></div>
+      </div>
+```
+
+## 92
+
+- Nest three new div elements in the first .fb3a element. Give them each a class of fb3-window. These will be windows for this section.
+
+```html
+
+<div class="fb3a">
+          <div class="fb3-window"></div>
+          <div class="fb3-window"></div>
+          <div class="fb3-window"></div>
+        </div>
+```
+
+## 93
+
+- Give the .fb3-window elements a width of 25%, a height of 80%, and use your --window-color1 variable as the background-color value.
+
+```html
+
+.fb3-window {
+  width: 25%;
+  height: 80%;
+  background-color: var(--window-color1);
+}
+```
+
+## 94
+
+- Add your window-wrap class to the .fb3a element to center and space the windows.
+
+```html
+
+<div class="fb3a window-wrap">
+          <div class="fb3-window"></div>
+          <div class="fb3-window"></div>
+          <div class="fb3-window"></div>
+        </div>
+```
+
+## 95
+
+- With CSS variables you can change values without searching everywhere in the stylesheet. Change the --window-color1 value to #bb99ff.
+
+```html
+
+:root {
+  --building-color1: #aa80ff;
+  --building-color2: #66cc99;
+  --building-color3: #cc6699;
+  --building-color4: #538cc6;
+  --window-color1: #bb99ff;
+  --window-color2: #8cd9b3;
+  --window-color3: #d98cb3;
+  --window-color4: #8cb3d9;
+}
+```
+
+## 96
+
+- Only three more buildings to go. Nest two new div elements within the .fb4 element and give them the classes of fb4a and fb4b, in that order. Remember that you sort of flipped the location of .fb4 and .fb5, so it's the rightmost purple building you are working on now.
+
+```html
+
+<div class="fb4">
+        <div class="fb4a"></div>
+        <div class="fb4b"></div>
+      </div>
+```
+
+## 97
+
+- Give .fb4b a width of 100% and height of 89%.
+
+```html
+
+.fb4b {
+  width: 100%;
+  height: 89%;
+}
+```
+
+## 98
+
+- Add your --building-color1 variable as value of the background-color property of .fb4b. Then, remove the background-color from .fb4.
+
+```html
+
+.fb4 {
+  width: 8%;
+  height: 45%;
+  position: relative;
+  left: 10%;
+}
+
+.fb4b {
+  width: 100%;
+  height: 89%;
+  background-color: var(--building-color1);
+}
+```
+
+## 99
+
+- Nest six div elements within .fb4b and give them all a class of fb4-window.
+
+```html
+
+<div class="fb4b">
+          <div class="fb4-window"></div>
+          <div class="fb4-window"></div>
+          <div class="fb4-window"></div>
+          <div class="fb4-window"></div>
+          <div class="fb4-window"></div>
+          <div class="fb4-window"></div>
+        </div>
+```
+
+## 100
+
+- Give the .fb4-window elements a width of 30%, height of 10%, and border-radius of 50%. These will make some circular windows for this building.
+
+```html
+
+.fb4-window {
+  width: 30%;
+  height: 10%;
+  border-radius: 50%;
+}
+```
+
+## 101
+
+- Fill in the windows with your secondary color for this building. Also add a margin of 10% to give the windows some space.
+
+```html
+
+.fb4-window {
+  width: 30%;
+  height: 10%;
+  border-radius: 50%;
+  margin: 10%;
+  background-color: var(--window-color1);
+}
+```
+
+## 102
+
+- The windows are stacked on top of each other on the rightmost purple building. Turn the building into a flexbox parent, and use the flex-wrap property to put the windows side by side, and push them down to a new row when they don't fit.
+
+```html
+
+.fb4b {
+  width: 100%;
+  height: 89%;
+  background-color: var(--building-color1);
+  display: flex;
+  flex-wrap: wrap;
+}
+```
+
+## 103
+
+- This building is going to have another triangle on top. Give the top section a border-top of 5vh solid transparent, and a border-left that is 8vw, solid, and uses your building color variable as the color.
+
+```html
+
+.fb4a {
+  border-top: 5vh solid transparent;
+  border-left: 8vw solid var(--building-color1);
+}
+```
+
+## 104
+
+- On to the next building! It's the green one in the foreground. Give it a repeating-linear-gradient with your building color from 0% to 5%, and transparent from 5% to 10%.
+
+```html
+
+.fb5 {
+  width: 10%;
+  height: 33%;
+  background-color: var(--building-color2);
+  position: relative;
+  right: 10%;
+  background: repeating-linear-gradient(var(--building-color2),var(--building-color2) 5%,transparent 5%,transparent 10%);
+}
+```
+
+## 105
+
+- Add another repeating-linear-gradient below the one you just added. Give it a 90deg direction, use your building color from 0% to 12% and window color 12% to 44%. This will make a bunch of rectangle windows.
+
+```html
+
+.fb5 {
+  width: 10%;
+  height: 33%;
+  background-color: var(--building-color2);
+  position: relative;
+  right: 10%;
+  background: repeating-linear-gradient(
+      var(--building-color2),
+      var(--building-color2) 5%,
+      transparent 5%,
+      transparent 10%
+    ), repeating-linear-gradient(
+      90deg, var(--building-color2) 0%,
+      var(--building-color2) 12%,
+      var(--window-color2 ) 12%,
+      var(--window-color2 ) 44%);
+}
+```
+
+## 106
+
+- You don't need the background-color for this building anymore so you can remove that property.
+
+```html
+
+.fb5 {
+  width: 10%;
+  height: 33%;
+  position: relative;
+  right: 10%;
+  background: repeating-linear-gradient(
+      var(--building-color2),
+      var(--building-color2) 5%,
+      transparent 5%,
+      transparent 10%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      var(--building-color2),
+      var(--building-color2) 12%,
+      var(--window-color2) 12%,
+      var(--window-color2) 44%
+    );
+}
+```
+
+## 107
+
+- Finally! You made it to the last building! Add a repeating gradient to it with a 90deg direction. Use the building color from 0% to 10% and transparent from 10% to 30%.
+
+```html
+
+.fb6 {
+  width: 9%;
+  height: 38%;
+  background-color: var(--building-color3);
+  background: repeating-linear-gradient(
+      90deg, var(--building-color3) 0%,
+      var(--building-color3) 10%,
+      transparent 10%,
+      transparent 30%
+    );
+}
+```
+
+## 108
+
+- Add another repeating gradient to this building; make it the same as the one you just added, except don't add the 90deg direction and use your window color instead of the two transparent colors.
+
+```html
+
+.fb6 {
+  width: 9%;
+  height: 38%;
+  background-color: var(--building-color3);
+  background: repeating-linear-gradient(
+    90deg,
+    var(--building-color3),
+    var(--building-color3) 10%,
+    transparent 10%,
+    transparent 30%
+  ), repeating-linear-gradient(
+    
+    var(--building-color3) 0%,
+    var(--building-color3) 10%,
+    var(--window-color3) 10%,
+    var(--window-color3) 30%
+  );
+}
+```
+
+## 109
+
+- You can remove the background-color for this building now, since it isn't needed.
+
+```html
+
+.fb6 {
+  width: 9%;
+  height: 38%;
+  background: repeating-linear-gradient(
+      90deg,
+      var(--building-color3),
+      var(--building-color3) 10%,
+      transparent 10%,
+      transparent 30%
+    ),
+    repeating-linear-gradient(
+      var(--building-color3),
+      var(--building-color3) 10%,
+      var(--window-color3) 10%,
+      var(--window-color3) 30%
+    );
+}
+```
+
+## 110
+
+- Okay, the buildings are done. Go back to the * selector and remove the border you applied to everything at the beginning and the buildings will come together.
+
+```html
+
+* {
+  box-sizing: border-box;
 }
 ```
