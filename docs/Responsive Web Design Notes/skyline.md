@@ -1968,3 +1968,151 @@ Add a repeating-linear-gradient to .fb1c below the one that's there; use your --
   box-sizing: border-box;
 }
 ```
+
+## 111
+
+- Okay, the buildings are done. Go back to the * selector and remove the border you applied to everything at the beginning and the buildings will come together.
+
+```html
+<div class="background-buildings sky">
+      <div></div>
+      <div></div>
+      <div class="bb1 building-wrap">
+        <div class="bb1a bb1-window"></div>
+        <div class="bb1b bb1-window"></div>
+        <div class="bb1c bb1-window"></div>
+        <div class="bb1d"></div>
+      </div>
+      <div class="bb2">
+        <div class="bb2a"></div>
+        <div class="bb2b"></div>
+      </div>
+      <div class="bb3"></div>
+      <div></div>
+      <div class="bb4 building-wrap">
+        <div class="bb4a"></div>
+        <div class="bb4b"></div>
+        <div class="bb4c window-wrap">
+          <div class="bb4-window"></div>
+          <div class="bb4-window"></div>
+          <div class="bb4-window"></div>
+          <div class="bb4-window"></div>
+        </div>
+      </div>
+      <div></div>
+      <div></div>
+    </div>
+```
+
+## 112
+
+- Give the sky class a radial-gradient. Use #ffcf33 from 0% to 20%, #ffff66 at 21%, and #bbeeff at 100%. This will add circular gradient to the background that will be your sun.
+
+```html
+
+.sky {
+  background: radial-gradient(#ffcf33 0%, #ffcf33 20%, #ffff66 21%, #bbeeff 100%);
+}
+```
+
+## 113
+
+- At the top of the sky gradient color list, where you would put a direction for the gradient; add circle closest-corner at 15% 15%,. This will move the start of the gradient to 15% from the top and left. It will make it end at the closest-corner and it will maintain a circle shape. These are some keywords built into gradients to describe how it behaves.
+
+```html
+
+.sky {
+  background: radial-gradient(
+    circle closest-corner at 15% 15%,
+      #ffcf33,
+      #ffcf33 20%,
+      #ffff66 21%,
+      #bbeeff 100%
+    );
+}
+```
+
+## 114
+
+- A media query can be used to change styles based on certain conditions, and they look like this:
+
+Example Code
+@media (condition) {
+
+}  
+Add an empty media query at the bottom of your stylesheet with a condition of max-width: 1000px. Styles added in here will take effect when the document size is 1000px wide or less.
+
+```html
+
+@media (max-width: 1000px){
+
+}
+```
+
+## 115
+
+- Copy and paste your whole sky class along with all of its properties and values into the media query. You are going to make another color scheme for the skyline that changes it from day to night.
+
+Note: You are going to need to scroll past the editable region to copy the class.
+
+```html
+@media (max-width: 1000px) {
+  .sky {
+  background: radial-gradient(
+    circle closest-corner at 15% 15%,
+      #ffcf33,
+      #ffcf33 20%,
+      #ffff66 21%,
+      #bbeeff 100%
+    );
+}
+}
+```
+
+## 116
+
+- In the sky class of the media query, change the two #ffcf33 color values to #ccc, the #ffff66 to #445, and the #bbeeff to #223. Then you can resize your window to see the background change colors
+
+```html
+.sky {
+    background: radial-gradient(
+  closest-corner circle at 15% 15%,
+  #ccc,
+  #ccc 20%,
+  #445 21%,
+  #223 100%
+);
+  }
+```
+
+## 117
+
+- Add a :root selector to the top of your media query. Then redefine all four of the --building-color variables to use the value #000 there.
+
+```html
+:root {
+  --building-color1: #000;
+  --building-color2: #000;
+  --building-color3: #000;
+  --building-color4: #000;
+}
+```
+
+## 118
+
+- Lastly, in the :root selector of the media query, redefine all four of the --window-color variables to use #777. When you're done, resize the window and watch it go from day to night.
+
+- Variables are primarily used with colors, and that's how you used them here. But they can be given any value and used on any property. Your project looks great!
+
+```html
+:root {
+    --building-color1: #000;
+    --building-color2: #000;
+    --building-color3: #000;
+    --building-color4: #000;
+    --window-color1: #777;
+    --window-color2: #777;
+    --window-color3: #777;
+    --window-color4: #777;
+  }
+```
