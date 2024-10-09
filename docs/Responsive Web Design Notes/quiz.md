@@ -7,12 +7,13 @@
 - Start this accessibility journey by providing a lang attribute to your html element. This will assist screen readers in identifying the language of the page.
 
 ```html
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
   </body>
 </html>
 ```
