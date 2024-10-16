@@ -10,566 +10,565 @@ To get started, create your standard HTML boilerplate with a DOCTYPE, html, head
 
 Finally, create a div element with id set to game within your body.
 
-```javascript
-
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPG - Dragon Repeller</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game"></div>
+</body>
+</html>
 ```
 
 ## 2
 
-- One of the most important concepts in programming is variables. A variable points to a specific memory address that stores a value. Variables are given a name which can be used throughout your code to access that value.
-
-- Declaring a variable means giving it a name. In JavaScript, this is often done with the let keyword. For example, here is how you would declare a hello variable:
+- Now you can start writing your JavaScript. Begin by creating a script element. This element is used to load JavaScript into your HTML file.
 
 Example Code
-let hello;
-Variable naming follows specific rules: names can include letters, numbers, dollar signs, and underscores, but cannot contain spaces and must not begin with a number.
-
-- Use the let keyword to declare a variable called character.
-
-- Note: It is common practice to end statements in JavaScript with a semicolon. ;
+  // JavaScript code goes here
+</script>
 
 ```html
-let character;
+<script>
+
+  </script>
 ```
 
 ## 3
 
-- Your character variable currently does not have a value. You can assign a value using the assignment operator =. For example:
+- One of the most powerful tools is your developer console. Depending on your browser, this might be opened by pressing F12 or Ctrl+Shift+I. On Mac, you can press Option + ⌘ + C and select "Console". You can also click the "Console" button above the preview window to see our built-in console.
 
-Example Code
-let hello = "Hello";
-Assigning a value to a variable at the moment of its declaration is known as initialization.
+The developer console will include errors that are produced by your code, but you can also use it to see values of variables in your code, which is helpful for debugging.
 
-Initialize your character variable by assigning it the value "Hello" during its declaration.
+Add a console.log("Hello World"); line between your script tags. Then click the "Console" button to open the console. You should see the text "Hello World".
 
 ```html
-let character = "Hello";
+<script>
+      console.log("Hello World");
+    </script>
 ```
 
 ## 4
 
-- JavaScript has seven primitive data types, with String being one of them. In JavaScript, a string represents a sequence of characters and can be enclosed in either single (') or double (") quotes.
+- Before you start writing your project code, you should move it to its own file to keep things organized.
 
-- Note that strings are immutable, which means once they are created, they cannot be changed. The variable can still be reassigned another value.
-
-- Change your "Hello" string to use single quotes.
+Remove your console.log("Hello World"); line. Then give your now empty script element a src attribute set to ./script.js.
 
 ```html
-let character = 'Hello';
+<script src="./script.js">
+      
+    </script>
 ```
 
 ## 5
 
-- The console allows you to print and view JavaScript output. You can send information to the console using console.log(). For example, this code will print "Naomi" to the console:
+- Your view has been switched to your new script.js file. Remember that you can use the tabs above to switch between files.
 
-Example Code
-let developer = "Naomi";
-console.log(developer);
-The code above accesses the developer variable with its name in the console.log(). Note that the value between the parentheses is the value that will be printed.
-
-- Print the value of the character variable to the console. Then, click the "Console" button to view the JavaScript console.
+Add your console.log("Hello World"); line to this file, and see it appear in your console.
 
 ```html
-let character = 'Hello';
-console.log(character);
+console.log("Hello World");
 ```
 
 ## 6
 
-- When a variable is declared with the let keyword, you can reassign (or change the value of) that variable later on. In this example, the value of programmer is changed from "Naomi" to "CamperChan".
+- Remove your console.log("Hello World"); line to begin writing your project code.
+
+In the previous project, you learned how to work with variables and the let keyword like this:
 
 Example Code
-let programmer = "Naomi";
-programmer = "CamperChan";
-Note that when reassigning a variable, you do not use the let keyword again.
+let camperbot;
+You also learned how to initialize a variable with a value like this:
 
-- After your console.log, assign the value "World" to your character variable.
+Example Code
+let age = 32;
+Use the let keyword to declare a variable called xp and assign it the value of 0, a number.
 
 ```html
-let character = 'Hello';
-console.log(character);
-character = "World";
+let xp = 0;
 ```
 
 ## 7
 
-- Now log your character variable to the console again. You should see the string "Hello", then the string "World", in the console.
+- Initialize another variable called health with a value of 100, and a variable called gold with a value of 50.
 
 ```html
-let character = 'Hello';
-console.log(character);
-character = "World";
-console.log(character);
+let xp = 0;
+let health = 100;
+let gold = 50;
 ```
 
 ## 8
 
-- When variable names are more than one word, there are specific naming conventions for how you capitalize the words. In JavaScript, the convention to use is camel case.
-
-- Camel case means that the first word in the name is entirely lowercase, but the following words are all title-cased. Here are some examples of camel case:
-
-Example Code
-let variableOne;
-let secondVariable;
-let yetAnotherVariable;
-let thisIsAnAbsurdlyLongName;
-Use camel case to declare a new secondCharacter variable.
+- Create another variable called currentWeaponIndex and set it to 0.
 
 ```html
-let character = 'Hello';
-console.log(character);
-character = "World";
-console.log(character);
-let secondCharacter;
+let xp = 0;
+let health = 100;
+let gold = 50;
+let currentWeaponIndex = 0;
 ```
 
 ## 9
 
-- When you declare a variable without initializing it, it is considered uninitialized. Currently, your secondCharacter variable is uninitialized.
-
-- Add a console.log() to see what the value of your secondCharacter variable is.
+- Declare a variable called fighting but do not initialize it with a value.
 
 ```html
-let character = 'Hello';
-console.log(character);
-character = "World";
-let secondCharacter;
-console.log(secondCharacter);
+let xp = 0;
+let health = 100;
+let gold = 50;
+let currentWeaponIndex = 0;
+let fighting;
 ```
 
 ## 10
 
-- The default value of an uninitialized variable is undefined. This is a special data type that represents a value that does not have a definition yet.
+- Declare two more variables named monsterHealth and inventory.
 
-You can still assign a value to an uninitialized variable. Here is an example:
+For your inventory variable, assign it the value of an array containing the string "stick".
+
+Remember that you worked with arrays in the previous project like this:
 
 Example Code
-let uninitialized;
-uninitialized = "assigned";
-Assign the string "Test" to your secondCharacter variable below your declaration. Open the console to see how your log has changed.
+let exampleArray = ["first", "second", "third"];
 
 ```html
-let character = 'Hello';
-console.log(character);
-character = "World";
-let secondCharacter;
-secondCharacter = "Test";
-console.log(secondCharacter);
+let xp = 0;
+let health = 100;
+let gold = 50;
+let currentWeaponIndex = 0;
+let fighting;
+let monsterHealth;
+let inventory = ["stick"];
 ```
 
 ## 11
 
-- You can also assign the value of a variable to another variable. For example:
+- In your role playing game, users will be able to track their stats, buy weapons, and fight monsters. Before you can continue with the interactive JavaScript portion of the game, you need to first create the HTML elements that will display the game information.
 
-Example Code
-let first = "One";
-let second = "Two";
-second = first;
-The second variable would now have the value "One".
-
-To see this in action, change your secondCharacter assignment from "Test" to your character variable.
-
-Then open the console to see what gets logged.
+Create four div elements within your #game element. Give them the following respective id values, in order: stats, controls, monsterStats, and text.
 
 ```html
-secondCharacter = character;
-
-
+<body>
+    <div id="game">
+      <div id="stats"></div>
+      <div id="controls"></div>
+      <div id="monsterStats"></div>
+      <div id="text"></div>
+    </div>
+  </body>
 ```
 
 ## 12
 
-- You are now ready to declare your next variable. Remove both console.log statements, and the character reassignment.
-
-Also remove your secondCharacter variable, but leave the character initialization unchanged.
+- Create three span elements within your #stats element. Give each of them the class stat. Then give the first one the text XP: 0, the second one the text Health: 100, and the third one the text Gold: 50.
 
 ```html
-let character = 'Hello';
+<body>
+    <div id="game">
+      <div id="stats">
+        <span class="stat">XP: 0</span>
+        <span class="stat">Health: 100</span>
+        <span class="stat">Gold: 50</span>
+      </div>
+      <div id="controls"></div>
+      <div id="monsterStats"></div>
+      <div id="text"></div>
+    </div>
+  </body>
 ```
 
 ## 13
 
-- Before moving forward, you should take a moment to review the concepts you have learned.
+- Wrap the numbers 0, 100, and 50 in span elements, and wrap those new span elements in strong elements. Then give your new span elements id values of xpText, healthText, and goldText, respectively.
 
-Use the let keyword to declare a profession variable and an age variable. Initialize profession with the string "teacher", but do not initialize age with any value.
+Your answer should follow this basic structure:
 
-Log both of your variables to the console to see the results.
+Example Code
 
 ```html
-let profession = "teacher";
-console.log(profession);
-let age;
-console.log(age);
+<span class="stat">XP: <strong><span id="xpText">0</span></strong></span>
+        <span class="stat">Health: <strong><span id="healthText">100</strong></span></span>
+        <span class="stat">Gold: <strong><span id="goldText">50</strong></span></span>
 ```
 
 ## 14
 
-- Now that you have reviewed declaration and initialization, remove the code you wrote for your review.
-
-Do not remove your character variable.
+- For your #controls element, create three button elements. The first should have the id set to button1, and the text Go to store. The second should have the id set to button2, and the text Go to cave. The third should have the id set to button3, and the text Fight dragon.
 
 ```html
+<div id="controls">
+        <button id="button1">Go to store</button>
+        <button id="button2">Go to cave</button>
+        <button id="button3">Fight dragon</button>
+      </div>
 ```
 
 ## 15
 
-- Use let to declare a count variable. Assign it the number 8. When using a number value, you do not use quotes. For example:
+- JavaScript interacts with the HTML using the Document Object Model, or DOM. The DOM is a tree of objects that represents the HTML. You can access the HTML using the document object, which represents your entire HTML document.
+
+One method for finding specific elements in your HTML is using the querySelector() method. The querySelector() method takes a CSS selector as an argument and returns the first element that matches that selector. For example, to find the element in your HTML, you would write:
 
 Example Code
-let money = 100;
+let h1 = document.querySelector("h1");
+Note that h1 is a string and matches the CSS selector you would use.
+
+Create a button1 variable and use querySelector() to assign it your element with the id of button1. Remember that CSS id selectors are prefixed with a #.
 
 ```html
-Use let to declare a count variable. Assign it the number 8. When using a number value, you do not use quotes. For example:
-
-Example Code
-let money = 100;
+let button1 = document.querySelector("#button1");
 ```
 
 ## 16
 
-- With the number data type, you can perform mathematical operations, like addition. Try printing count + 1 to the console.
+- We have run into a slight problem. You are trying to query your page for a button element, but your script tag is in the head of your HTML. This means your code runs before the browser has finished reading the HTML, and your document.querySelector() will not see the button - because the browser hasn't processed it yet.
+
+To fix this, move your script element out of the head element, and place it at the end of your body element (just before the closing </body> tag.)
 
 ```html
- let character = 'Hello';
-let count = 8;
-console.log(count + 1);
+ <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./styles.css">
+    <title>RPG - Dragon Repeller</title>
+  </head>
+  <body>
+    <div id="game">
+      <div id="stats">
+        <span class="stat">XP: <strong><span id="xpText">0</span></strong></span>
+        <span class="stat">Health: <strong><span id="healthText">100</span></strong></span>
+        <span class="stat">Gold: <strong><span id="goldText">50</span></strong></span>
+      </div>
+      <div id="controls">
+        <button id="button1">Go to store</button>
+        <button id="button2">Go to cave</button>
+        <button id="button3">Fight dragon</button>
+      </div>
+      <div id="monsterStats"></div>
+      <div id="text"></div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
 ```
 
 ## 17
 
-- You can also perform subtraction (-), multiplication (*), and division (/). Feel free to experiment with the operators and numbers in your console.log. When you are ready to move on, remove the console.log.
+- button1 is a variable that is not going to be reassigned. If you are not going to assign a new value to a variable, it is best practice to use the const keyword to declare it instead of the let keyword. This will tell JavaScript to throw an error if you accidentally reassign it.
+
+Change your button1 variable to be declared with the const keyword.
 
 ```html
-let count = 8;
-
+const button1 = document.querySelector("#button1");
 ```
 
 ## 18
 
-- In programming, you will often need to work with lots of data. There are many data structures that can help you organize and manage your data. One of the most basic data structures is an array.
-
-An array is a non-primitive data type that can hold a series of values. Non-primitive data types differ from primitive data types in that they can hold more complex data. Primitive data types like strings and numbers can only hold one value at a time.
-
-Arrays are denoted using square brackets ([]). Here is an example of a variable with the value of an empty array:
-
-Example Code
-let array = [];
-Declare a rows variable and assign it an empty array.
+- Use querySelector() to get the other two button elements using their ids: button2 and button3. Store them in variables called button2 and button3. Remember to use const.
 
 ```html
-let character = 'Hello';
-let count = 8;
-let rows = [];
+const button1 = document.querySelector("#button1");
+const button2 = document.querySelector("#button2");
+const button3 = document.querySelector("#button3");
 ```
 
 ## 19
 
-- When an array holds values, or elements, those values are separated by commas. Here is an array that holds two strings:
-
-Example Code
-let array = ["first", "second"];
-Change your rows declaration to be an array with the strings "Naomi", "Quincy", and "CamperChan". The order of values in an array is important, so follow that order. Remember that strings are case-sensitive.
+- Similar to your #stats element, your #monsterStats element needs two span elements. Give them the class stat and give the first element the text Monster Name:  and the second the text Health: . After the text in each, add a strong element with an empty nested span element. Give the first inner span element an id of monsterName and the second inner span element an id of monsterHealth.
 
 ```html
-let character = 'Hello';
-let count = 8;
-let rows = ["Naomi", "Quincy", "CamperChan"];
+<div id="monsterStats">
+         <span class="stat">Monster Name: <strong><span id="monsterName"></span></strong></span>
+            <span class="stat">Health: <strong><span id="monsterHealth"></span></strong></span>
+      </div>
 ```
 
 ## 20
 
-- You can access the values inside an array using the index of the value. An index is a number representing the position of the value in the array, starting from 0 for the first value.
+- Give your #text element the following text:
 
-You can access the value using bracket notation, such as array[0].
-
-Use console.log and bracket notation to print the first value in your rows array.
+Example Code
+Welcome to Dragon Repeller. You must defeat the dragon that is preventing people from leaving the town. You are in the town square. Where do you want to go? Use the buttons above.
 
 ```html
-let character = 'Hello';
-let count = 8;
-let rows = ["Naomi", "Quincy", "CamperChan"];
-console.log(rows[0]);
+<div id="text">
+        <p>Welcome to Dragon Repeller. You must defeat the dragon that is preventing people from leaving the town. You are in the town square. Where do you want to go? Use the buttons above.</p>
+      </div>
  ```
 
 ## 21
 
-- Arrays are special in that they are considered mutable. This means you can change the value at an index directly.
-
-For example, this code would assign the number 25 to the second element in the array:
-
-Example Code
-let array = [1, 2, 3];
-array[1] = 25;
-console.log(array); // prints [1, 25, 3]
-Update the third element of your rows array to be the number 10. Then print the rows array to your console.
+- Now we need some quick styling. Start by giving the body a background-color set to #0a0a23.
 
 ```html
-rows[2] = 10;
-console.log(rows);
+body {
+  background-color: #0a0a23;
+}
  ```
 
 ## 22
 
-- Notice how the value inside your rows array has been changed directly? This is called mutation. As you learn more about arrays, you will learn when to mutate an array, and when you should not.
-
-Before moving on, this is a great opportunity to learn a common array use. Currently, your code accesses the last element in the array with rows[2]. But you may not know how many elements are in an array when you want the last one.
-
-You can make use of the .length property of an array - this returns the number of elements in the array. To get the last element of any array, you can use the following syntax:
-
-Example Code
-array[array.length - 1]
-array.length returns the number of elements in the array. By subtracting 1, you get the index of the last element in the array. You can apply this same concept to your rows array.
-
-Update your rows[2] to dynamically access the last element in the rows array. Refer to the example above to help you.
-
-You should not see anything change in your console.
+- Give the #text element a background-color of #0a0a23, a color of #ffffff, and 10px of padding on all sides.
 
 ```html
-rows[rows.length - 1];
-
+#text {
+  background-color: #0a0a23;
+  color: #ffffff;
+  padding: 10px;
+}
  ```
 
 ## 23
 
-- For now, remove your first console log and your rows[rows.length - 1] assignment. Leave the second rows log statement for later.
+- Give your #game a maximum width of 500px and a maximum height of 400px. Set the background-color to #ffffff and the color to #ffffff.
+
+Use margins to center it by setting the top margin to 30px, bottom margin to 0px, and the left and right margin to auto.
+
+Finally, give it 10px of padding on all four sides.
 
 ```html
-
+#game {
+  max-width: 500px;
+  max-height: 400px;
+  background-color: #ffffff;
+  color: #ffffff;
+  margin-top: 30px;
+  margin-bottom: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+}
  ```
 
 ## 24
 
-- In the last few steps, you learned all about working with arrays. Take a moment to review what you have learned.
-
-Start by declaring a cities variable and initializing it as an array of the strings "London", "New York", and "Mumbai". Then log that variable to the console.
-
-After logging, change the last element of cities to the string "Mexico City", then log the cities variable again.
-
-When done correctly, you should see this output in the console.
-
-Example Code
-[ "London", "New York", "Mumbai" ]
-[ "London", "New York", "Mexico City" ]
+- Using a selector list (selector1, selector2) give both your #controls and #stats elements a border of 1px solid #0a0a23, a #0a0a23 text color, and 5px of padding.
 
 ```html
-let cities = ["London", "New York", "Mumbai"]
-console.log(cities);
-cities[2] = "Mexico City";
-console.log(cities);
+#controls, #stats {
+  border: 1px solid #0a0a23;
+  padding: 5px;
+  color: #0a0a23;
+}
  ```
 
 ## 25
 
--Now you are ready to move onto the next set of array lessons.
-
-Remove all of your code from the previous step.
+- Give your #monsterStats element the same border and padding as your #stats element. Set its color to #ffffff and give it a #c70d0d background.
 
 ```html
-
+#monsterStats {
+  border: 1px solid #0a0a23;
+  background-color: #c70d0d;
+  padding: 5px;
+  color: #ffffff;
+}
  ```
 
 ## 26
 
-- A method in JavaScript is a function that's associated with certain values or objects. An example you've already encountered is the .log() method, which is part of the console object.
-
-Arrays have their own methods, and the first you will explore is the .push() method. This allows you to "push" a value to the end of an array. Here is an example to add the number 12 to the end of an array:
-
-Example Code
-array.push(12);
-Use .push() to add the string "freeCodeCamp" to the end of your rows array. Add this code before your console.log so you can see the change you made to your array.
+- For now, hide your #monsterStats element with the display property. Do not change any of the other styling.
 
 ```html
-let rows = ["Naomi", "Quincy", "CamperChan"];
-rows.push("freeCodeCamp");
-console.log(rows);
+#monsterStats {
+  display: none;
+  border: 1px solid #0a0a23;
+  padding: 5px;
+  color: #ffffff;
+  background-color: #c70d0d;
+}
  ```
 
 ## 27
 
-- Another method essential for this project is the .pop() method. It removes the last element from an array and returns that element.
-
-When a method returns a value, you can think of it as giving the value back to you, making it available for use in other parts of your code.
-
-Create a new variable called popped and assign it the result of rows.pop(). Then, log popped to the console.
+- Next, give your .stat elements a padding-right of 10px.
 
 ```html
-let rows = ["Naomi", "Quincy", "CamperChan"];
-rows.push("freeCodeCamp");
-let popped = rows.pop();
-console.log(popped);
-console.log(rows);
+.stat {
+  padding-right: 10px;
+}
  ```
 
 ## 28
 
-- You should have seen "freeCodeCamp" printed to the console. This is because .pop() returns the value that was removed from the array - and you pushed "freeCodeCamp" to the end of the array earlier.
+- Finally, you will need to add some styles for your buttons. Start by setting the cursor property to pointer. Then set the text color to #0a0a23 and the background-color to #feac32.
 
-But what does .push() return? Assign your existing rows.push() to a new pushed variable, and log it.
+Then set the background-image property to linear-gradient(#fecc4c, #ffac33). Lastly, set the border to 3px solid #feac32.
 
 ```html
-rows.push("freeCodeCamp");
-let pushed = rows.push();
-console.log(pushed);
+button {
+  cursor: pointer;
+  color: #0a0a23;
+  background-color: #feac32;
+  background-image: linear-gradient(#fecc4c, #ffac33);
+  border: 3px solid #feac32;
+}
 ```
 
 ## 29
 
-- Were you expecting to see 4 in the console? .push() returns the new length of the array, after adding the value you give it.
+- Just like you did with the buttons, create variables for the following ids and use querySelector() to give them the element as a value:
 
-It is important to be aware of what values a method returns. Take some time to experiment with .push() and .pop(). When you are ready, remove all of your .push() and .pop() calls, and your console.log statements.
+text, xpText, healthText, goldText, monsterStats, and monsterName.
+
+Remember to declare these with the const keyword, and name the variables to match the ids.
 
 ```html
-
+const button1 = document.querySelector("#button1");
+const button2 = document.querySelector("#button2");
+const button3 = document.querySelector("#button3");
+const text = document.querySelector("#text");
+const xpText = document.querySelector("#xpText");
+const healthText = document.querySelector("#healthText");
+const goldText = document.querySelector("#goldText");
+const monsterStats = document.querySelector("#monsterStats");
+const monsterName = document.querySelector("#monsterName");
 ```
 
 ## 30
 
-- Change your rows declaration to be assigned an empty array again.
+- Finally, use querySelector() to get the #monsterHealth element. Because you have already declared a monsterHealth variable earlier, you need to use a different variable name for this element.
 
-Also, change your 'Hello' string to use double quotes again. Generally, it does not matter which of the two you prefer, but you will want to be consistent in that choice throughout your project.
+Declare a new variable with the const keyword and name it monsterHealthText.
 
 ```html
-let character = "Hello";
-let count = 8;
-let rows = [];
+const button1 = document.querySelector("#button1");
+const button2 = document.querySelector("#button2");
+const button3 = document.querySelector("#button3");
+const text = document.querySelector("#text");
+const xpText = document.querySelector("#xpText");
+const healthText = document.querySelector("#healthText");
+const goldText = document.querySelector("#goldText");
+const monsterStats = document.querySelector("#monsterStats");
+const monsterName = document.querySelector("#monsterName");
+const monsterHealthText = document.querySelector("#monsterHealth");
 ```
 
 ## 31
 
-- Declaring a variable with the let keyword allows it to be reassigned. This means you could change character later to be a completely different value.
-
-For this project, you will not want to change these variable values. So instead, you should use const to declare them. const variables are special.
-
-First, a const variable cannot be reassigned like a let variable. This code would throw an error:
+- In the previous project, you learned how to create a function like this:
 
 Example Code
-const firstName = "Naomi";
-firstName = "Jessica";
-A const variable also cannot be uninitialized. This code would throw an error:
+function functionName() {
 
-Example Code
-const firstName;
-Replace your let keywords with const.
+}
+Create an empty function named goStore.
 
 ```html
-const character = "Hello";
-const count = 8;
-const rows = [];
+function goStore() {
+
+}
 ```
 
 ## 32
 
-- You are now ready to start building your pyramid generator. Your character variable will serve as the building block for the pyramid.
-
-"Hello" might not work very well for that. Change the value of character to be the hash character "#".
+- For now, make your goStore function output the message "Going to store." to the console.
 
 ```html
-const character = "#";
-const count = 8;
-const rows = [];
+function goStore() {
+  console.log("Going to store.");
+}
 ```
 
 ## 33
 
-- To generate a pyramid, you will need to create multiple rows. When you have to perform a task repeatedly until a condition is met, you will use a loop. There are many ways to write a loop.
-
-You are going to start with a basic for loop. for loops use the following syntax:
-
-Example Code
-for (iterator; condition; iteration) {
-  logic;
-}
-In the upcoming steps, you'll explore each component of a loop in detail. For now, construct a for loop that includes the terms "iterator", "condition", and "iteration" for the three components. Keep the loop body, the section within the curly braces {}, empty.
+- Now create a goCave function that prints "Going to cave." to the console.
 
 ```html
-for ("iterator"; "condition"; "iteration") {
-
-}
+"Going to cave.
 ```
 
 ## 34
 
-- Your loop now needs a proper iterator. The iterator is a variable you can declare specifically in your for loop to control how the loop iterates or goes through your logic.
-
-It is a common convention to use i as your iterator variable in a loop. A for loop allows you to declare this in the parentheses (). For example, here is a for loop that declares an index variable and assigns it the value 100.
-
-Example Code
-for (let index = 100; "second"; "third") {
-
-}
-Replace the string "iterator" with a let declaration for the variable i. Assign it the value 0 to start. This will give the i variable the value 0 the first time your loop runs.
+- Now create a fightDragon function that prints "Fighting dragon." to the console.
 
 ```html
-for (let i = 0; "condition"; "iteration") {
-
+function fightDragon() {
+  console.log("Fighting dragon.");
 }
 ```
 
 ## 35
 
-- The condition of a for loop tells the loop how many times it should iterate. When the condition becomes false, the loop will stop.
+- In the previous project, you learned how to work with single line and multi-line comments like this:
 
-In JavaScript, a Boolean value can be either true or false. These are not strings - you will learn more about the difference later on.
+Example Code
+// I am a single-line comment
 
-For now, you will use the less than operator (<). This allows you to check if the value on the left is less than the value on the right. For example, count < 3 would evaluate to true if count is 2, and false if count is 4.
-
-Replace your "condition" string with a condition to check if i is less than count.
+/*
+  I am a multi-line comment
+*/
+Add a single-line comment that says initialize buttons.
 
 ```html
-for (let i = 0; i < count; "iteration") {
-
-}
+// initialize buttons
 ```
 
 ## 36
 
-- Your iteration statement will tell your loop what to do with the iterator after each run.
+- button1 represents your first button element. These elements have a special property called onclick, which you can use to determine what happens when someone clicks that button.
 
-When you reassign a variable, you can use the variable to reference the previous value before the reassignment. This allows you to do things like add three to an existing number. For example, bees = bees + 3; would increase the value of bees by three.
+You can access properties in JavaScript a couple of different ways. The first is with dot notation. Here is an example of using dot notation to set the onclick property of a button to a function reference.
 
-Use that syntax to replace your "iteration" string with a reassignment statement that increases i by one.
+Example Code
+button.onclick = myFunction;
+In this example, button is the button element, and myFunction is a reference to a function. When the button is clicked, myFunction will be called.
+
+Use dot notation to set the onclick property of your button1 to the function reference of goStore. Note that button1 is already declared, so you don't need to use let or const.
 
 ```html
-for (let i = 0; i < count; i = i + 1) {
-
-}
+button1.onclick = goStore;
 ```
 
 ## 37
 
-- Your loop should now run eight times. Inside the body of the loop, print the value of the i iterator and see what happens.
+- Using the same syntax, set the onclick properties of button2 and button3 to goCave and fightDragon respectively.
+
+Once you have done that, open your console and try clicking the buttons on your project.
 
 ```html
-for (let i = 0; i < count; i = i + 1) {
-console.log(i);
-}
+// initialize buttons
+button1.onclick = goStore;
+button2.onclick = goCave;
+button3.onclick = fightDragon;
 ```
 
 ## 38
 
-- You should see the numbers zero through seven printed in your console, one per line. This will serve as the foundation for generating your pyramid.
+- The innerText property controls the text that appears in an HTML element. For example:
 
-Replace your log statement with a statement to push i to your rows array.
+Example Code
+The following example would change the text of the p element from Demo content to Hello World.
+
+When a player clicks your Go to store button, you want to change the buttons and text. Remove the code inside the goStore function and add a line that updates the text of button1 to say "Buy 10 health (10 gold)".
 
 ```html
-for (let i = 0; i < count; i = i + 1) {
-  rows.push(i);
+function goStore() {
+  button1.innerText = "Buy 10 health (10 gold)";
 }
 ```
 
 ## 39
 
-- Unfortunately, now you cannot see what your loop is doing.
-
-Use let to declare a result variable, and assign it an empty string. An empty string is represented by quotation marks with nothing between them, such as "".
+- Now, add a line that updates the text of button2 to say "Buy weapon (30 gold)" and update the text of button3 to say "Go to town square".
 
 ```html
-let result = "";
+function goStore() {
+  button1.innerText = "Buy 10 health (10 gold)";
+  button2.innerText = "Buy weapon (30 gold)";
+  button3.innerText = "Go to town square";
+}
 ```
 
 ## 40
 
-- Add a log statement to print the value of result. Depending on which console you use, you may not see anything printed.
+- You will also need to update the functions that run when the buttons are clicked again.
+
+In your goStore() function, update the onclick property for each button to run buyHealth, buyWeapon, and goTown, respectively.
 
 ```html
 console.log(result);
@@ -577,250 +576,312 @@ console.log(result);
 
 ## 41
 
-- To manipulate the result string, you will use a different type of loop. Specifically, a for...of loop, which iterates over each item in an iterable object and temporarily assigns it to a variable.
-
-The syntax for a for...of loop looks like:
-
-Example Code
-for (const value of iterable) {
-
-}
-Note that you can use const because the variable only exists for a single iteration, not during the entire loop.
-
-Create a for...of loop to iterate through your rows array, assigning each value to a row variable.
+- Now you need to modify your display text. Change the innerText property of the text variable to be "You enter the store.".
 
 ```html
-for (const row of rows) {
-
+function goStore() {
+  button1.innerText = "Buy 10 health (10 gold)";
+  button2.innerText = "Buy weapon (30 gold)";
+  button3.innerText = "Go to town square";
+  button1.onclick = buyHealth;
+  button2.onclick = buyWeapon;
+  button3.onclick = goTown;
+  text.innerText = "You enter the store.";
 }
 ```
 
 ## 42
 
-- Remember in your previous loop that you used the addition operator + to increase the value of i by 1.
-
-You can do a similar thing with a string value, by appending a new string to an existing string. For example, hello = hello + " World"; would add the string " World" to the existing string stored in the hello variable. This is called concatenation.
-
-In your for...of loop, use the addition operator to concatenate the row value to the result value.
+- Create three new empty functions called buyHealth, buyWeapon, and goTown.
 
 ```html
-for (const row of rows) {
-  result = result + row + " ";
+function buyHealth() {
+
+}
+
+function buyWeapon() {
+  
+}
+
+function goTown() {
+  
 }
 ```
 
 ## 43
 
-- Now all of your numbers are appearing on the same line. This will not work for creating a pyramid.
-
-You will need to add a new line to each row. However, pressing the return key to insert a line break between quotes in JavaScript will result in a parsing error. Instead, you need to use the special escape sequence \n, which is interpreted as a new line when the string is logged. For example:
-
-Example Code
-lineOne = lineOne + "\n" + lineTwo;
-Use a second addition operator to concatenate a new line between the existing result value and the added row value.
+- Move your goTown function above your goStore function. Then copy and paste the contents of the goStore function into the goTown function.
 
 ```html
-for (const row of rows) {
-  result = result + "\n" + row;
+function goTown() {
+button1.innerText = "Buy 10 health (10 gold)";
+  button2.innerText = "Buy weapon (30 gold)";
+  button3.innerText = "Go to town square";
+  button1.onclick = buyHealth;
+  button2.onclick = buyWeapon;
+  button3.onclick = goTown;
+  text.innerText = "You enter the store.";
+}
+
+function goStore() {
+  button1.innerText = "Buy 10 health (10 gold)";
+  button2.innerText = "Buy weapon (30 gold)";
+  button3.innerText = "Go to town square";
+  button1.onclick = buyHealth;
+  button2.onclick = buyWeapon;
+  button3.onclick = goTown;
+  text.innerText = "You enter the store.";
+}
+
+function goCave() {
+  console.log("Going to cave.");
+}
+
+function fightDragon() {
+  console.log("Fighting dragon.");
+}
+
+function buyHealth() {
+
+}
+
+function buyWeapon() {
+
 }
 ```
 
 ## 44
 
-- Printing numbers won't result in a visually appealing pyramid. Now that you're outputting the formatted content of your rows array, it's time to update your original loop.
+- In your goTown function, change your button elements' innerText properties to be "Go to store", "Go to cave", and "Fight dragon". Update your onclick properties to be goStore, goCave, and fightDragon, respectively.
 
-Instead of pushing i to the array, push the value of your character variable.
+Finally, update innerText property of your text to be "You are in the town square. You see a sign that says Store.".
 
 ```html
-for (let i = 0; i < count; i = i + 1) {
-  rows.push(character);
+function goTown() {
+  button1.innerText = "Go to store";
+  button2.innerText = "Go to cave";
+  button3.innerText = "Fight dragon";
+  button1.onclick = goStore;
+  button2.onclick = goCave;
+  button3.onclick = fightDragon;
+  text.innerText = "You are in the town square. You see a sign that says Store.";
 }
 ```
 
 ## 45
 
-- Now you have a series of # characters, but the pyramid shape is still missing. Fortunately, the i variable represents the current "row" number in your loop, enabling you to use it for crafting a pyramid-like structure.
-
-To achieve this, you will use the .repeat() method available to strings. This method accepts a number as an argument, specifying the number of times to repeat the target string. For example, using .repeat() to generate the string "Code! Code! Code!":
+- You need to wrap the text Store in double quotes. Because your string is already wrapped in double quotes, you'll need to escape the quotes around Store. You can escape them with a backslash \. Here is an example:
 
 Example Code
-const activity = "Code! ";
-activity.repeat(3);
-Use the .repeat() method on your character, and give it i for the number.
+const escapedString = "Naomi likes to play \"Zelda\" sometimes.";
+Wrap the text Store in double quotes within your text.innerText line.
 
 ```html
-for (let i = 0; i < count; i = i + 1) {
-  rows.push(character);
-  character.repeat(i);
+function goTown() {
+  button1.innerText = "Go to store";
+  button2.innerText = "Go to cave";
+  button3.innerText = "Fight dragon";
+  button1.onclick = goStore;
+  button2.onclick = goCave;
+  button3.onclick = fightDragon;
+  text.innerText = "You are in the town square. You see a sign that says \"Store\".";
 }
 ```
 
 ## 46
 
-- You're getting closer! At this point, you're encountering what's known as an off-by-one error, a frequent problem in zero-based indexing languages like JavaScript.
+- You have repetition in the goTown and goStore functions. Repetition in your code is a sign that you need another function.
 
-The first index of your rows array is 0, which is why you start your for loop with i = 0. But repeating a string zero times results in nothing to print.
+In the previous project, you learned how to work with function parameters like this:
 
-To fix this, add 1 to the value of i in your .repeat() call. Do not assign it back to i like you did in your loop conditions.
+Example Code
+function myFunction(param) {
+  console.log(param);
+}
+Function parameters act as placeholders for values that you pass to the function when you call it.
+
+Create an empty update function that takes a parameter called location.
 
 ```html
-for (let i = 0; i < count; i = i + 1) {
-  rows.push(character.repeat(i + 1))
+function update(location) {
+
 }
 ```
 
 ## 47
 
-- The logic for formatting this pyramid is likely going to get complicated, which means it's a great time to extract that code into a function.
+- In your role playing game, you will be able to visit different locations like the store, the cave, and the town square. You will need to create a data structure that will hold the different locations.
 
-A function is a block of code that can be reused throughout your application. Functions are declared with the following syntax:
-
-Example Code
-function name(parameter) {
-
-}
-The function keyword tells JavaScript that the name variable is going to be a function. parameter is a variable that represents a value that is passed into the function when it is used. A function may have as many, or as few, parameters as you'd like. Like a for loop, the space between the curly braces is the function body.
-
-Declare a padRow function. Do not create any parameter variables yet. The function body should be empty. Remember that you need to use camel case for your naming convention.
+Use const to create a variable called locations and assign it an empty array.
 
 ```html
-function padRow() {
-
-}
+const locations = [];
 ```
 
 ## 48
 
-- In order to use a function, you need to call it. A function call tells your application to run the code from the function wherever you choose to call it. The syntax for a function call is the function name followed by parentheses. For example, this code defines and calls a test function.
+- Before you can begin to build out your locations array, you will first need to learn about objects. Objects are an important data type in JavaScript. The next few steps will be dedicated to learning about them so you will better understand how to apply them in your project.
+
+Objects are non primitive data types that store key-value pairs. Non primitive data types are mutable data types that are not undefined, null, boolean, number, string, or symbol. Mutable means that the data can be changed after it is created.
+
+Here is the basic syntax for an object:
 
 Example Code
-function test() {
-
+{
+  key: value
 }
-test();
-Call your padRow function.
+You will learn about keys and values in the next few steps.
+
+For now, create a const variable called cat and assign it an empty object {}.
+
+Below that cat variable, add a console.log(cat) statement to see the object in the console.
 
 ```html
-function padRow() {
-
-}
-padRow();
-
+const cat = {}; 
+console.log(cat);
 ```
 
 ## 49
 
-- You are calling your padRow function, but not doing anything with that function call. All functions in JavaScript return a value, meaning they provide the defined result of calling them for you to use elsewhere.
+- Objects are similar to arrays, except that instead of using indexes to access and modify their data, you access the data in objects through properties.
 
-To see the result of calling your padRow function, declare a call variable and assign your existing padRow call to that variable.
+Properties consist of a key and a value. The key is the name of the property, and the value is the data stored in the property.
+
+Here is an example of an object with a single property:
+
+Example Code
+const obj = {
+  name: "Quincy Larson"
+};
+Inside your cat object, add a new property. The key should be name and the value should be the string "Whiskers".
+
+Open up the console to see the updates to your object.
 
 ```html
-padRow();
-const call = padRow();
-
+const cat = {
+  name: "Whiskers"
+};
 ```
 
 ## 50
 
-- Now add a log statement to print the value of your call variable.
+- If the property name (key) of an object has a space in it, you will need to use single or double quotes around the name.
+
+Here is an example of an object with a property name that has a space:
+
+Example Code
+const spaceObj = {
+  "Space Name": "Kirk",
+};
+If you tried to write a key without the quotes, it would throw an error:
+
+Example Code
+const spaceObj = {
+  // Throws an error
+  Space Name: "Kirk",
+};
+
+Add a new property with a key of "Number of legs" and value of 4 to the cat object.
+
+Open up the console to see the output.
 
 ```html
-function padRow() {
-
-}
-const call = padRow();
-console.log(call);
-          
+const cat = {
+  name: "Whiskers",
+  "Number of legs": 4
+};
 ```
 
 ## 51
 
-- Your call variable has an undefined value, even though you defined it! This is because your padRow function does not currently return a value. By default, functions return undefined as their value.
+- There are two ways to access the properties of an object: dot notation (.) and bracket notation ([]), similar to an array.
 
-In order to return something else, you need to use the return keyword. Here is an example of a function that returns the string "Functions are cool!":
+Dot notation is what you use when you know the name of the property you're trying to access ahead of time.
 
 Example Code
-function demo() {
-  return "Functions are cool!";
+object.property;
+Here is a sample of using dot notation (.) to read the name property of the developer object:
+
+Example Code
+const developer = {
+  name: "Jessica",
 }
-Use the return keyword to have your function return the string "Hello!".
+
+// Output: Jessica
+console.log(developer.name);
+Update your console statement to access the name property of the cat object using dot notation.
+
+Open up the console to see the name of "Whiskers" logged to the console.
 
 ```html
-function padRow() {
-return "Hello!";
-}
+console.log(cat.name)
           
 ```
 
 ## 52
 
-- When you have a value that is explicitly written in your code, like the "Hello!" string in your function, it is considered to be hard-coded. Hard-coding a value inside a function might not make it as reusable as you'd like.
-
-Instead, you can define parameters for the function. Parameters are special variables that are given a value when you call the function, and can be used in your function to dynamically change the result of the function's code.
-
-To add a parameter to your function, you need to add a variable name inside the parentheses. For example, this demo function has a name parameter:
+- The second way to access the properties of an object is bracket notation ([]). If the property of the object you are trying to access has a space in its name, you will need to use bracket notation.
 
 Example Code
-function demo(name) {
+objectName["property name"];
+Here is a sample of using bracket notation to read an object's property:
 
-}
-name sounds like a useful parameter, so go ahead and add it to your padRow function.
+Example Code
+const spaceObj = {
+  "Space Name": "Kirk",
+};
+
+spaceObj["Space Name"]; // "Kirk"
+Update your console statement to use bracket notation to access the property "Number of legs" of the cat object.
+
+Open up the console to see the output.
 
 ```html
-function padRow(name) {
-  return "Hello!";
-}
-          
+console.log(cat["Number of legs"]);  
 ```
 
 ## 53
 
-- A function does not have to return a hard-coded value. It can return the value stored in a variable. Parameters are special variables for a function, so they can also be returned.
+- Later on in the curriculum, you will dive deeper into objects. But for now, it is time to apply what you have learned to your role playing game.
 
-Change your padRow function to return the name parameter directly.
+Start by deleting your cat object and console statement.
 
 ```html
-function padRow(name) {
-  return name;
-}
 
 ```
 
 ## 54
 
-- If you open your console again, you'll see that your padRow function is returning undefined, even though you defined a return value! This is because parameters need to be given a value when you call the function.
+- Your locations array will hold different locations like the store, the cave, and the town square. Each location will be represented as an object.
 
-When you pass a value to a function call, that value is referred to as an argument. Here is an example of calling a demo function and passing "Naomi" as the argument for the name parameter.
+Inside your locations array, add an object. Inside that object add a key called name with a value of "town square".
+
+Remember to follow this syntax:
 
 Example Code
-function demo(name) {
-  return name;
+{
+  key: value
 }
-demo("Naomi");
-Pass your own name as the argument for the name parameter in your padRow call. Remember that your name is a string, so you'll need to use quotes.
 
 ```html
-const call = padRow();
-padRow("name");
+const locations = [
+  {
+        name: "town square"
+    }
+];
 ```
 
 ## 55
 
-- Before moving on, take a moment to review how functions work.
+- Just like array values, object properties are separated by a comma. Add a comma after your name property and add a button text property with the value of an empty array.
 
-Declare a function named addTwoNumbers. This function should take two arguments and return the sum of those two arguments.
-
-Your function should not use hard-coded values. An example of a hard-coded function might be:
+Since the property name has a space in it, you will need to surround it with quotes.
 
 Example Code
-function sayName(firstName, lastName) {
-  return "John Doe";
+{
+  name: "Naomi",
+  "favorite color": "purple"
 }
-
-sayName("Camper", "Cat");
-This function would return "John Doe" regardless of the arguments passed to the parameters firstName, and lastName, so "John Doe" is considered a hard-coded value.
-
-Declare a sum variable and assign it the value of calling your addTwoNumbers function with 5 and 10 as the arguments. Log the sum variable to the console.
 
 ```html
 const sum = addTwoNumbers(5,10);
