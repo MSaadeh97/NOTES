@@ -118,8 +118,18 @@ Use string concatenation (+) to build the message.
 Be careful with the punctuation and spaces in the message.
 
 ```html
-<span class="flex">
-            <span>AcmeWidgetCorp</span>
-            <span>Balance Sheet</span>
-          </span>
+function studentMsg(totalScores, studentScore) {
+  const average = getAverage(totalScores);
+  const grade = getGrade(studentScore);
+  let message;
+
+  if (hasPassingGrade(studentScore)) {
+    message = "Class average: " + average + ". Your grade: " + grade + ". You passed the course.";
+  } else {
+    message = "Class average: " + average + ". Your grade: " + grade + ". You failed the course.";
+  }
+
+  return message;
+}
+console.log(studentMsg([92, 88, 12, 77, 57, 100, 67, 38, 97, 89], 37));
 ```
