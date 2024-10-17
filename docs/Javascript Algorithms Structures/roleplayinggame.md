@@ -884,951 +884,2104 @@ Example Code
 }
 
 ```html
-const sum = addTwoNumbers(5,10);
-function addTwoNumbers(a , b) {
-return a + b;
-}
-console.log(sum);
-
+const locations = [
+  {
+    name: "town square",
+    "button text": []
+  }
+];
 ```
 
 ## 56
 
-- With that quick review complete, you should remove your addTwoNumbers function, sum variable, and log statement.
+- Give your empty button text array three string elements. Use the three strings being assigned to the button innerText properties in the goTown function. Remember that array values are separated by commas.
 
 ```html
-
-
+const locations = [
+  {
+    name: "town square",
+    "button text": [button1.innerText = "Go to store", button1.innerText = "Go to cave", button1.innerText = "Fight dragon"]
+  }
+];
 ```
 
 ## 57
 
-- Variables in JavaScript are available in a specific scope. In other words, where a variable is declared determines where in your code it can be used.
-
-The first scope is the global scope. Variables that are declared outside of any "block" like a function or for loop are in the global scope. Your character, count, and rows variables are all in the global scope.
-
-When a variable is in the global scope, a function can access it in its definition. Here is an example of a function using a global title variable:
-
-Example Code
-const title = "Professor ";
-function demo(name) {
-  return title + name;
-}
-demo("Naomi")
-This example would return "Professor Naomi". Update your padRow function to return the value of concatenating your character variable to the beginning of the name parameter.
+- Create another property in your object called button functions. Give this property an array containing the three functions assigned to the onclick properties in the goTown function. Remember that these functions are variables, not strings, and should not be wrapped in quotes.
 
 ```html
-function padRow(name) {
-  return character + name;
-}
+const locations = [
+  {
+    name: "town square",
+    "button text": ["Go to store", "Go to cave", "Fight dragon"],
+    "button functions": [goStore, goCave, fightDragon]
+  }
+];
 ```
 
 ## 58
 
-- Variables can also be declared inside a function. These variables are considered to be in the local scope, or block scope. A variable declared inside a function can only be used inside that function. If you try to access it outside of the function, you get a reference error.
-
-To see this in action, use const to declare a test variable in your padRow function. Initialise it with the value "Testing".
-
-Then, below your function, try to log test to the console. You will see an error because it is not defined outside of the function's local scope. Remove that console.log to pass the tests and continue.
+- Add one final property to the object named text. Give this property the same string value as the one assigned to text.innerText in the goTown function.
 
 ```html
-function padRow(name) {
-  const test = "Testing";
-  return character + name;
-}
+const locations = [
+  {
+    name: "town square",
+    "button text": ["Go to store", "Go to cave", "Fight dragon"],
+    "button functions": [goStore, goCave, fightDragon],
+    text: "You are in the town square. You see a sign that says \"Store\"."
+  }
+];
 
 ```
 
 ## 59
 
-- Values returned out of a function are used by calling the function. You can use the function call directly as the value it returns, or capture the returned value in a variable. This way, you can use the value assigned to a locally scoped variable, outside the function it was created in.
-
-Example Code
-function getName() {
-  const name = "Camper cat";
-  return name;
-}
-
-console.log(getName()); // "Camper cat"
-
-const capturedReturnValue = getName();
-console.log(capturedReturnValue); // "Camper cat"
-
-console.log(name); // reference error
-To use your "Testing" value, return it out of the padRow function by updating your return statement to return only the test variable.
+- Add a second object to your locations array (remember to separate them with a comma). Following the pattern you used in the first object, create the same properties but use the values from the goStore function. Set the name property to store.
 
 ```html
-function padRow(name) {
-  const test = "Testing";  
-  return test;
-}
+const locations = [
+  {
+    name: "town square",
+    "button text": ["Go to store", "Go to cave", "Fight dragon"],
+    "button functions": [goStore, goCave, fightDragon],
+    text: "You are in the town square. You see a sign that says \"Store\"."
+  },
+  {
+    name: "store",
+    "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)", "Go to town square"],
+    "button functions": [buyHealth, buyWeapon, goTown],
+    text: "You enter the store."
+  }
+];
  ```
 
 ## 60
 
-- Below the return statement, log the string "This works!" to the console.
-
-After doing that, you will see that the string "This works!" does not display in the console, and the console.log("This works!") line is greyed out.
-
-Copy the console log and paste it above the return statement. Now, the string "This works!" should appear in the console.
-
-An important thing to know about the return keyword is that it does not just define a value to be returned from your function, it also stops the execution of your code inside a function or a block statement. This means any code after a return statement will not run.
+- Now you can consolidate some of your code. Start by copying the code from inside the goTown function and paste it into your update function. Then, remove all the code from inside the goTown and goStore functions.
 
 ```html
-function padRow(name) {
-  const test = "Testing";
-  console.log("This works!");
-  return test;
-  console.log("This works!")
+function update(location) {
+  button1.innerText = "Go to store";
+  button2.innerText = "Go to cave";
+  button3.innerText = "Fight dragon";
+  button1.onclick = goStore;
+  button2.onclick = goCave;
+  button3.onclick = fightDragon;
+  text.innerText = "You are in the town square. You see a sign that says \"Store\".";
+  button1.innerText = "Buy 10 health (10 gold)";
+  button2.innerText = "Buy weapon (30 gold)";
+  button3.innerText = "Go to town square";
+  button1.onclick = buyHealth;
+  button2.onclick = buyWeapon;
+  button3.onclick = goTown;
+  text.innerText = "You enter the store.";
+}
+
+function goTown() {
+  
+}
+
+function goStore() {
+  
 }
  ```
 
 ## 61
 
-- Now your call variable has the value "Testing". But your function is no longer using the name parameter.
+- Instead of assigning the innerText and onclick properties to specific strings and functions, the update function will use data from the location that is passed into it. First, that data needs to be passed.
 
-Remove the name parameter from your function declaration, then remove your "CamperChan" string from the padRow call.
+Inside the goTown function, call the update function. Here is an example of calling a function named myFunction:
 
-Also, remove both console.log from the padRow function.
+Example Code
+myFunction();
 
 ```html
-function padRow() {
-  const test = "Testing";
-  return test;
+function goTown() {
+  update();
 }
-const call = padRow();
-console.log(call);
  ```
 
 ## 62
 
-- Because your function was no longer using the parameter, changing the argument did not affect it.
+- Now it is time to use your update function. Pass in your locations array into the update function call.
 
-Go ahead and remove the test declaration and return statement from your padRow function, so the function is empty again.
+You pass arguments by including them within the parentheses of the function call. For example, calling myFunction with an arg argument would look like:
+
+Example Code
+myFunction(arg)
+Pass your locations array into the update call.
 
 ```html
-function padRow() {
-
+function goTown() {
+  update(locations);
 }
-const call = padRow();
-console.log(call);
  ```
 
 ## 63
 
-- As expected, your function now returns undefined again. Your call variable is not necessary any more, so remove the call declaration and the console.log for the call variable.
+- The locations array contains two locations: the "town square" and the "store". Currently you are passing that entire array into the update function.
+
+Pass in only the first element of the locations array by adding [0] at the end of the variable. For example: myFunction(arg[0]);.
+
+This is called bracket notation. Values in an array are accessed by index. Indices are numerical values and start at 0 - this is called zero-based indexing. arg[0] would be the first element in the arg array.
 
 ```html
-function padRow() {
-
+function goTown() {
+  update(locations[0]);
 }
-
  ```
 
 ## 64
 
-- In order to know how to format a row, your padRow function will need to know which row number you are on, and how many rows in total are being generated.
+- Now your update function needs to use the argument you pass into it.
 
-The best way to do this is by creating function parameters for them. Give your padRow function a rowNumber and rowCount parameter. Multiple parameters are separated by a comma:
-
-Example Code
-function name(first, second) {
-
-}
+Inside the update function, change the value of the button1.innerText assignment to be location["button text"]. That way, you use bracket notation to get the "button text" property of the location object passed into the function.
 
 ```html
-function padRow(rowNumber, rowCount) {
-
+function update(location) {
+  button1.innerText = location["button text"];
+  button2.innerText = "Go to cave";
+  button3.innerText = "Fight dragon";
+  button1.onclick = goStore;
+  button2.onclick = goCave;
+  button3.onclick = fightDragon;
+  text.innerText = "You are in the town square. You see a sign that says \"Store\".";
 }
 ```
 
 ## 65
 
-- Remember in an earlier step, you learned about return values. A function can return a value for your application to consume separately.
-
-In a function, the return keyword is used to specify a return value. For example, this function would return the value given to the first parameter:
-
-Example Code
-function name(parameter) {
-  return parameter;
-}
-Use the return keyword to return the value of the character variable, repeated rowNumber times.
+- location["button text"] is an array with three elements. Change the button1.innerText assignment to be which represents the first element of the array.
 
 ```html
-function padRow(rowNumber, rowCount) {
-  return character.repeat(rowNumber);
+function update(location) {
+  button1.innerText = location["button text"][0];
+  button2.innerText = "Go to cave";
+  button3.innerText = "Fight dragon";
+  button1.onclick = goStore;
+  button2.onclick = goCave;
+  button3.onclick = fightDragon;
+  text.innerText = "You are in the town square. You see a sign that says \"Store\".";
 }
 ```
 
 ## 66
 
-- A function call allows you to actually use a function. You may not have been aware of it, but the methods like .push() that you have been using have been function calls.
-
-A function is called by referencing the function's name, and adding (). Here's how to call a test function:
-
-Example Code
-test();
-Replace the character.repeat(i + 1) in your .push() call with a function call for your padRow function.
+- Now update button2.innerText and button3.innerText to be assigned the second and third values of the "button text" array, respectively.
 
 ```html
-for (let i = 0; i < count; i = i + 1) {
-  rows.push(padRow());
+function update(location) {
+  button1.innerText = location["button text"][0];
+  button2.innerText = location["button text"][1];
+  button3.innerText = location["button text"][2];
+  button1.onclick = goStore;
+  button2.onclick = goCave;
+  button3.onclick = fightDragon;
+  text.innerText = "You are in the town square. You see a sign that says \"Store\".";
 }
 ```
 
 ## 67
 
-- Your padRow function has two parameters which you defined. Values are provided to those parameters when a function is called.
-
-The values you provide to a function call are referred to as arguments, and you pass arguments to a function call. Here's a function call with "Hello" passed as an argument:
-
-Example Code
-test("Hello");
-Pass i + 1 and count as the arguments to your padRow call. Like parameters, arguments are separated by a comma.
+- Following the same pattern as you did for the button text, update the three buttons' onclick assignments to be the first, second, and third values of the "button functions" array.
 
 ```html
-for (let i = 0; i < count; i = i + 1) {
-  rows.push(padRow(i + 1, count))
+function update(location) {
+  button1.innerText = location["button text"][0];
+  button2.innerText = location["button text"][1];
+  button3.innerText = location["button text"][2];
+  button1.onclick = location["button functions"][0];
+  button2.onclick = location["button functions"][1];;
+  button3.onclick = location["button functions"][2];;
+  text.innerText = "You are in the town square. You see a sign that says \"Store.\"";
+}
+```
+
+## 68
+
+- Finally, update the text.innerText assignment to equal the text from the location object. However, instead of using bracket notation, use dot notation.
+
+Here is an example of accessing the name property of an object called person:
+
+Example Code
+person.name
+
+```html
+function update(location) {
+  button1.innerText = location["button text"][0];
+  button2.innerText = location["button text"][1];
+  button3.innerText = location["button text"][2];
+  button1.onclick = location["button functions"][0];
+  button2.onclick = location["button functions"][1];
+  button3.onclick = location["button functions"][2];
+  text.innerText = location.text;
 }
 ```
 
 ## 69
 
-- Now it is time for a bit of math. Consider a three-row pyramid. If we want it centered, it would look something like:
+- Now update your goStore function to call the update function. Pass the second element of the locations array as your argument.
 
-Example Code
-··#··
-·###·
-Empty spaces have been replaced with interpuncts, or middle dots, for readability. If you extrapolate the pattern, you can see that the spaces at the beginning and end of a row follow a pattern.
-
-Update your blank space strings to be repeated rowCount - rowNumber times.
-
-Open up the console to see the result.
+To make sure your refactoring is correct, try clicking your first button again. You should see the same changes to your webpage that you saw earlier.
 
 ```html
-function padRow(rowNumber, rowCount) {
-  return " ".repeat(rowCount - rowNumber) + character.repeat(rowNumber) + " ".repeat(rowCount - rowNumber);
+function goStore() {
+  update(locations[1]);
 }
 ```
 
 ## 70
 
-- You can pass full expressions as an argument. The function will receive the result of evaluating that expression. For example, these two function calls would yield the same result:
-
-Example Code
-test(2 * 3 + 1);
-test(7);
-Looking at the pattern again:
-
-Example Code
-··#··
-·###·
-Update the character value to be repeated 2 * rowNumber - 1 times.
-
-Open up the console again to see the updated result.
+- Create two more empty functions named fightSlime and fightBeast. These functions will be used in your upcoming cave object.
 
 ```html
-function padRow(rowNumber, rowCount) {
-  return " ".repeat(rowCount - rowNumber) + character.repeat(2 * rowNumber - 1) + " ".repeat(rowCount - rowNumber);
+function fightSlime() {
+
+}
+
+function fightBeast() {
+
 }
 ```
 
 ## 71
 
-- Your pyramid generator now functions as expected. But this is an excellent opportunity to further explore the code you have written.
+- Add a third object to the locations array. Give it the same properties as the other two objects.
 
-The addition operator is not the only way to add values to a variable. The addition assignment operator can be used as shorthand to mean "take the original value of the variable, add this value, and assign the result back to the variable." For example, these two statements would yield the same result:
-
-Example Code
-test = test + 1;
-test += 1;
-Update your iterator statement in the for loop to use addition assignment.
+Set name to cave. Set button text to an array with the strings "Fight slime", "Fight fanged beast", and "Go to town square". Set the "button functions" to an array with the variables fightSlime, fightBeast, and goTown. Set the text property to "You enter the cave. You see some monsters.".
 
 ```html
-for (let i = 0; i < count; i += 1)
+{
+    name: "cave",
+    "button text": ["Fight slime", "Fight fanged beast", "Go to town square"],
+    "button functions": [fightSlime, fightBeast, goTown],
+    text: "You enter the cave. You see some monsters."
+    }
 ```
 
 ## 72
 
-- Because you are only increasing i by 1, you can use the increment operator ++. This operator increases the value of a variable by 1, updating the assignment for that variable. For example, test would become 8 here:
+- Now that you have a "cave" location object, update your goCave function to call update and pass that new "cave" location. Remember that this is the third element in your locations array.
 
-Example Code
-let test = 7;
-test++;
-Replace your addition assignment with the increment operator for your loop iteration.
+Don't forget to remove your console.log call!
 
 ```html
-for (let i = 0; i < count; i++)
+function goCave() {
+  update(locations[2]);
+}
 ```
 
 ## 73
 
-- Rather than having to pass i + 1 to your padRow call, you could instead start your loop at 1. This would allow you to create a one-indexed loop.
+- Now that your "store" and "cave" locations are complete, you can code the actions the player takes at those locations. Inside the buyHealth function, set gold equal to gold minus 10.
 
-Update your iterator to start at 1 instead of 0.
+For example, here is how you would set num equal to 5 less than num: num = num - 5;.
 
 ```html
-for (let i = 1; i < count; i++) {
-  rows.push(padRow(i + 1, count));
+function buyHealth() {
+  gold = gold - 10;
 }
 ```
 
 ## 74
 
-- The pyramid looks a little funny now. Because you are starting the loop at 1 instead of 0, you do not need to add one to i when you pass it to padRow.
-
-Update the first argument of your padRow call to be i.
+- After the gold is updated, add a line to set health equal to health plus 10.
 
 ```html
-for (let i = 1; i < count; i++) {
-  rows.push(padRow(i, count));
+function buyHealth() {
+  gold = gold - 10;
+  health = health + 10;
 }
 ```
 
 ## 75
 
-- Unfortunately, now the bottom of the pyramid has disappeared. This is because you have created another off-by-one error.
+- There is a shorthand way to add or subtract from a variable called compound assignment. For example, changing num = num + 5 to compound assignment would look like num += 5.
 
-Your original loop went for i values from 0 to 7, because count is 8 and your condition requires i to be less than count. Your loop is now running for i values from 1 to 7.
-
-Your loop needs to be updated to run when i is 8, too. Looking at your logic, this means your loop should run when i is less than or equal to count. You can use the less than or equal to operator <= for this.
-
-Update your loop condition to run while i is less than or equal to count.
+Update both lines inside your buyHealth function to use compound assignment.
 
 ```html
-for (let i = 1; i <= count; i++) {
-  rows.push(padRow(i, count));
+function buyHealth() {
+  gold -= 10;
+  health += 10;
 }
 ```
 
 ## 76
 
-- Comments can be helpful for explaining why your code takes a certain approach, or leaving to-do notes for your future self.
+- Now that you are updating the gold and health variables, you need to display those new values on the game screen. You have retrieved the healthText and goldText elements in a prior step.
 
-In JavaScript, you can use // to leave a single-line comment in your code.
+After your assignment lines, assign the innerText property of goldText to be the variable gold. Use the same pattern to update healthText with the health variable.
 
-Add a single-line comment above your function to remind yourself to change the code to a different kind of loop.
+You can test this by clicking your "Go to store" button, followed by your "Buy Health" button.
+
+Note: Your answer should only be two lines of code.
 
 ```html
-//change code to different loop
-for (let i = 1; i <= count; i++) {
-  rows.push(padRow(i, count));
+function buyHealth() {
+  gold -= 10;
+  health += 10;
+  goldText.innerText = gold;
+healthText.innerText = health;
 }
 ```
 
 ## 77
 
-- JavaScript also has support for multi-line comments. A multi-line comment starts with
+- What if the player doesn't have enough gold to buy health? You should use an if statement to check if the player has enough gold to buy health.
 
-Unlike a single-line comment, a multi-line comment will encapsulate multiple lines.
+In the previous project, you learned how to work with if statements like this:
 
- <!-- Use /* and */ to turn your current for loop, including the body, into a multi-line comment. -->
+Example Code
+const num = 5;
+if (num >= 3) {
+  console.log("This code will run because num is greater than or equal to 3.");
+}
+Start by placing all of the code in your buyHealth function inside an if statement. For the if statement condition, check if gold is greater than or equal to 10.
 
 ```html
-/* for (let i = 1; i <= count; i++) {
-  rows.push(padRow(i, count));
-} */
+function buyHealth() {
+  if (gold >= 10){
+  gold -= 10;
+  health += 10;
+  goldText.innerText = gold;
+  healthText.innerText = health;
+  }
+}
 ```
 
 ## 78
 
-- Your pyramid has disappeared again. That's okay - that is to be expected.
+- Now when a player tries to buy health, it will only work if they have enough money. If they do not, nothing will happen. Add an else statement where you can put code to run if a player does not have enough money.
 
-Before you create your new loop, you need to learn about if statements. An if statement allows you to run a block of code only when a condition is met. They use the following syntax:
+In the previous project, you learned how to work with else statements like this:
 
 Example Code
-if (condition) {
-  logic
+if (num >= 5) {
+
+} else {
+
 }
-Create an if statement with the boolean true as the condition. In the body, print the string "Condition is true".
 
 ```html
-if (true) {
-console.log("Condition is true")
+function buyHealth() {
+  if (gold >= 10) {
+    gold -= 10;
+    health += 10;
+    goldText.innerText = gold;
+    healthText.innerText = health;
+  }
+  else {
+    
+  }
 }
 ```
 
 ## 79
 
-- You'll see the string printed in the console, because true is in fact true.
-
-Change the condition of your if statement to the boolean false.
+- Inside the else statement, set text.innerText to equal "You do not have enough gold to buy health.".
 
 ```html
-if (false) {
-  console.log("Condition is true");
+function buyHealth() {
+  if (gold >= 10) {
+    gold -= 10;
+    health += 10;
+    goldText.innerText = gold;
+    healthText.innerText = health;
+  } else {
+    text.innerText = "You do not have enough gold to buy health.";
+  }
 }
 ```
 
 ## 80
 
-- Now the string is no longer printing, because false is not true. But what about other values?
-
-Try changing the condition to the string "false".
+- Use const to create a weapons variable above your locations array. Assign it an empty array.
 
 ```html
-if ("false") {
-  console.log("false");
-}
+const weapons = [];
+
 ```
 
 ## 81
 
-- The text has appeared again! This is because "false" is a string, which when evaluated to a boolean becomes true. This means "false" is a truthy value.
-
-A truthy value is a value that is considered true when evaluated as a boolean. Most of the values you encounter in JavaScript will be truthy.
-
-A falsy value is the opposite - a value considered false when evaluated as a boolean. JavaScript has a defined list of falsy values. Some of them include false, 0, "", null, undefined, and NaN.
-
-Try changing your if condition to an empty string "", which is a falsy value.
+- Just like your locations array, your weapons array will hold objects. Add four objects to the weapons array, each with two properties: name and power. The first should have the name set to "stick" and the power set to 5. The second should be "dagger" and 30. The third, "claw hammer" and 50. The fourth, "sword" and 100.
 
 ```html
-if ("") {
-  console.log("Condition is true");
-}
+const weapons = [
+    { name: "stick", power: 5 },
+    { name: "dagger", power: 30 },
+    { name: "claw hammer", power: 50 },
+    { name: "sword", power: 100 }
+    ];
 ```
 
 ## 82
 
-- The text is gone again! Empty strings evaluate to false, making them a falsy value. You will learn more about truthy and falsy values in future projects.
-
-In addition to if statements, JavaScript also has else if statements. else if statements allow you to check multiple conditions in a single block of code.
-
-Here is the syntax for an else if statement:
-
-Example Code
-if (condition1) {
-  // code to run if condition1 is true
-} else if (condition2) {
-  // code to run if condition2 is true
-} else if (condition3) {
-  // code to run if condition3 is true
-}
-If the first condition is false, JavaScript will check the next condition in the chain. If the second condition is false, JavaScript will check the third condition, and so on.
-
-Below your if statement, add an else if statement that checks if 5 is less than 10. Then inside the body of the else if statement, log the string "5 is less than 10" to the console.
-
-Check the console to see the results.
+- Inside your buyWeapon function, add an if statement to check if gold is greater than or equal to 30.
 
 ```html
-if ("") {
-  console.log("Condition is true");
-}
-else if (5 < 10) {
-console.log("5 is less than 10");
+function buyWeapon() {
+  if (gold >= 30){
+
+  }
 }
 ```
 
 ## 83
 
-- Sometimes you will want to run different code when all of the if...else if conditions are false. You can do this by adding an else block.
-
-An else block will only evaluate if the conditions in the if and else if blocks are not met.
-
-Here the else block is added to the else if block.
-
-Example Code
-
-if (condition) {
-  // this code will run if condition is true
-} else if (condition2) {
-  // this code will run if the first condition is false
-} else {
-  // this code will run
-  // if the first and second conditions are false
-}
-Add an else block to the else if block. Inside the else block, log the string "This is the else block" to the console.
-
-To see the results in the console, you can manually change the < in the else if statement to >. That will make the condition false and the else block will run.
+- Similar to your buyHealth function, set gold equal to 30 less than its current value. Make sure this is inside your if statement.
 
 ```html
-if ("") {
-  console.log("Condition is true");
-} else if (5 > 10) {
-  console.log("5 is less than 10");
-} else {
-  console.log("This is the else block");
+function buyWeapon() {
+  if (gold >= 30) {
+    gold -= 30;
+  }
 }
 ```
 
 ## 84
 
-- Now that you have practiced working with if...else if...else statements, you can remove them from your code.
+- The value of the currentWeaponIndex variable corresponds to an index in the weapons array. The player starts with a "stick", since currentWeaponIndex starts at 0 and weapons[0] is the "stick" weapon.
 
-Once you complete that, use let to declare a continueLoop variable and assign it the boolean false. Then use let to declare a done variable and assign it the value 0.
+In the buyWeapon function, use compound assignment to add 1 to currentWeaponIndex - the user is buying the next weapon in the weapons array.
 
 ```html
-let continueLoop = false;
-let done = 0;
+function buyWeapon() {
+  if (gold >= 30) {
+    gold -= 30;
+    currentWeaponIndex += 1;
+  }
+}
 ```
 
 ## 85
 
-- A while loop will run over and over again until the condition specified is no longer true. It has the following syntax:
+- In the previous project, you learned how to use the increment operator to increase a variable by 1.
 
 Example Code
-while (condition) {
-  logic;
-}
-Use that syntax to declare a while loop with continueLoop as the condition. The body should be empty.
+let num = 5;
+num++;
+// prints 6
+console.log(num);
+Change your currentWeaponIndex assignment to use the increment operator.
 
 ```html
- let continueLoop = false;
-let done = 0;
-while (continueLoop) {
-
+function buyWeapon() {
+  if (gold >= 30) {
+    gold -= 30;
+    currentWeaponIndex++;
+  }
 }
 ```
 
 ## 86
 
-- Right now, if you change continueLoop to true, your while loop will run forever. This is called an infinite loop, and you should be careful to avoid these. An infinite loop can lock up your system, requiring a full restart to escape.
-
-To avoid this, start by using the increment operator to increase the value of the done variable inside your loop.
+- Now update the goldText element to display the new value of gold, and update the text element to display "You now have a new weapon.".
 
 ```html
-while (continueLoop) {
-done++;
+function buyWeapon() {
+  if (gold >= 30) {
+    gold -= 30;
+    currentWeaponIndex++;
+    goldText.innerText = gold;
+    text.innerText = "You now have a new weapon.";
+  }
 }
 ```
 
 ## 87
 
-- The equality operator == is used to check if two values are equal. To compare two values, you'd use a statement like value == 8.
-
-Below done++ inside your loop, add an if statement. The statement should check if done is equal to count using the equality operator.
+- You should tell the player what weapon they bought. In between the two lines you just wrote, use let to initialize a new variable called newWeapon. Set this to equal weapons.
 
 ```html
-while (continueLoop) {
-  done++;
-  if (done == count) {
-
+function buyWeapon() {
+  if (gold >= 30) {
+    gold -= 30;
+    currentWeaponIndex++;
+    goldText.innerText = gold;
+    let newWeapon = weapons;
+    text.innerText = "You now have a new weapon.";
   }
 }
 ```
 
 ## 88
 
-- The equality operator can lead to some strange behavior in JavaScript. For example, "0" == 0 is true, even though one is a string and one is a number.
+- Use bracket notation to access an object within the weapons array and assign it to your newWeapon variable. Place the variable currentWeaponIndex within the brackets.
 
-The strict equality operator === is used to check if two values are equal and share the same type. As a general rule, this is the equality operator you should always use. With the strict equality operator, "0" === 0 becomes false, because while they might have the same value of zero, they are not of the same type.
+When you use a variable in bracket notation, you are accessing the property or index by the value of that variable.
 
-Update your done == count condition to use the strict equality operator.
+For example, this code uses the index variable to access a value of array.
+
+Example Code
+let value = array[index];
 
 ```html
-if (done === count) {
-
-  }
+let newWeapon = weapons[currentWeaponIndex];
 ```
 
 ## 89
 
-- When done has reached the value of count, we want the loop to stop executing.
-
-Inside your if body, assign the boolean false to your continueLoop variable.
+- weapons[currentWeaponIndex] is an object. Use dot notation to get the name property of that object.
 
 ```html
-if (done === count) {
-    continueLoop = false;
+function buyWeapon() {
+  if (gold >= 30) {
+    gold -= 30;
+    currentWeaponIndex++;
+    goldText.innerText = gold;
+    let newWeapon = weapons[currentWeaponIndex].name;
+    text.innerText = "You now have a new weapon.";
   }
+}
  ```
 
 ## 90
 
-- To make your pyramid generate again, push the result of calling padRow with done and count as the arguments to your rows array, similar to what you did in your first loop.
+- In the previous project, you learned how to work with the concatenation operator to insert variables into a string like this:
+
+Example Code
+const organization = "freeCodeCamp";
+
+// "Hello, our name is freeCodeCamp."
+"Hello, our name is " + organization + ".";
+Update the string "You now have a new weapon." to "You now have a " followed by the name of the new weapon, and remember to end the sentence with a period.
 
 ```html
-rows.push(padRow(done, count));
-
+function buyWeapon() {
+  if (gold >= 30) {
+    gold -= 30;
+    currentWeaponIndex++;
+    goldText.innerText = gold;
+    let newWeapon = weapons[currentWeaponIndex].name;
+    text.innerText = "You now have a " + newWeapon + ".";
+  }
+}
  ```
 
 ## 91
 
-- The strict inequality operator !== allows you to check if two values are not equal, or do not have the same type. The syntax is similar to the equality operator: value !== 4.
+- Back at the beginning of this project, you created the inventory array. Add the newWeapon to the end of the inventory array using the push() method.
 
-Update your while loop condition to check if done is not equal to count.
+In the previous project, you learned how to work with the push method like this:
+
+Example Code
+const myArray = [];
+myArray.push("new item");
+// myArray is now ["new item"]
 
 ```html
-while (done !== count) {
-  done++;
-  rows.push(padRow(done, count));
-  if (done === count) {
-    continueLoop = false;
-  } 
+function buyWeapon() {
+  if (gold >= 30) {
+    gold -= 30;
+    currentWeaponIndex++;
+    goldText.innerText = gold;
+    let newWeapon = weapons[currentWeaponIndex].name;
+    text.innerText = "You now have a " + newWeapon + ".";
+    inventory.push(newWeapon);
+  }
 }
  ```
 
 ## 92
 
-- Since you have moved the comparison into the while condition, you can remove your entire if statement.
+- Up until now, any time text.innerText was updated, the old text was erased. This time, use the += operator to add text to the end of text.innerText.
+
+Add the string " In your inventory you have: " - include the spaces at the beginning and the end.
 
 ```html
-while (done !== count) {
-  done++;
-  rows.push(padRow(done, count));
+function buyWeapon() {
+  if (gold >= 30) {
+    gold -= 30;
+    currentWeaponIndex++;
+    goldText.innerText = gold;
+    let newWeapon = weapons[currentWeaponIndex].name;
+    text.innerText = "You now have a " + newWeapon + ".";
+    inventory.push(newWeapon);
+    text.innerText += " In your inventory you have: ";
+  }
 }
  ```
 
 ## 93
 
-- Your loop is no longer relying on the continueLoop variable. This makes the variable an unused declaration. Generally, you want to avoid unused declarations to prevent future confusion.
-
-Remove your continueLoop variable.
+- At the end of the second text.innerText string you just added, use the concatenation operator to add the contents of inventory to the string.
 
 ```html
-let done = 0;
-
-while (done !== count) {
-  done++;
-  rows.push(padRow(done, count));
+function buyWeapon() {
+  if (gold >= 30) {
+    gold -= 30;
+    currentWeaponIndex++;
+    goldText.innerText = gold;
+    let newWeapon = weapons[currentWeaponIndex].name;
+    text.innerText = "You now have a " + newWeapon + ".";
+    inventory.push(newWeapon);
+    text.innerText += " In your inventory you have: " + inventory;
+  }
 }
  ```
 
 ## 94
 
-- Your pyramid generator is still working. However, it could be possible to end up with an infinite loop again.
-
-Because you are only checking if done is not equal to count, if done were to be larger than count your loop would go on forever.
-
-Update your loop's condition to check if done is less than or equal to count.
+- Add an else statement to your buyWeapon function. In that statement, set text.innerText to equal "You do not have enough gold to buy a weapon.".
 
 ```html
-let done = 0;
-
-while (done <= count) {
-  done++;
-  rows.push(padRow(done, count));
+function buyWeapon() {
+  if (gold >= 30) {
+    gold -= 30;
+    currentWeaponIndex++;
+    goldText.innerText = gold;
+    let newWeapon = weapons[currentWeaponIndex].name;
+    text.innerText = "You now have a " + newWeapon + ".";
+    inventory.push(newWeapon);
+    text.innerText += " In your inventory you have: " + inventory;
+  }
+  else {
+    text.innerText = "You do not have enough gold to buy a weapon.";
+  }
 }
  ```
 
 ## 95
 
-- Using done to track the number of rows that have been generated is functional, but you can actually clean up the logic a bit further.
-
-Arrays have a special length property that allows you to see how many values, or elements, are in the array. You would access this property using syntax like myArray.length.
-
-Note that rows.length in the padRow call would give you an off-by-one error, because done is incremented before the call.
-
-Update your condition to check if rows.length is less than count.
+- Once a player has the best weapon, they cannot buy another one. Wrap all of the code in your buyWeapon function inside another if statement. The condition should check if currentWeaponIndex is less than 3 - the index of the last weapon.
 
 ```html
-let done = 0;
-
-while (rows.length < count) {
-  done++;
-  rows.push(padRow(done, count));
+function buyWeapon() {
+  if(currentWeaponIndex < 3) {
+  if (gold >= 30) {
+    gold -= 30;
+    currentWeaponIndex++;
+    goldText.innerText = gold;
+    let newWeapon = weapons[currentWeaponIndex].name;
+    text.innerText = "You now have a " + newWeapon + ".";
+    inventory.push(newWeapon);
+    text.innerText += " In your inventory you have: " + inventory;
+  } else {
+    text.innerText = "You do not have enough gold to buy a weapon.";
+  }
+      }
 }
  ```
 
 ## 96
 
-- Replace the done reference in your padRow call with rows.length + 1.
+- Arrays have a length property that returns the number of items in the array. You may want to add new values to the weapons array in the future.
+
+Change your if condition to check if currentWeaponIndex is less than the length of the weapons array. An example of checking the length of an array myArray would look like myArray.length
 
 ```html
-let done = 0;
-
-while (rows.length < count) {
-  done++;
-  rows.push(padRow(rows.length + 1, count));
+function buyWeapon() {
+  if (currentWeaponIndex < weapons.length) {
+    if (gold >= 30) {
+      gold -= 30;
+      currentWeaponIndex++;
+      goldText.innerText = gold;
+      let newWeapon = weapons[currentWeaponIndex].name;
+      text.innerText = "You now have a " + newWeapon + ".";
+      inventory.push(newWeapon);
+      text.innerText += " In your inventory you have: " + inventory;
+    } else {
+      text.innerText = "You do not have enough gold to buy a weapon.";
+    }
+  }
 }
  ```
 
 ## 97
 
-- Now you no longer need your done variable. Remove the increment operation from your loop, and the variable declaration for done.
+- Now it is time to test your buyWeapon function. Right now, the gold amount is set to 50. But to properly see the results of your buyWeapon function, the amount should be set to something higher.
+
+Update the gold amount to 250.
+
+NOTE: The HTML has already been updated to reflect this change.
+
+To test your buyWeapon function, open up the console. Then click on the "Go to store" button followed by the "Buy weapon (30 gold)" button four times.
 
 ```html
-while (rows.length < count) {
-  rows.push(padRow(rows.length + 1, count));
-}
+let gold = 250;
+
 ```
 
 ## 98
 
-- That's a very clean and functional loop. Nice work! But there's still more to explore.
+- When you were testing your function, you should have seen an error message in the console. This error is due to the condition in the buyWeapon function.
 
-Use a multi-line comment to comment out your while loop.
+The currentWeaponIndex variable is the index of the weapons array, but array indexing starts at zero. The index of the last element in an array is one less than the length of the array.
+
+Change the if condition to check weapons.length - 1, instead of weapons.length.
+
+Test out your buyWeapon function again to see the error message disappear.
 
 ```html
-That's a very clean and functional loop. Nice work! But there's still more to explore.
-
-Use a multi-line comment to comment out your while loop.
+function buyWeapon() {
+  if (currentWeaponIndex < weapons.length - 1) {
+    if (gold >= 30) {
+      gold -= 30;
+      currentWeaponIndex++;
+      goldText.innerText = gold;
+      let newWeapon = weapons[currentWeaponIndex].name;
+      text.innerText = "You now have a " + newWeapon + ".";
+      inventory.push(newWeapon);
+      text.innerText += " In your inventory you have: " + inventory;
+    } else {
+      text.innerText = "You do not have enough gold to buy a weapon.";
+    }
+  }
+}
 ```
 
 ## 99
 
-- What if you made your pyramid upside-down, or inverted? Time to try it out!
+- If the player has purchased all of the weapons in the inventory, the player should not be able to purchase any more and a message should be displayed.
 
-Start by creating a new for loop. Declare your iterator i and assign it the value of count, then use the boolean false for your condition and iteration statements.
+Add an else statement for your outer if statement. Inside this new else statement, set text.innerText to "You already have the most powerful weapon!".
+
+Test your buyWeapon function again to make sure the message is displayed when the player has the most powerful weapon.
 
 ```html
-for (let i = count; false; false) {
-
+function buyWeapon() {
+  if (currentWeaponIndex < weapons.length - 1) {
+    if (gold >= 30) {
+      gold -= 30;
+      currentWeaponIndex++;
+      goldText.innerText = gold;
+      let newWeapon = weapons[currentWeaponIndex].name;
+      text.innerText = "You now have a " + newWeapon + ".";
+      inventory.push(newWeapon);
+      text.innerText += " In your inventory you have: " + inventory;
+    } else {
+      text.innerText = "You do not have enough gold to buy a weapon.";
+    }
+  } 
+  else {
+    text.innerText = "You already have the most powerful weapon!";
+  }
 }
 ```
 
 ## 100
 
-- Because you are going to loop in the opposite direction, your loop needs to run while i is greater than 0. You can use the greater than operator > for this.
+- Now that you are finished testing that portion of the buyWeapon function, you can set your gold variable back to 50.
 
-Set your loop's condition to run when i is greater than 0.
+Note: The HTML has already been updated to reflect the original value of gold.
 
 ```html
-for (let i = count; i > 0; false) {
-
-}
+let gold = 50;
 ```
 
 ## 101
 
-- Your iteration statement is also going to be different. Instead of adding 1 to i with each loop, you need to subtract 1.
+- Once a player has the most powerful weapon, you can give them the ability to sell their old weapons.
 
-Like you did earlier with i = i + 1, update your iteration statement to give i the value of subtracting 1 from itself.
+In the outer else statement, set button2.innerText to "Sell weapon for 15 gold". Also set button2.onclick to the function name sellWeapon.
 
 ```html
-for (let i = count; i > 0; i = i - 1) {
-
+function buyWeapon() {
+  if (currentWeaponIndex < weapons.length - 1) {
+    if (gold >= 30) {
+      gold -= 30;
+      currentWeaponIndex++;
+      goldText.innerText = gold;
+      let newWeapon = weapons[currentWeaponIndex].name;
+      text.innerText = "You now have a " + newWeapon + ".";
+      inventory.push(newWeapon);
+      text.innerText += " In your inventory you have: " + inventory;
+    } else {
+      text.innerText = "You do not have enough gold to buy a weapon.";
+    }
+  } else {
+    text.innerText = "You already have the most powerful weapon!";
+    button2.innerText = "Sell weapon for 15 gold";
+    button2.onclick = sellWeapon;
+  }
 }
 ```
 
 ## 102
 
-- Again, push the result of calling padRow with your i and count variables to your rows array.
-
-Open up the console to see the upside-down pyramid.
+- Create an empty sellWeapon function.
 
 ```html
-for (let i = count; i > 0; i = i - 1) {
-  rows.push(padRow(i, count));
+function sellWeapon() {
+
 }
 ```
 
 ## 103
 
-- Just like addition, there are different operators you can use for subtraction. The subtraction assignment operator -= subtracts the given value from the current variable value, then assigns the result back to the variable.
-
-Replace your iterator statement with the correct statement using the subtraction assignment operator.
+- Players should not be able to sell their only weapon. Inside the sellWeapon function, add an if statement with a condition that checks if the length of the inventory array is greater than 1.
 
 ```html
-for (let i = count; i > 0; i -= 1) {
-  rows.push(padRow(i, count));
+function sellWeapon() {
+  if (inventory.length > 1) {
+
+  }
 }
 ```
 
 ## 104
 
-- Because you are only subtracting one from i, you can use the decrement operator --.
-
-Replace your subtraction assignment with the decrement operator.
+- Inside the if statement, set gold equal to 15 more than its current value. Also update goldText.innerText to the new value.
 
 ```html
-for (let i = count; i > 0; i--) {
-  rows.push(padRow(i, count));
+function sellWeapon() {
+  if (inventory.length > 1) {
+    gold += 15;
+    goldText.innerText = gold;
+  }
 }
 ```
 
 ## 105
 
-- Use a multi-line comment to comment out this loop as well, to prepare for the next approach.
+- The next step is to create a variable called currentWeapon.
+
+Example Code
+let num = 1;
+if (num === 1) {
+  let num = 2; // this num is scoped to the if statement
+  console.log(num); // expected output: 2
+}
+console.log(num); // expected output: 1 (the global variable)
+Use the let keyword to create a variable named currentWeapon. Don't assign it a value yet.
 
 ```html
-/* for (let i = count; i > 0; i--) {
-  rows.push(padRow(i, count));
-} */
+function sellWeapon() {
+  let currentWeapon;
+  if (inventory.length > 1) {
+    gold += 15;
+    goldText.innerText = gold;
+
+  }
+}
 ```
 
 ## 106
 
-- You can actually build the inverted pyramid without needing to loop "backwards" like you did.
+- In the previous project, you learned how to work with the shift() method to remove the first element from an array like this:
 
-To do this, you'll need to learn a couple of new array methods. Start by using const to declare a numbers variable. Assign it an array with the elements 1, 2, and 3. Then log the numbers array.
+Example Code
+const myArray = ["first", "second", "third"];
+const firstElement = myArray.shift();
+// myArray is now ["second", "third"]
+Use the shift() method to take the first element from the inventory array and assign it to your currentWeapon variable.
 
 ```html
-const numbers = [1, 2, 3];
-console.log(numbers);
+function sellWeapon() {
+  if (inventory.length > 1) {
+    gold += 15;
+    goldText.innerText = gold;
+    let currentWeapon = inventory.shift();
+  }
+}
 ```
 
 ## 107
 
-- The .unshift() method of an array allows you to add a value to the beginning of the array, unlike .push() which adds the value at the end of the array. .unshift() returns the new length of the array it was called on.
-
-Example Code
-const countDown = [2, 1, 0];
-const newLength = countDown.unshift(3);
-console.log(countDown); // [3, 2, 1, 0]
-console.log(newLength); // 4
-Use const to declare an unshifted variable, and assign it the result of calling .unshift() on your numbers array. Pass 5 as the argument. Then print your unshifted variable.
+- After your currentWeapon, use the concatenation operator to set text.innerText to the string "You sold a ", then currentWeapon, then the string ".".
 
 ```html
-const numbers = [1, 2, 3];
-const unshifted = numbers.unshift(5)
-console.log(unshifted);
+function sellWeapon() {
+  if (inventory.length > 1) {
+    gold += 15;
+    goldText.innerText = gold;
+    let currentWeapon = inventory.shift();
+  text.innerText = "You sold a " + currentWeapon + ".";
+  }
+}
 ```
 
 ## 108
 
-- Arrays also have a .shift() method. This will remove the first element of the array, unlike .pop() which removes the last element. Here is an example of the .shift() method:
-
-Example Code
-const numbers = [1, 2, 3];
-numbers.shift();
-The numbers array would be [2, 3].
-
-Directly below your numbers array, declare a shifted variable and assign it the result of calling .shift() on the numbers array. On the next line, log the shifted variable to the console.
+- Now use the += operator to add the string " In your inventory you have: " and the contents of inventory to the text.innerText. Make sure to include the space at the beginning and end of the " In your inventory you have: " string.
 
 ```html
-const numbers = [1, 2, 3];
-const shifted = numbers.shift();
-console.log(shifted);
-const unshifted = numbers.unshift(5);
-console.log(unshifted);
-console.log(numbers);
+function sellWeapon() {
+  if (inventory.length > 1) {
+    gold += 15;
+    goldText.innerText = gold;
+    let currentWeapon = inventory.shift();
+    text.innerText = "You sold a " + currentWeapon + ".";
+    text.innerText += " In your inventory you have: " + inventory;
+  }
+}
 ```
 
 ## 109
 
-- Now that you've tried these methods, you can do another inverted pyramid approach. But first you need to clean up your experimentation.
-
-Remove your numbers array, and the method calls and log calls.
+- Use an else statement to run when the inventory length is not more than one. Set the text.innerText to say "Don't sell your only weapon!".
 
 ```html
+function sellWeapon() {
+  if (inventory.length > 1) {
+    gold += 15;
+    goldText.innerText = gold;
+    let currentWeapon = inventory.shift();
+    text.innerText = "You sold a " + currentWeapon + ".";
+    text.innerText += " In your inventory you have: " + inventory;
+  }
+  else {
+    text.innerText = "Don't sell your only weapon!";
+  }
+}
 ```
 
 ## 110
 
-- Sometimes you may wish to bring back previous code that you commented out. You can do so by removing the around that code. This is called uncommenting.
+- Now you can start the code to fight monsters. To keep your code organized, your fightDragon function has been moved for you to be near the other fight functions.
 
-Uncomment only your first for loop. Leave the single line comment and the other two multi line comments in place.
+Below your weapons array, define a monsters variable and assign it an array. Set that array to have three objects, each with a name, level, and health properties. The first object's values should be "slime", 2, and 15, in order. The second should be "fanged beast", 8, and 60. The third should be "dragon", 20, and 300.
 
 ```html
-// TODO: use a different type of loop
-for (let i = 1; i <= count; i++) {
-  rows.push(padRow(i, count));
-}
-
-/*while (rows.length < count) {
-  rows.push(padRow(rows.length + 1, count));
-}*/
-
-/*for (let i = count; i > 0; i--) {
-  rows.push(padRow(i, count));
-}*/
+const monsters = [{ name: "slime", level: 2, health: 15 },
+    { name: "fanged beast", level: 8, health: 60 },
+    { name: "dragon", level: 20, health: 300 } ];
 ```
 
 ## 111
 
-- Your pyramid is no longer inverted. This is because you are adding new rows to the end of the array.
-
-Update your loop body to add new rows to the beginning of the array.
+- Fighting each type of monster will use similar logic. Create an empty function called goFight to manage this logic.
 
 ```html
-for (let i = 1; i <= count; i++) {
-  rows.unshift(padRow(i, count));
+function goFight() {
+
 }
 ```
 
 ## 112
 
-- What if you had a way to toggle between an inverted pyramid and a standard pyramid?
+- In your fightSlime function, set fighting equal to 0 - the index of slime in the monsters array. Remember that you already declared fighting earlier in your code, so you do not need let or const here.
 
-Start by declaring an inverted variable, and assigning it the value true. You are not changing this variable in your code, but you will need to use let so our tests can modify it later.
+On the next line, call the goFight function.
 
 ```html
-let inverted = true;
+function fightSlime() {
+  fighting = 0;
+  goFight();
+}
 ```
 
 ## 113
 
-- Use an if statement to check if inverted is true. Remember that you do not need to use an equality operator here.
+- Following the same pattern as the fightSlime function, use that code in the fightBeast and fightDragon functions. Remember that beast is at index 1 and dragon is at index 2. Also, remove the console.log call from your fightDragon function.
 
 ```html
-for (let i = 1; i <= count; i++) {
-  if (inverted) {
+function fightBeast() {
+fighting = 1;
+  goFight();
+}
 
-  }
-  rows.unshift(padRow(i, count));
+function fightDragon() {
+  fighting = 2;
+  goFight();
 }
 ```
 
 ## 114
 
-- Now move your .unshift() call into your if block.
+- At the end of your code, create two empty functions named attack and dodge.
 
 ```html
-for (let i = 1; i <= count; i++) {
-  if (inverted) {
-    rows.unshift(padRow(i, count));
-  }
+function attack() {
+
+}
+
+function dodge() {
+  
 }
 ```
 
 ## 115
 
-- If your pyramid is not inverted, then you will want to have an else block that builds the pyramid in the normal order.
-
-In earlier steps, you learned how to work with else statement like this:
-
-Example Code
-if (condition) {
-  // if condition is true, run this code
-} else {
-  // if condition is false, run this code
-}
-Add an else block to your if block.
+- Add a new object to the end of the locations array, following the same properties as the rest of the objects. Set name to "fight", "button text" to an array with "Attack", "Dodge", and "Run", "button functions" to an array with attack, dodge, and goTown, and text to "You are fighting a monster.".
 
 ```html
-for (let i = 1; i <= count; i++) {
-  if (inverted) {
-    rows.unshift(padRow(i, count));
-  } else {
-    
+const locations = [
+  {
+    name: "town square",
+    "button text": ["Go to store", "Go to cave", "Fight dragon"],
+    "button functions": [goStore, goCave, fightDragon],
+    text: "You are in the town square. You see a sign that says \"Store\"."
+  },
+  {
+    name: "store",
+    "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)", "Go to town square"],
+    "button functions": [buyHealth, buyWeapon, goTown],
+    text: "You enter the store."
+  },
+  {
+    name: "cave",
+    "button text": ["Fight slime", "Fight fanged beast", "Go to town square"],
+    "button functions": [fightSlime, fightBeast, goTown],
+    text: "You enter the cave. You see some monsters."
+  },
+  {
+    name: "fight",
+    "button text": ["Attack", "Dodge", "Run"],
+    "button functions": [attack, dodge, goTown],
+    text: "You are fighting a monster."
   }
-
-}
+];
 ```
 
 ## 116
 
-- When inverted is false, you want to build a standard pyramid. Use .push() like you have in previous steps to achieve this.
+- In the goFight function, call your update function with the fourth object in locations as an argument.
 
 ```html
-for (let i = 1; i <= count; i++) {
-  if (inverted) {
-    rows.unshift(padRow(i, count));
-  } else {
-    rows.push(padRow(i, count));
-  }
+function goFight() {
+  update(locations[3]);
 }
 ```
 
 ## 117
 
-- Your pyramid generator is now in a finished state, with more functionality than you originally planned! The next step is to clean up your code.
-
-Remove all comments, both single- and multi-line, from your code.
+- Below your update call, set the monsterHealth to be the health of the current monster. You can get this value by accessing the health property of monsters[fighting] with dot notation.
 
 ```html
-
-for (let i = 1; i <= count; i++) {
-  if (inverted) {
-    rows.unshift(padRow(i, count));
-  } else {
-    rows.push(padRow(i, count));
-  }
+function goFight() {
+  update(locations[3]);
+  monsterHealth = monsters[fighting].health;
 }
 ```
 
 ## 118
 
-- Nice work! Experiment with different values for your character, count, and inverted variables.
+- By default, the HTML element that shows the monster's stats has been hidden with CSS. When the player clicks the "Fight dragon" button, the monster's stats should be displayed. You can accomplish this by using the style and display properties on the monsterStats element.
 
-When you are ready to move on to your next project, set character to "!", count to 10, and inverted to false to continue.
+The style property is used to access the inline style of an element and the display property is used to set the visibility of an element.
 
-Congratulations on completing your first JavaScript project!
+Here is an example of how to update the display for a paragraph element:
+
+Example Code
+const paragraph = document.querySelector('p');
+paragraph.style.display = 'block';
+Display the monsterStats element by updating the display property of the style property to block.
 
 ```html
-const character = "!";
-const count = 10;
-const rows = [];
-let inverted = false;
+function goFight() {
+  update(locations[3]);
+  monsterHealth = monsters[fighting].health;
+  monsterStats .style.display = 'block';
+}
+```
+
+## 119
+
+- Now, you will need to update the text for the current monster's name and health.
+
+Start by assigning monsters[fighting].name to the innerText property of monsterName. Then, assign monsterHealth to the innerText property of monsterHealthText.
+
+```html
+function goFight() {
+  update(locations[3]);
+  monsterHealth = monsters[fighting].health;
+  monsterStats.style.display = "block";
+  monsterName.innerText = monsters[fighting].name; 
+  monsterHealthText.innerText = monsterHealth;
+}
+```
+
+## 120
+
+- Now you can build the attack function. First, update the text message to say "The  attacks.", replacing  with the name of the monster. Remember you can use the concatenation operator for this.
+
+```html
+function attack() {
+  text.innerText = "The " + monsters[fighting].name + " attacks.";
+}
+```
+
+## 121
+
+- On a new line, use the addition assignment operator(+=), to add the string " You attack it with your ." to the text value, replacing  with the player's current weapon. Additionally, remember that this line of text starts with a space so it will properly display.
+
+```html
+function attack() {
+  text.innerText = "The " + monsters[fighting].name + " attacks.";
+  text.innerText += " You attack it with your " + weapons[currentWeaponIndex].name + ".";
+}
+```
+
+## 122
+
+- Next, set health to equal health minus the monster's level. Remember you can get this from the monsters[fighting].level property.
+
+```html
+function attack() {
+  text.innerText = "The " + monsters[fighting].name + " attacks.";
+  text.innerText += " You attack it with your " + weapons[currentWeaponIndex].name + ".";
+  health -= monsters[fighting].level;
+}
+```
+
+## 123
+
+- Set monsterHealth to monsterHealth minus the power of the player's current weapon.
+
+Remember that you can access the power of the player's current weapon using weapons[currentWeaponIndex].power.
+
+```html
+function attack() {
+  text.innerText = "The " + monsters[fighting].name + " attacks.";
+  text.innerText += " You attack it with your " + weapons[currentWeaponIndex].name + ".";
+  health -= monsters[fighting].level;
+  monsterHealth -= weapons[currentWeaponIndex].power;
+}
+```
+
+## 124
+
+- The Math object in JavaScript contains static properties and methods for mathematical constants and functions. One of those is Math.random(), which generates a random number from 0 (inclusive) to 1 (exclusive). Another is Math.floor(), which rounds a given number down to the nearest integer.
+
+Using these, you can generate a random number within a range. For example, this generates a random number between 1 and 5: Math.floor(Math.random() * 5) + 1;.
+
+Following this pattern, use the addition operator (+) to add a random number between 1 and the value of xp to your monsterHealth -= weapons[currentWeaponIndex].power.
+
+```html
+ monsterHealth -= weapons[currentWeaponIndex].power + Math.floor(Math.random() * xp) + 1;;
+```
+
+## 125
+
+- Update healthText.innerText and monsterHealthText.innerText to equal health and monsterHealth.
+
+```html
+function attack() {
+  text.innerText = "The " + monsters[fighting].name + " attacks.";
+  text.innerText += " You attack it with your " + weapons[currentWeaponIndex].name + ".";
+  health -= monsters[fighting].level;
+  monsterHealth -= weapons[currentWeaponIndex].power + Math.floor(Math.random() * xp) + 1;
+  healthText.innerText = health;
+  monsterHealthText.innerText = monsterHealth;
+}
+```
+
+## 126
+
+- Add an if statement to check if health is less than or equal to 0. If it is, call the lose function.
+
+```html
+function attack() {
+  text.innerText = "The " + monsters[fighting].name + " attacks.";
+  text.innerText += " You attack it with your " + weapons[currentWeaponIndex].name + ".";
+  health -= monsters[fighting].level;
+  monsterHealth -= weapons[currentWeaponIndex].power + Math.floor(Math.random() * xp) + 1;
+  healthText.innerText = health;
+  monsterHealthText.innerText = monsterHealth;
+  if (health <= 0) {
+    lose();
+  }
+}
+```
+
+## 127
+
+- You can make an else statement conditional by using else if. Here's an example:
+
+Example Code
+if (num > 10) {
+
+} else if (num < 5) {
+
+}
+At the end of your if statement, add an else if statement to check if monsterHealth is less than or equal to 0. In your else if, call the defeatMonster function.
+
+```html
+ monsterHealth -= weapons[currentWeaponIndex].power + Math.floor(Math.random() * xp) + 1;;
+```
+
+## 128
+
+- At the end of your code, create the defeatMonster and lose functions. Leave them empty for now.
+
+```html
+function defeatMonster() {
+
+}
+
+function lose() {
+  
+}
+```
+
+## 129
+
+- Inside the dodge function, set text.innerText equal to the string "You dodge the attack from the ". Replace  with the name of the monster, using the name property.
+
+```html
+function dodge() {
+  text.innerText = "You dodge the attack from the " + monsters[fighting].name + ".";
+}
+```
+
+## 130
+
+- In your defeatMonster function, set gold equal to gold plus the monster's level times 6.7. Remember you can get the monster's level by using monsters[fighting].level.
+
+Here is an example of setting num to num plus 5 * 8: num +=  8. Use Math.floor() to round the result down.
+
+```html
+function defeatMonster() {
+  gold += Math.floor(monsters[fighting].level * 6.7);
+}
+```
+
+## 131
+
+- Set xp to xp plus the monster's level.
+
+```html
+function defeatMonster() {
+  gold += Math.floor(monsters[fighting].level * 6.7);
+  xp += monsters[fighting].level;
+}
+```
+
+## 132
+
+- Now update goldText and xpText to display the updated values.
+
+```html
+function defeatMonster() {
+  gold += Math.floor(monsters[fighting].level * 6.7);
+  xp += monsters[fighting].level;
+  goldText.innerText = gold;
+  xpText.innerText = xp;
+}
+```
+
+## 133
+
+- Finish the defeatMonster function by calling the update function with locations[4] as the argument.
+
+```html
+function defeatMonster() {
+  gold += Math.floor(monsters[fighting].level * 6.7);
+  xp += monsters[fighting].level;
+  goldText.innerText = gold;
+  xpText.innerText = xp;
+  update(locations[4]);
+}
+```
+
+## 134
+
+- Your locations array doesn't have a fifth element, so locations[4] doesn't work.
+
+Add a new object at the end of the locations array, following the same structure as the other objects. Set name to "kill monster", set "button text" to an array with three "Go to town square" strings, set "button functions" to an array with three goTown variables, and set text to "The monster screams Arg! as it dies. You gain experience points and find gold.".
+
+```html
+const locations = [
+  {
+    name: "town square",
+    "button text": ["Go to store", "Go to cave", "Fight dragon"],
+    "button functions": [goStore, goCave, fightDragon],
+    text: "You are in the town square. You see a sign that says \"Store\"."
+  },
+  {
+    name: "store",
+    "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)", "Go to town square"],
+    "button functions": [buyHealth, buyWeapon, goTown],
+    text: "You enter the store."
+  },
+  {
+    name: "cave",
+    "button text": ["Fight slime", "Fight fanged beast", "Go to town square"],
+    "button functions": [fightSlime, fightBeast, goTown],
+    text: "You enter the cave. You see some monsters."
+  },
+  {
+    name: "fight",
+    "button text": ["Attack", "Dodge", "Run"],
+    "button functions": [attack, dodge, goTown],
+    text: "You are fighting a monster."
+  },
+  {
+    name: "kill monster",
+    "button text": ["Go to town square", "Go to town square", "Go to town square"],
+    "button functions": [goTown , goTown , goTown],
+    text: "The monster screams Arg! as it dies. You gain experience points and find gold."
+  }
+];
+```
+
+## 135
+
+- Add an if statement to check if health is less than or equal to 0. If it is, call the lose function.
+
+```html
+{
+    name: "kill monster",
+    "button text": ["Go to town square", "Go to town square", "Go to town square"],
+    "button functions": [goTown, goTown, goTown],
+    text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.'
+  }
+```
+
+## 136
+
+- After a monster is defeated, the monster's stat box should no longer display.
+
+On the first line of the update function, use monsterStats.style.display to change the display value to none.
+
+```html
+ function update(location) {
+  monsterStats.style.display = "none";
+  button1.innerText = location["button text"][0];
+  button2.innerText = location["button text"][1];
+  button3.innerText = location["button text"][2];
+  button1.onclick = location["button functions"][0];
+  button2.onclick = location["button functions"][1];
+  button3.onclick = location["button functions"][2];
+  text.innerText = location.text;
+}
+```
+
+## 137
+
+- In the lose function, call the update function and pass in the sixth object of your locations array. Note that you haven't created this object just yet.
+
+```html
+function lose() {
+  update(locations[5]);
+}
+```
+
+## 138
+
+- At the end of your code, create a restart function. Inside this function, set xp to 0, health to 100, gold to 50, currentWeaponIndex to 0, and set inventory to an array with the string stick.
+
+Also update the innerText properties of goldText, healthText, and xpText to their current values.
+
+Finally, call the goTown() function.
+
+```html
+function restart() {
+  xp = 0;
+  health = 100;
+  gold = 50;
+  currentWeaponIndex = 0;
+  inventory = ["stick"];
+  goTown();
+  goldText.innerText = gold;
+  goldText.innerText = gold;
+  healthText.innerText = health;
+  xpText.innerText = xp;
+}
+```
+
+## 139
+
+- In the locations array, add another object at the end. Set the name property to "lose", set "button text" to an array with three "REPLAY?" strings, set "button functions" to an array with three restart variables, and set text to "You die. &#x2620;".
+
+In a later step, you will update the code for the &#x2620; emoticon text to properly display on the page.
+
+```html
+{
+    name: "lose",
+    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
+    "button functions": [restart , restart , restart ],
+    text: "You die. &#x2620;"
+  },
+```
+
+## 140
+
+- Back to your attack function - inside the else if block, create another if and else statement. If the player is fighting the dragon (fighting would be 2), call the winGame function. Move the defeatMonster() call to the else block.
+
+For this step, you will need to use the strict equality (===) operator to check if fighting is equal to 2.
+
+```html
+function attack() {
+  text.innerText = "The " + monsters[fighting].name + " attacks.";
+  text.innerText += " You attack it with your " + weapons[currentWeaponIndex].name + ".";
+  health -= monsters[fighting].level;
+  monsterHealth -= weapons[currentWeaponIndex].power + Math.floor(Math.random() * xp) + 1;
+  healthText.innerText = health;
+  monsterHealthText.innerText = monsterHealth;
+  if (health <= 0) {
+    lose();
+  } else if (monsterHealth <= 0) {
+    defeatMonster();
+    if (fighting === 2) {
+        winGame();
+    } 
+    else {
+        defeatMonster();
+    }
+    }
+  }
+```
+
+## 141
+
+- In order for the &#x2620; emoticon text to properly display on the page, you will need to use the innerHTML property.
+
+The innerHTML property allows you to access or modify the content inside an HTML element using JavaScript.
+
+Here is an example of updating the content for this paragraph element using the innerHTML property.
+
+Example Code
+This is a paragraph.</p>
+Example Code
+document.querySelector("#demo").innerHTML = "Hello, innerHTML!";
+In the update function, change text.innerText to text.innerHTML.
+
+```html
+monsterStats.style.display = "none";
+  button1.innerText = location["button text"][0];
+  button2.innerText = location["button text"][1];
+  button3.innerText = location["button text"][2];
+  button1.onclick = location["button functions"][0];
+  button2.onclick = location["button functions"][1];
+  button3.onclick = location["button functions"][2];
+  text.innerHTML = location.text;
+```
+
+## 142
+
+- After the lose function, create a function called winGame. Inside the winGame function, call the update function and pass in locations[6].
+
+```html
+function winGame() {
+  update(locations[6]);
+}
+```
+
+## 143
+
+- Add another object in the locations array. Everything should be the same as the lose object, except the name should be "win" and the text should be "You defeat the dragon! YOU WIN THE GAME! &#x1F389;".
+
+```html
+{
+    name: "lose",
+    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
+    "button functions": [restart, restart, restart],
+    text: "You die. &#x2620;"
+  },
+  {
+    name: "win",
+    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
+    "button functions": [restart, restart, restart],
+    text: "You defeat the dragon! YOU WIN THE GAME! &#x1F389;"
+  }
+```
+
+## 144
+
+- While your game is feature-complete at this stage, there are things you can do to make it more fun and engaging. To get started, you'll give monsters a dynamic attack value.
+
+Inside your attack function, change your health -= monsters[fighting].level; line to health -= getMonsterAttackValue(monsters[fighting].level);. This sets health equal to health minus the return value of the getMonsterAttackValue function, and passes the level of the monster as an argument.
+
+```html
+function attack() {
+  text.innerText = "The " + monsters[fighting].name + " attacks.";
+  text.innerText += " You attack it with your " + weapons[currentWeaponIndex].name + ".";
+  health -= getMonsterAttackValue(monsters[fighting].level);
+  monsterHealth -= weapons[currentWeaponIndex].power + Math.floor(Math.random() * xp) + 1;
+  healthText.innerText = health;
+  monsterHealthText.innerText = monsterHealth;
+  if (health <= 0) {
+    lose();
+  } else if (monsterHealth <= 0) {
+    if (fighting === 2) {
+      winGame();
+    } else {
+      defeatMonster();
+    }
+  }
+}
+```
+
+## 145
+
+- Below your attack function, create an empty function named getMonsterAttackValue. It should take level as a parameter.
+
+```html
+getMonsterAttackValue
+```
+
+## 146
+
+- The attack of the monster will be based on the monster's level and the player's xp. In the getMonsterAttackValue function, use const to create a variable called hit. Assign it the equation (level *5) - (Math.floor(Math.random()* xp));.
+
+This will set the monster's attack to five times their level minus a random number between 0 and the player's xp.
+
+```html
+function getMonsterAttackValue(level) {
+  const hit = (level * 5) - (Math.floor(Math.random() * xp));
+}
+```
+
+## 147
+
+- Log the value of hit to the console to use in debugging. Remember that you can do this with console.log().
+
+```html
+function getMonsterAttackValue(level) {
+  const hit = (level * 5) - (Math.floor(Math.random() * xp));
+  console.log(hit);
+}
+```
+
+## 148
+
+- In the previous project, you learned how to work with the return keyword to return a value from a function like this:
+
+Example Code
+function add(num1, num2) {
+  return num1 + num2;
+}
+Use the return keyword to return the value of hit at the end of the function.
+
+```html
+function getMonsterAttackValue(level) {
+  const hit = (level * 5) - (Math.floor(Math.random() * xp));
+  return hit;
+}
+```
+
+## 149
+
+- If you play the game in its current state you might notice a bug. If your xp is high enough, the getMonsterAttackValue function will return a negative number, which will actually add to your total health when fighting a monster! You can fix this issue by using a ternary operator to ensure negative values are not returned.
+
+The ternary operator is a conditional operator and can be used as a one-line if-else statement. The syntax is: condition ? expressionIfTrue : expressionIfFalse.
+
+Here is an example of returning a value using an if-else statement and a refactored example using a ternary operator:
+
+Example Code
+// if-else statement
+if (score > 0) {
+  return score
+} else {
+  return default_score
+}
+
+// ternary operator
+return score > 0 ? score : default_score
+In getMonsterAttackValue, change return hit to a ternary operator that returns hit if hit is greater than 0, or returns 0 if it is not.
+
+```html
+function getMonsterAttackValue(level) {
+  const hit = (level * 5) - (Math.floor(Math.random() * xp));
+  console.log(hit);
+  return hit > 0 ? hit : 0;
+}
+```
+
+## 150
+
+- In your attack function, find the line of code that updates the monsterHealth variable and place it within an if block with a condition that calls the isMonsterHit function.
+
+```html
+function attack() {
+  text.innerText = "The " + monsters[fighting].name + " attacks.";
+  text.innerText += " You attack it with your " + weapons[currentWeaponIndex].name + ".";
+  health -= getMonsterAttackValue(monsters[fighting].level);
+  healthText.innerText = health;
+  monsterHealthText.innerText = monsterHealth;
+  if (isMonsterHit()) {
+  monsterHealth -= weapons[currentWeaponIndex].power + Math.floor(Math.random() * xp) + 1;
+  }
+  if (health <= 0) {
+    lose();
+  } else if (monsterHealth <= 0) {
+    if (fighting === 2) {
+      winGame();
+    } else {
+      defeatMonster();
+    }
+  }
+}
+```
+
+## 151
+
+- Add an else statement to the first if statement inside your attack() function. In the else statement, use the += operator to add the text " You miss." to the end of text.innerText.
+
+```html
+function attack() {
+  text.innerText = "The " + monsters[fighting].name + " attacks.";
+  text.innerText += " You attack it with your " + weapons[currentWeaponIndex].name + ".";
+  health -= getMonsterAttackValue(monsters[fighting].level);
+  if (isMonsterHit()) {
+    monsterHealth -= weapons[currentWeaponIndex].power + Math.floor(Math.random() * xp) + 1;    
+  } 
+  else {
+    text.innerText += " You miss.";
+  }
+  healthText.innerText = health;
+  monsterHealthText.innerText = monsterHealth;
+  if (health <= 0) {
+    lose();
+  } else if (monsterHealth <= 0) {
+    if (fighting === 2) {
+      winGame();
+    } else {
+      defeatMonster();
+    }
+  }
+}
+```
+
+## 152
+
+- Now create the isMonsterHit function. This will return a boolean value (true or false) to be used in your if statement. Return the result of the comparison Math.random() > .2.
+
+```html
+ function isMonsterHit () {
+return Math.random() > .2;
+}
+```
+
+## 153
+
+- The player should hit if either Math.random() > .2 or if the player's health is less than 20.
+
+At the end of your return statement, use the logical OR operator || and check if health is less than 20.
+
+The logical OR operator will use the first value if it is truthy – that is, anything apart from NaN, null, undefined, 0, -0, 0n, "", and false. Otherwise, it will use the second value.
+
+For example: num < 10 || num > 20.
+
+```html
+function isMonsterHit() {
+  return Math.random() > 0.2 || health < 20;
+}
+```
+
+## 154
+
+- On every attack, there should be a chance that the player's weapon breaks. At the end of the attack function, add an empty if statement with the condition Math.random() <= .1.
+
+```html
+function attack() {
+  text.innerText = "The " + monsters[fighting].name + " attacks.";
+  text.innerText += " You attack it with your " + weapons[currentWeaponIndex].name + ".";
+  health -= getMonsterAttackValue(monsters[fighting].level);
+  if (isMonsterHit()) {
+    monsterHealth -= weapons[currentWeaponIndex].power + Math.floor(Math.random() * xp) + 1;    
+  } else {
+    text.innerText += " You miss.";
+  }
+  healthText.innerText = health;
+  monsterHealthText.innerText = monsterHealth;
+  if (health <= 0) {
+    lose();
+  } else if (monsterHealth <= 0) {
+    if (fighting === 2) {
+      winGame();
+    } else {
+      defeatMonster();
+    }
+  }
+  if(Math.random() <= .1) {
+
+  }
+}
+```
+
+## 155
+
+- Use the += operator to add " Your > breaks.", with a space in front of Your, to the end of text.innerText. Replace  with the last item in the inventory array using inventory.pop(), which will remove the last item in the array AND return it so it appears in your string.
+
+```html
+function attack() {
+  text.innerText = "The " + monsters[fighting].name + " attacks.";
+  text.innerText += " You attack it with your " + weapons[currentWeaponIndex].name + ".";
+  health -= getMonsterAttackValue(monsters[fighting].level);
+  if (isMonsterHit()) {
+    monsterHealth -= weapons[currentWeaponIndex].power + Math.floor(Math.random() * xp) + 1;    
+  } else {
+    text.innerText += " You miss.";
+  }
+  healthText.innerText = health;
+  monsterHealthText.innerText = monsterHealth;
+  if (health <= 0) {
+    lose();
+  } else if (monsterHealth <= 0) {
+    if (fighting === 2) {
+      winGame();
+    } else {
+      defeatMonster();
+    }
+  }
+  if (Math.random() <= .1) {
+    text.innerText += " Your " + inventory.pop() + " breaks.";
+  }
+}
+```
+
+## 156
+
+- Remember that the increment operator ++ can be used to increase a variable's value by 1. There is also a decrement operator -- that can be used to decrease a variable's value by 1. For example :
+
+Example Code
+let num = 10;
+num--;
+console.log(num); // Output: 9
+Decrement the value of currentWeaponIndex in your if statement, after you update the text.
+
+```html
+function attack() {
+  text.innerText = "The " + monsters[fighting].name + " attacks.";
+  text.innerText += " You attack it with your " + weapons[currentWeaponIndex].name + ".";
+  health -= getMonsterAttackValue(monsters[fighting].level);
+  if (isMonsterHit()) {
+    monsterHealth -= weapons[currentWeaponIndex].power + Math.floor(Math.random() * xp) + 1;    
+  } else {
+    text.innerText += " You miss.";
+  }
+  healthText.innerText = health;
+  monsterHealthText.innerText = monsterHealth;
+  if (health <= 0) {
+    lose();
+  } else if (monsterHealth <= 0) {
+    if (fighting === 2) {
+      winGame();
+    } else {
+      defeatMonster();
+    }
+  }
+  if (Math.random() <= .1) {
+    text.innerText += " Your " + inventory.pop() + " breaks.";
+    currentWeaponIndex--;
+  }
+}
+```
+
+## 157
+
+- We don't want a player's only weapon to break. The logical AND operator checks if two statements are true.
+
+Use the logical AND operator && to add a second condition to your if statement. The player's weapon should only break if inventory.length does not equal (!==) one.
+
+Here is an example of an if statement with two conditions:
+
+Example Code
+if (firstName === "Quincy" && lastName === "Larson") {
+
+}
+
+```html
+function attack() {
+  text.innerText = "The " + monsters[fighting].name + " attacks.";
+  text.innerText += " You attack it with your " + weapons[currentWeaponIndex].name + ".";
+  health -= getMonsterAttackValue(monsters[fighting].level);
+  if (isMonsterHit()) {
+    monsterHealth -= weapons[currentWeaponIndex].power + Math.floor(Math.random() * xp) + 1;    
+  } else {
+    text.innerText += " You miss.";
+  }
+  healthText.innerText = health;
+  monsterHealthText.innerText = monsterHealth;
+  if (health <= 0) {
+    lose();
+  } else if (monsterHealth <= 0) {
+    if (fighting === 2) {
+      winGame();
+    } else {
+      defeatMonster();
+    }
+  }
+  if (Math.random() <= .1 && inventory.length !== 1) {
+    text.innerText += " Your " + inventory.pop() + " breaks.";
+    currentWeaponIndex--;
+  }
+}
+```
+
+## 158
+
+- Now you can add a small easter egg (hidden feature) to your game.
+
+Create a new function called easterEgg which calls the update function with locations[7] as the argument.
+
+```html
+function easterEgg() {
+  update(locations[7]);
+}
+```
+
+## 159
+
+- Create an empty pick function with a parameter named guess.
+
+```html
+function pick(guess) {
+
+}
+```
+
+## 160
+
+- Create two new functions named pickTwo and pickEight.
+
+Inside each of those, call the pick() function and pass either 2 or 8 as the argument depending on the function name.
+
+```html
+ function pickTwo() {
+  pick(2);
+}
+
+function pickEight() {
+  pick(8);
+}
+```
+
+## 161
+
+- Add another object to your locations array. Set name to "easter egg", set "button text" to an array with the strings "2", "8", and "Go to town square?", set "button functions" to an array with the variables pickTwo, pickEight, and goTown, and text to "You find a secret game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!".
+
+```html
+{ 
+    name: "easter egg", 
+    "button text": ["2", "8", "Go to town square?"], 
+    "button functions": [pickTwo, pickEight, goTown], 
+    text: "You find a secret game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!" 
+  }
+```
+
+## 162
+
+- Inside pick, use const to initialize a variable named numbers and set it to an empty array.
+
+```html
+function pick(guess) {
+  const numbers = [];
+}
+```
+
+## 163
+
+- After your numbers array, create a while loop that runs as long as numbers.length is less than 10.
+
+In the previous project, you learned how to work with while loops like this:
+
+Example Code
+while (condition) {
+  // code to run
+}
+
+```html
+function pick(guess) {
+  const numbers = [];
+  while(numbers.length < 10) {
+
+  }
+}
+```
+
+## 164
+
+- Inside your while loop, push a random number between 0 and 10 to the end of the numbers array. You can create this random number with Math.floor(Math.random() * 11).
+
+```html
+function pick(guess) {
+  const numbers = [];
+  while (numbers.length < 10) {
+    numbers.push(Math.floor(Math.random() * 11));
+  }
+}
+```
+
+## 165
+
+- After the while loop, set text.innerText to equal "You picked . Here are the random numbers:". Replace  with the guess function parameter.
+
+```html
+function pick(guess) {
+  const numbers = [];
+  while (numbers.length < 10) {
+    numbers.push(Math.floor(Math.random() * 11));
+  }
+  text.innerText = "You picked " + guess + ". Here are the random numbers:";
+}
+```
+
+## 166
+
+- At the end of the string, before the final quote, insert the new line escape character \n. This will cause the next part you add to text.innerText to appear on a new line.
+
+```html
+function pick(guess) {
+  const numbers = [];
+  while (numbers.length < 10) {
+    numbers.push(Math.floor(Math.random() * 11));
+  }
+  text.innerText = "You picked " + guess + ". Here are the random numbers:\n";
+}
+```
+
+## 167
+
+- In the previous project, you learned how to work with for loops like this:
+
+Example Code
+for (let i = 0; i < 5; i++) {
+  // code to run
+}
+for loops are declared with three expressions separated by semicolons: for (a; b; c), where a is the initialization expression, b is the condition, and c is the final expression.
+
+In this step, create a for loop where i is initialized to 0, the loop runs as long as i is less than 10, and i is incremented by 1 after each iteration using the increment operator ++.
+
+```html
+function pick(guess) {
+  const numbers = [];
+  while (numbers.length < 10) {
+    numbers.push(Math.floor(Math.random() * 11));
+  }
+  text.innerText = "You picked " + guess + ". Here are the random numbers:\n";
+  for (let i = 0; i < 10; i++) {
+
+  }
+}
+```
+
+## 168
+
+- Now you can write the logic to run in the loop. Inside your for loop, use the += operator to add to the end of text.innerText. Add the number at index i of the numbers array, using numbers[i]. Then add a new line, using the escape sequence you used earlier.
+
+```html
+function pick(guess) {
+  const numbers = [];
+  while (numbers.length < 10) {
+    numbers.push(Math.floor(Math.random() * 11));
+  }
+  text.innerText = "You picked " + guess + ". Here are the random numbers:\n";
+  for (let i = 0; i < 10; i++) {
+    text.innerText += numbers[i] + "\n";
+  }
+}
+```
+
+## 169
+
+- The .includes() method determines if an array contains an element and will return either true or false.
+
+Here is an example of the .includes() syntax:
+
+Example Code
+const numbersArray = [1, 2, 3, 4, 5]
+const number = 3
+
+if (numbersArray.includes(number)) {
+  console.log("The number is in the array.")
+}
+After your for loop, add an if statement to check if the guess is in the numbers array. You can use the .includes() method to check if the array contains the guess.
+
+```html
+function pick(guess) {
+  const numbers = [];
+  while (numbers.length < 10) {
+    numbers.push(Math.floor(Math.random() * 11));
+  }
+  text.innerText = "You picked " + guess + ". Here are the random numbers:\n";
+  for (let i = 0; i < 10; i++) {
+    text.innerText += numbers[i] + "\n";
+    if (numbers.includes(guess)) {
+    text.innerText += "Your guess is in the numbers array!"; // Indicate that the guess is found
+  } else {
+    text.innerText += "Your guess is not in the numbers array."; // Indicate that the guess is not found
+  }
+  }
+
+}
+```
+
+## 170
+
+- Inside the if statement, add the string "Right! You win 20 gold!" to the end of text.innerText. Also, add 20 to the value of gold and update the goldText.innerText.
+
+```html
+function pick(guess) {
+  const numbers = [];
+  while (numbers.length < 10) {
+    numbers.push(Math.floor(Math.random() * 11));
+  }
+  text.innerText = "You picked " + guess + ". Here are the random numbers:\n";
+  for (let i = 0; i < 10; i++) {
+    text.innerText += numbers[i] + "\n";
+  }
+  if (numbers.includes(guess)) {
+     gold += 20; // Add 20 to the gold
+    goldText.innerText = gold; // Update the gold display
+    text.innerText += "Right! You win 20 gold!"; // Winning message
+  }
+}
+```
+
+## 171
+
+- Now add an else statement. Inside, add "Wrong! You lose 10 health!" to the end of text.innerText. Subtract 10 from health and update healthText.innerText.
+
+```html
+function pick(guess) {
+  const numbers = [];
+  while (numbers.length < 10) {
+    numbers.push(Math.floor(Math.random() * 11));
+  }
+  text.innerText = "You picked " + guess + ". Here are the random numbers:\n";
+  for (let i = 0; i < 10; i++) {
+    text.innerText += numbers[i] + "\n";
+  }
+  if (numbers.includes(guess)) {
+    text.innerText += "Right! You win 20 gold!";
+    gold += 20;
+    goldText.innerText = gold;
+  }  else {
+    health -= 10; // Subtract 10 from health
+    healthText.innerText = health; // Update the health display
+    text.innerText += "Wrong! You lose 10 health!"; // Losing message
+  }
+}
+```
+
+## 172
+
+- Since you subtracted health from the player, you need to check if the player's health is less than or equal to 0. If it is, call the lose function.
+
+```html
+function pick(guess) {
+  const numbers = [];
+  while (numbers.length < 10) {
+    numbers.push(Math.floor(Math.random() * 11));
+  }
+  text.innerText = "You picked " + guess + ". Here are the random numbers:\n";
+  for (let i = 0; i < 10; i++) {
+    text.innerText += numbers[i] + "\n";
+  }
+  if (numbers.includes(guess)) {
+    text.innerText += "Right! You win 20 gold!";
+    gold += 20;
+    goldText.innerText = gold;
+  } else {
+    text.innerText += "Wrong! You lose 10 health!";
+    health -= 10;
+    healthText.innerText = health;
+
+     if (health <= 0) {
+      lose(); // Call the lose function
+    }
+  }
+}
+```
+
+## 173
+
+- Looking at your "kill monster" object, "button functions" currently has three goTown variables. Replace the third one with easterEgg - this is how a player will access the hidden feature of the game. Do not change the "button text".
+
+With this, your RPG game is complete! You can now play around - can you defeat the dragon?
+
+```html
+{
+    name: "kill monster",
+    "button text": ["Go to town square", "Go to town square", "Go to town square"],
+    "button functions": [goTown, goTown, easterEgg],
+    text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.'
+  },
 ```
