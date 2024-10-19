@@ -399,41 +399,45 @@ function isInvalidInput(str) {
 
 ## 31
 
-- In the previous project, you learned how to create a function like this:
+- Number inputs only allow the e to occur between two digits. To match any number, you can use the character class [0-9]. This will match any digit between 0 and 9.
 
-Example Code
-function functionName() {
-
-}
-Create an empty function named goStore.
+Add this character class before and after e in your pattern.
 
 ```html
-function goStore() {
-
+function isInvalidInput(str) {
+  const regex = /[0-9]e[0-9]/i;
 }
 ```
 
 ## 32
 
-- For now, make your goStore function output the message "Going to store." to the console.
+- The + modifier in a regex allows you to match a pattern that occurs one or more times. To match your digit pattern one or more times, add a plus after each of the digit character classes. For example: [0-9]+.
 
 ```html
-function goStore() {
-  console.log("Going to store.");
+function isInvalidInput(str) {
+  const regex = /[0-9]+e[0-9]+/i;
 }
 ```
 
 ## 33
 
-- Now create a goCave function that prints "Going to cave." to the console.
+- There is a shorthand character class to match any digit: \d. Replace your [0-9] character classes with this shorthand.
 
 ```html
-"Going to cave.
+function isInvalidInput(str) {
+  const regex = /\d+e\d+/i;
+}
 ```
 
 ## 34
 
-- Now create a fightDragon function that prints "Fighting dragon." to the console.
+- Strings have a .match() method, which takes a regex argument. .match() will return an array of match results – containing either the first match, or all matches if the global flag is used.
+
+Example Code
+const str = 'example string';
+const regex = /example/;
+const result = str.match(regex); // Returns ['example']
+Return the result of calling the .match() method on str and passing your regex variable as the argument. You'll use this match result later on.
 
 ```html
 function fightDragon() {
