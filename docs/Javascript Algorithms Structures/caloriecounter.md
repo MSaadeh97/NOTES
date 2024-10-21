@@ -440,254 +440,186 @@ const result = str.match(regex); // Returns ['example']
 Return the result of calling the .match() method on str and passing your regex variable as the argument. You'll use this match result later on.
 
 ```html
-function fightDragon() {
-  console.log("Fighting dragon.");
+function isInvalidInput(str) {
+  const regex = /\d+e\d+/i;
+  return str.match(regex);
 }
 ```
 
 ## 35
 
-- In the previous project, you learned how to work with single line and multi-line comments like this:
+- Now it is time to test your isInvalidInput function. For this test, you want to check if the function can detect scientific notation like 1e3 or 10e2. While this is a valid way to represent numbers, it is not a valid input for your calorie counter project.
 
-Example Code
-// I am a single-line comment
+Below your isInvalidInput function, add a console statement. Inside that console statement, call the isInvalidInput function with an argument of "1e3".
 
-/*
-  I am a multi-line comment
-*/
-Add a single-line comment that says initialize buttons.
+Open up the console to see the result. In the next step, you will learn more about what that result means.
 
 ```html
-// initialize buttons
+console.log(isInvalidInput("1e3"));
 ```
 
 ## 36
 
-- button1 represents your first button element. These elements have a special property called onclick, which you can use to determine what happens when someone clicks that button.
-
-You can access properties in JavaScript a couple of different ways. The first is with dot notation. Here is an example of using dot notation to set the onclick property of a button to a function reference.
+- When you open the console, you should see this result:
 
 Example Code
-button.onclick = myFunction;
-In this example, button is the button element, and myFunction is a reference to a function. When the button is clicked, myFunction will be called.
+[ '1e3', index: 0, input: '1e3', groups: undefined ]
+The match method returns an array with any matches found in the string.
 
-Use dot notation to set the onclick property of your button1 to the function reference of goStore. Note that button1 is already declared, so you don't need to use let or const.
+Here is a complete breakdown of that information:
+
+"1e3" is the matched value against the /\d+e\d+/i regex.
+index: 0 is the index of the matched value in the string.
+input: '1e3' is the original string that was matched.
+groups: undefined are the matched groups, which are not used in this case. You will learn more about groups in a later project.
+Now it is time to test for a valid input. Update your console statement to the following: console.log(isInvalidInput("10")).
+
+Open up the console to see the result. You will learn more about what this result means in the next step.
 
 ```html
-button1.onclick = goStore;
+console.log(isInvalidInput("10"))
 ```
 
 ## 37
 
-- Using the same syntax, set the onclick properties of button2 and button3 to goCave and fightDragon respectively.
+- When you open the console, you should see the result of null. The match method returns null when no match is found. In this case, the isInvalidInput function should return null when the input is a valid number without any scientific notation.
 
-Once you have done that, open your console and try clicking the buttons on your project.
+null in JavaScript is a special primitive that represents the intentional absence of a value. In a boolean context, null is considered falsy which evaluates to false in a conditional statement.
+
+Now that you have finished testing your isInvalidInput function, you can remove the console.log statement.
 
 ```html
-// initialize buttons
-button1.onclick = goStore;
-button2.onclick = goCave;
-button3.onclick = fightDragon;
+
 ```
 
 ## 38
 
-- The innerText property controls the text that appears in an HTML element. For example:
-
-Example Code
-The following example would change the text of the p element from Demo content to Hello World.
-
-When a player clicks your Go to store button, you want to change the buttons and text. Remove the code inside the goStore function and add a line that updates the text of button1 to say "Buy 10 health (10 gold)".
+- Your next step is to allow users to add entries to the calorie counter. Declare an empty function addEntry. This function should not take any parameters.
 
 ```html
-function goStore() {
-  button1.innerText = "Buy 10 health (10 gold)";
-}
+function addEntry() {
+    
+  }
 ```
 
 ## 39
 
-- Now, add a line that updates the text of button2 to say "Buy weapon (30 gold)" and update the text of button3 to say "Go to town square".
+- You'll need to know which category the entry goes in. Thankfully, you added a dropdown for the user to select a category.
+
+Remember that you queried that dropdown earlier in your JavaScript and assigned it to the entryDropdown button. You can use the value property to get the value of the selected option.
+
+Use concatenation to add a # to the beginning of the value property of entryDropdown, and assign that result to a targetId variable.
 
 ```html
-function goStore() {
-  button1.innerText = "Buy 10 health (10 gold)";
-  button2.innerText = "Buy weapon (30 gold)";
-  button3.innerText = "Go to town square";
+function addEntry() {
+  const targetId  = '#' + entryDropdown.value;
 }
 ```
 
 ## 40
 
-- You will also need to update the functions that run when the buttons are clicked again.
-
-In your goStore() function, update the onclick property for each button to run buyHealth, buyWeapon, and goTown, respectively.
+- Now you need to target the .input-container element within the element that has your targetId. Declare a new targetInputContainer variable, and assign it the value of document.querySelector(). Use concatenation to separate targetId and '.input-container' with a space, and pass that string to querySelector().
 
 ```html
-console.log(result);
+function addEntry() {
+  const targetId = '#' + entryDropdown.value;
+  const targetInputContainer = document.querySelector(targetId + ' .input-container');
+}
 ```
 
 ## 41
 
-- Now you need to modify your display text. Change the innerText property of the text variable to be "You enter the store.".
+- JavaScript has a feature called template literals, which allow you to interpolate variables directly within a string. Template literals are denoted with backticks ``, as opposed to single or double quotes. Variables can be passed in to a template literal by surrounding the variable with ${} – the value of the variable will be inserted into the string.
+
+For example:
+
+Example Code
+const name = "Naomi";
+const templateLiteral = `Hello, my name is ${name}~!`;
+console.log(templateLiteral);
+The console will show the string "Hello, my name is Naomi~!".
+
+Replace your concatenated string in the querySelector with a template literal – be sure to keep the space between your targetId variable and .input-container.
 
 ```html
-function goStore() {
-  button1.innerText = "Buy 10 health (10 gold)";
-  button2.innerText = "Buy weapon (30 gold)";
-  button3.innerText = "Go to town square";
-  button1.onclick = buyHealth;
-  button2.onclick = buyWeapon;
-  button3.onclick = goTown;
-  text.innerText = "You enter the store.";
+function addEntry() {
+  const targetId = '#' + entryDropdown.value;
+  const targetInputContainer = document.querySelector(`${targetId} .input-container`);
 }
 ```
 
 ## 42
 
-- Create three new empty functions called buyHealth, buyWeapon, and goTown.
+- Thanks to template literals, you actually don't need the targetId variable at all. Remove that variable, and update your template literal to replace targetId with entryDropdown.value – remember to add # before that, in the string.
 
 ```html
-function buyHealth() {
-
-}
-
-function buyWeapon() {
-  
-}
-
-function goTown() {
-  
+function addEntry() {
+  const targetInputContainer = document.querySelector(`#${entryDropdown.value} .input-container`);
 }
 ```
 
 ## 43
 
-- Move your goTown function above your goStore function. Then copy and paste the contents of the goStore function into the goTown function.
+- You will want to number the entries a user adds. To get all of the number inputs, you can use the querySelectorAll() method.
+
+The querySelectorAll() method returns a NodeList of all the elements that match the selector. A NodeList is an array-like object, so you can access the elements using bracket notation.
+
+Declare an entryNumber variable and give it the value of targetInputContainer.querySelectorAll(). You do not need to pass an argument to the query selector yet.
 
 ```html
-function goTown() {
-button1.innerText = "Buy 10 health (10 gold)";
-  button2.innerText = "Buy weapon (30 gold)";
-  button3.innerText = "Go to town square";
-  button1.onclick = buyHealth;
-  button2.onclick = buyWeapon;
-  button3.onclick = goTown;
-  text.innerText = "You enter the store.";
-}
-
-function goStore() {
-  button1.innerText = "Buy 10 health (10 gold)";
-  button2.innerText = "Buy weapon (30 gold)";
-  button3.innerText = "Go to town square";
-  button1.onclick = buyHealth;
-  button2.onclick = buyWeapon;
-  button3.onclick = goTown;
-  text.innerText = "You enter the store.";
-}
-
-function goCave() {
-  console.log("Going to cave.");
-}
-
-function fightDragon() {
-  console.log("Fighting dragon.");
-}
-
-function buyHealth() {
-
-}
-
-function buyWeapon() {
-
+function addEntry() {
+  const targetInputContainer = document.querySelector(`#${entryDropdown.value} .input-container`);
+  const entryNumber = targetInputContainer.querySelectorAll();
 }
 ```
 
 ## 44
 
-- In your goTown function, change your button elements' innerText properties to be "Go to store", "Go to cave", and "Fight dragon". Update your onclick properties to be goStore, goCave, and fightDragon, respectively.
+- Each entry will have a text input for the entry's name, and a number input for the calories. To get a count of the number of entries, you can query by text inputs. Note that you cannot query by number inputs, as you have an extra number input for the user's calorie budget.
 
-Finally, update innerText property of your text to be "You are in the town square. You see a sign that says Store.".
+Pass the string input[type="text"] to the querySelectorAll() method. Remember that you will need to use single quotes for your string, so that you can use double quotes within.
+
+This will return a NodeList of all the text inputs in the form. You can then access the length property of the NodeList to get the number of entries. Do this on the same line.
 
 ```html
-function goTown() {
-  button1.innerText = "Go to store";
-  button2.innerText = "Go to cave";
-  button3.innerText = "Fight dragon";
-  button1.onclick = goStore;
-  button2.onclick = goCave;
-  button3.onclick = fightDragon;
-  text.innerText = "You are in the town square. You see a sign that says Store.";
+function addEntry() {
+  const targetInputContainer = document.querySelector(`#${entryDropdown.value} .input-container`);
+  const entryNumber = targetInputContainer.querySelectorAll('input[type="text"]').length;
+  
 }
 ```
 
 ## 45
 
-- You need to wrap the text Store in double quotes. Because your string is already wrapped in double quotes, you'll need to escape the quotes around Store. You can escape them with a backslash \. Here is an example:
-
-Example Code
-const escapedString = "Naomi likes to play \"Zelda\" sometimes.";
-Wrap the text Store in double quotes within your text.innerText line.
+- Now you need to build your dynamic HTML string to add to the webpage. Declare a new HTMLString variable, and assign it an empty template literal string.
 
 ```html
-function goTown() {
-  button1.innerText = "Go to store";
-  button2.innerText = "Go to cave";
-  button3.innerText = "Fight dragon";
-  button1.onclick = goStore;
-  button2.onclick = goCave;
-  button3.onclick = fightDragon;
-  text.innerText = "You are in the town square. You see a sign that says \"Store\".";
+function addEntry() {
+  const targetInputContainer = document.querySelector(`#${entryDropdown.value} .input-container`);
+  const entryNumber = targetInputContainer.querySelectorAll('input[type="text"]').length;
+  let HTMLString = ``;
 }
 ```
 
 ## 46
 
-- You have repetition in the goTown and goStore functions. Repetition in your code is a sign that you need another function.
-
-In the previous project, you learned how to work with function parameters like this:
-
-Example Code
-function myFunction(param) {
-  console.log(param);
-}
-Function parameters act as placeholders for values that you pass to the function when you call it.
-
-Create an empty update function that takes a parameter called location.
+- Inside your template literal, create a label element and give it the text Entry # Name. Using your template literal syntax, replace # with the value of entryNumber.
 
 ```html
-function update(location) {
-
-}
+ <label>Entry ${entryNumber} Name</label>
 ```
 
 ## 47
 
-- In your role playing game, you will be able to visit different locations like the store, the cave, and the town square. You will need to create a data structure that will hold the different locations.
-
-Use const to create a variable called locations and assign it an empty array.
+- Give your label element a for attribute with the value X-#-name, where X is the value of the entryDropdown element and # is the value of entryNumber. Remember that HTML attributes should be wrapped in double quotes.
 
 ```html
-const locations = [];
+ <label for="${entryDropdown.value}-${entryNumber}-name">Entry ${entryNumber} Name</label>`;
 ```
 
 ## 48
 
-- Before you can begin to build out your locations array, you will first need to learn about objects. Objects are an important data type in JavaScript. The next few steps will be dedicated to learning about them so you will better understand how to apply them in your project.
-
-Objects are non primitive data types that store key-value pairs. Non primitive data types are mutable data types that are not undefined, null, boolean, number, string, or symbol. Mutable means that the data can be changed after it is created.
-
-Here is the basic syntax for an object:
-
-Example Code
-{
-  key: value
-}
-You will learn about keys and values in the next few steps.
-
-For now, create a const variable called cat and assign it an empty object {}.
-
-Below that cat variable, add a console.log(cat) statement to see the object in the console.
+- After your label element, and on a new line in your template string, create an input element. Give it a type attribute set to text, a placeholder attribute set to Name, and an id attribute that matches the for attribute of your label element.
 
 ```html
 const cat = {}; 
